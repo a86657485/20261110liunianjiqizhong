@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import RecallPanel from './RecallPanel.jsx';
 import StageProgressChip from './StageProgressChip.jsx';
 import StateTable from './StateTable.jsx';
+import { sanitizeStudentGuide } from '../lib/sanitizeStudentGuide.js';
 
 /**
  * One question per page. Interaction focus must NOT hint the correct option
@@ -15,8 +16,9 @@ function questionShowsRecall(question) {
 }
 
 function GuideText({ text }) {
-  if (!text) return null;
-  return <p className="guide-text">{text}</p>;
+  const shown = sanitizeStudentGuide(text);
+  if (!shown) return null;
+  return <p className="guide-text">{shown}</p>;
 }
 
 function ChoiceOptions({ options, value, onChange }) {

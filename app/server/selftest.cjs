@@ -143,6 +143,26 @@ async function main() {
     const full = require('./paper.cjs').loadPaper();
     const fullById = Object.fromEntries(full.questions.map((q) => [q.id, q]));
 
+    const { sanitizeStudentGuide } = require('./sanitizeStudentGuide.cjs');
+    const guideCases = [
+      ['点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。', '点选一个选项后提交。'],
+      ['先看残局里「是／否」两侧写了什么，再点选改法。未作答前不要给某一侧出口加黄框或小手。', '先看残局里「是／否」两侧写了什么，再点选改法。'],
+      ['把四张步骤卡点选放入①②③④。未放入前不要给某一张卡加黄框或小手。', '把四张步骤卡点选放入①②③④。'],
+      ['把卡片点选放入三个空槽，有一张卡用不上。未放入前不要给某一张卡或某一个槽加黄框。', '把卡片点选放入三个空槽，有一张卡用不上。'],
+      ['点选一张测试方案卡放入槽中。未作答前不要给某一张卡加黄框或小手。', '点选一张测试方案卡放入槽中。'],
+    ];
+    guideCases.forEach(([src, exp], i) => {
+      ok('sanitize student guide ' + (i + 1), sanitizeStudentGuide(src) === exp, sanitizeStudentGuide(src));
+    });
+    const leftoverGuides = full.questions.filter((q) =>
+      /黄框|发光|小手/.test(sanitizeStudentGuide(q.guides || ''))
+    );
+    ok(
+      'all bank guides hide highlight constraints',
+      leftoverGuides.length === 0,
+      leftoverGuides.map((q) => q.id).join(',')
+    );
+
     // Unlock independent of score: all-wrong stage 1 still unlocks stage 2; persist after "refresh"
     await req(port, 'POST', '/api/login', { studentId: s3.id });
     const wrong1 = await answerStage(port, s3.id, stages[0], fullById, wrongAnswer);
