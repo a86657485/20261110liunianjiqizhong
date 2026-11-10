@@ -1,0 +1,4641 @@
+{
+  "version": "2026-11-10-g6-midterm-v0.2-draft",
+  "status": "draft",
+  "draftNote": "交老师看的草稿，不是正式锁库。先不改应用、不推仓、不送独立审查。v0.2 按老师口径将主卷精选为 40 题（每课 5 题，2 带图＋3 不带图），同场约 35 分钟，留下题保持 v0.1 原文、不压缩。第8课拓展「停车场升降杆」（旧 GM24）不进主卷，全文改入挑战 GC06。 按 2026-11-10 老师口径做了表述与干扰项质量修订（结构/题量/计分未改）。",
+  "shell": "控制探秘营·八站通行证",
+  "paperType": "midterm",
+  "grade": 6,
+  "module": "过程与控制",
+  "sourceBook": "义务教育信息科技教学指南·过程与控制（六年级全一册）",
+  "lessons": "1-8",
+  "outOfScope": "第9课起：反馈、开环、闭环、种植园自动控制、电梯专元、汽车巡线／自动驾驶、安全系统等不得入题。",
+  "codeSource": "教材指南第1–8课学习目标与教学重难点原文；课堂情境回忆点清单（仅带图题回忆，第7课不作玩法模板）；去呆板化命题准则；体例参照五年级期中v1.5卷面结构，不迁五年级算法题。",
+  "paperRule": "期中整卷＝轻量站点闯关：主卷8站（L1–L8）必做40题（带图16＋不带图24）同场一次考完、约35分钟＋可选加分挑战站（GC01–GC06，不占用主卷35分钟）；本关题全部作答提交即可解锁下一关（不因分数卡关）；学生端不下发答案/解析/remix/内部代号；不带图题铺满题区不留空图位；未作答选项零高亮。第8课拓展停车场升降杆不进主卷，已改入挑战GC06。",
+  "clientFieldsBeforeSubmit": [
+    "id",
+    "section",
+    "type",
+    "lesson",
+    "lessonTitle",
+    "prompt",
+    "options",
+    "left",
+    "right",
+    "slots",
+    "cards",
+    "diagram",
+    "stateTable",
+    "appRef",
+    "interactionSpecKey",
+    "guides",
+    "estimatedMinutes",
+    "stage",
+    "stageId",
+    "stageName",
+    "currentStage",
+    "stagesCompleted",
+    "stageProgress",
+    "stageClearFeedback",
+    "hasRecallImage",
+    "recallSceneAnchor",
+    "recallCaption",
+    "recallImage",
+    "recallImageMaxWidthPx",
+    "recallImageAnimated"
+  ],
+  "serverOnlyFields": [
+    "answer",
+    "accept",
+    "acceptAlternate",
+    "analysis",
+    "misconceptionMap",
+    "literacy",
+    "ctTags",
+    "soloLevel",
+    "difficultyEstimate",
+    "remixFrom",
+    "sourceId",
+    "remixNote",
+    "reverseDebug",
+    "teacherNote",
+    "goalIds",
+    "examPoint",
+    "whyInSyllabus",
+    "recallImagePrompt",
+    "recallImageMotionNote",
+    "recallListItem",
+    "recallStillPath",
+    "recallStillNote"
+  ],
+  "forbiddenStudentTerms": [
+    "G1",
+    "G2",
+    "G3",
+    "K1",
+    "K2",
+    "D1",
+    "S1",
+    "E1",
+    "I0",
+    "M1",
+    "remixFrom"
+  ],
+  "uiHardRules": {
+    "oneQuestionPerPage": true,
+    "unansweredOptionsMustNotHighlight": true,
+    "guidesMustNotLeakAnswer": true,
+    "noBlankImageSlotForTextQuestions": true,
+    "captionPromptFeedbackMustNotLeakAnswer": true,
+    "noFilledTruthTableInRecallImage": true,
+    "noCheckmarksOrStemInRecallImage": true
+  },
+  "typeCounts": {
+    "main": {
+      "single_choice": 37,
+      "flowchart_op": 3,
+      "matching": 0,
+      "total": 40,
+      "sentence_fill": 0
+    },
+    "challenge": {
+      "single_choice": 5,
+      "flowchart_op": 1,
+      "matching": 0,
+      "total": 6,
+      "sentence_fill": 0
+    }
+  },
+  "reverseOrCounterexample": [
+    "GM04",
+    "GM06",
+    "GM09",
+    "GM11",
+    "GM14",
+    "GM15",
+    "GM20",
+    "GM24",
+    "GM29",
+    "GM30",
+    "GM32",
+    "GM35",
+    "GM40"
+  ],
+  "goalCatalog": {
+    "L1-G1": "了解一些常见设备的控制方法。",
+    "L1-G2": "知道生活中常用的一些设备属于控制系统。",
+    "L1-G3": "通过了解一些控制系统的发展历程，体会科技发展的重要性。",
+    "L1-K1": "常见设备的功能以及控制其功能实现的方法。（指南将两项一并列为「教学重难点」，本题库将第1项编号为K1）",
+    "L1-D1": "实际场景中用到的各种设备。（指南未单独标注难点，本题库将重难点第2项编号为D1，不虚构新目标）",
+    "L2-G1": "能描述控制系统所具备的状态。",
+    "L2-G2": "了解控制系统状态的切换。",
+    "L2-G3": "通过对控制系统状态进行切换，了解系统中的控制规则。",
+    "L2-K1": "开与关操作对控制系统状态的影响。",
+    "L2-D1": "控制系统状态的描述以及状态之间的切换。",
+    "L3-G1": "了解控制系统中控制的作用。",
+    "L3-G2": "体验控制系统中控制的过程。",
+    "L3-G3": "初步建立对控制系统工作过程中控制规则或原理的认识。",
+    "L3-K1": "控制系统中控制的作用。",
+    "L3-D1": "自动送货机器人的设计思路。",
+    "L4-G1": "了解控制系统工作过程的三个环节。",
+    "L4-G2": "能结合控制系统案例描述输入和输出。",
+    "L4-G3": "通过分析控制系统的工作过程，提升分析问题的能力和计算思维能力。",
+    "L4-K1": "控制系统工作过程示意图的绘制。",
+    "L4-D1": "控制系统输入和输出的描述。",
+    "L5-G1": "了解控制系统工作时产生的数据。",
+    "L5-G2": "了解连续量的表现形式及应用。",
+    "L5-G3": "能说出阈值在控制系统中的作用。",
+    "L5-K1": "连续量数据的表现形式。",
+    "L5-D1": "阈值的含义与作用。",
+    "L6-G1": "能找出控制系统中的开关量。",
+    "L6-G2": "了解开关量的表现形式及应用。",
+    "L6-G3": "了解非运算的规则。",
+    "L6-K1": "开关量的生成和表现形式。",
+    "L6-D1": "控制系统中开关量的非运算规则。",
+    "L7-G1": "了解与运算在日常生活中的应用。",
+    "L7-G2": "能结合控制系统实例描述与运算的规则。",
+    "L7-G3": "了解连续量如何转换为开关量，进一步提升计算思维能力。",
+    "L7-K1": "生活中人们处理事务时的与运算规则。",
+    "L7-D1": "控制系统中开关量的与运算规则。",
+    "L8-G1": "了解或运算在日常生活中的应用。",
+    "L8-G2": "能结合控制系统实例分析或运算的规则。",
+    "L8-G3": "通过分析控制系统中的控制逻辑，提高综合应用能力和计算思维能力。",
+    "L8-K1": "生活中人们处理事务时的或运算规则。",
+    "L8-D1": "控制系统中开关量的或运算规则。"
+  },
+  "goalCatalogNote": "G1–G3为教材学习目标原文；K1／D1对应教学重难点第1／第2项。指南未单独标注重点/难点名称，编号仅为覆盖，不虚构目标。",
+  "previousVersion": "2026-11-10-g6-midterm-v0.1-draft",
+  "confirmedAt": "2026-11-10T16:48:00+08:00",
+  "revisionNote": "v0.2-draft：主卷由 56 题精选为 40 题（每课 2 带图＋3 不带图，新号 GM01–GM40），同场约 35 分钟，题干／选项／解析／回忆字段原文不压缩；第8课升降杆旧 GM24 改入挑战 GC06；挑战为 GC01–GC06 共 6 题，每对 +2，满分封顶 +10（老师已定，不是 +12）。非正式锁库。 按 2026-11-10 老师口径做了表述与干扰项质量修订（结构/题量/计分未改）。",
+  "scoring": {
+    "mode": "percentage",
+    "passLine": null,
+    "passLineNote": "老师确认不用达标；不设达标线、不因分数卡关",
+    "teacherConfirmed": "2026-11-10 同场一次考完，主卷约35分钟；round(首答正确/40×100)；每课5题（2带图＋3不带图）并入原8站；不因分数卡关；不压缩留下题原文。挑战6题每对+2、满分封顶+10（不是+12），另计，不计入主卷百分。GC06为旧GM24升降杆改入。",
+    "main": {
+      "questionCount": 40,
+      "fullScore": 100,
+      "formula": "round(firstCorrectCount / 40 * 100)",
+      "perQuestionPoints": 2.5,
+      "useFirstSubmitOnly": true
+    },
+    "challenge": {
+      "questionCount": 6,
+      "pointsPerCorrect": 2,
+      "maxBonus": 10,
+      "affectsMainPercentage": false,
+      "note": "加分用百分点表述；无满题门槛；不计入主卷百分分母。6 题每对 +2，满分封顶 +10（第 6 题答对若已满 10 分不再累加）。GC06 为 v0.1 主卷旧 GM24（停车场升降杆）全文改入，不回主卷。"
+    },
+    "diagnosticsOnly": [
+      "lesson",
+      "type",
+      "literacy"
+    ],
+    "stageUnlockIndependentOfScore": true,
+    "challengePointsPerCorrect": 2,
+    "challengeMaxBonus": 10,
+    "challengeLocked": true,
+    "teacherConfirmedChallengeBonus": "2026-11-10 老师已定：六年级期中挑战 6 题每对 +2，满分封顶 +10（不是 +12），另计，不计入主卷百分。"
+  },
+  "typeQuotaMain": {
+    "single_choice": 37,
+    "matching": 0,
+    "flowchart_op": 3,
+    "sentence_fill": 0
+  },
+  "pendingConfirmations": [],
+  "stages": [
+    {
+      "order": 1,
+      "stage": 1,
+      "stageId": "gate_l1",
+      "stageName": "机关密室·寻设备",
+      "lesson": 1,
+      "lessonTitle": "设备控制处处在",
+      "questionIds": [
+        "GM01",
+        "GM02",
+        "GM03",
+        "GM04",
+        "GM05"
+      ],
+      "suggestedMinutes": 4.2,
+      "unlockRule": "start",
+      "clearFeedback": "寻设备站通关！下一站：开与关的秘密。",
+      "required": true
+    },
+    {
+      "order": 2,
+      "stage": 2,
+      "stageId": "gate_l2",
+      "stageName": "开与关的秘密",
+      "lesson": 2,
+      "lessonTitle": "一分为二开与关",
+      "questionIds": [
+        "GM06",
+        "GM07",
+        "GM08",
+        "GM09",
+        "GM10"
+      ],
+      "suggestedMinutes": 4.4,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "开与关站通关！下一站：校园配送实验室。",
+      "required": true
+    },
+    {
+      "order": 3,
+      "stage": 3,
+      "stageId": "gate_l3",
+      "stageName": "校园配送实验室",
+      "lesson": 3,
+      "lessonTitle": "我是小小控制员",
+      "questionIds": [
+        "GM11",
+        "GM12",
+        "GM13",
+        "GM14",
+        "GM15"
+      ],
+      "suggestedMinutes": 4.4,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "配送实验室通关！下一站：校园系统探索站。",
+      "required": true
+    },
+    {
+      "order": 4,
+      "stage": 4,
+      "stageId": "gate_l4",
+      "stageName": "校园系统探索站",
+      "lesson": 4,
+      "lessonTitle": "输入输出与计算",
+      "questionIds": [
+        "GM16",
+        "GM17",
+        "GM18",
+        "GM19",
+        "GM20"
+      ],
+      "suggestedMinutes": 4.4,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "系统探索站通关！下一站：噪声监测数据站。",
+      "required": true
+    },
+    {
+      "order": 5,
+      "stage": 5,
+      "stageId": "gate_l5",
+      "stageName": "噪声监测数据站",
+      "lesson": 5,
+      "lessonTitle": "连续变化的数据",
+      "questionIds": [
+        "GM21",
+        "GM22",
+        "GM23",
+        "GM24",
+        "GM25"
+      ],
+      "suggestedMinutes": 4.3,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "噪声监测站通关！下一站：校园开关站。",
+      "required": true
+    },
+    {
+      "order": 6,
+      "stage": 6,
+      "stageId": "gate_l6",
+      "stageName": "校园开关站",
+      "lesson": 6,
+      "lessonTitle": "开关量的真与假",
+      "questionIds": [
+        "GM26",
+        "GM27",
+        "GM28",
+        "GM29",
+        "GM30"
+      ],
+      "suggestedMinutes": 4.3,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "校园开关站通关！下一站：双条件才通行。",
+      "required": true
+    },
+    {
+      "order": 7,
+      "stage": 7,
+      "stageId": "gate_l7",
+      "stageName": "双条件才通行",
+      "lesson": 7,
+      "lessonTitle": "开关量的与运算",
+      "questionIds": [
+        "GM31",
+        "GM32",
+        "GM33",
+        "GM34",
+        "GM35"
+      ],
+      "suggestedMinutes": 4.6,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "双条件站通关！下一站：郑和远航·或运算。",
+      "required": true
+    },
+    {
+      "order": 8,
+      "stage": 8,
+      "stageId": "gate_l8",
+      "stageName": "郑和远航·或运算",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "questionIds": [
+        "GM36",
+        "GM37",
+        "GM38",
+        "GM39",
+        "GM40"
+      ],
+      "suggestedMinutes": 4.4,
+      "unlockRule": "prevStageAllAnswered",
+      "clearFeedback": "或运算站通关！主卷八站全部走完。可以交卷看百分，或进加分挑战关。",
+      "required": true
+    },
+    {
+      "order": 9,
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "lesson": null,
+      "questionIds": [
+        "GC01",
+        "GC02",
+        "GC03",
+        "GC04",
+        "GC05",
+        "GC06"
+      ],
+      "suggestedMinutes": 9.0,
+      "unlockRule": "allMainStagesAnswered",
+      "clearFeedback": "挑战关完成！加分已计入（每对 +2，满分封顶 +10）。",
+      "required": false,
+      "skippable": true,
+      "bonusOnly": true
+    }
+  ],
+  "stageProgression": {
+    "mode": "site_map",
+    "shellAlias": "控制探秘营·八站通行证",
+    "uiComponentsSuggested": [
+      "ExplorerCampMap",
+      "StageNode",
+      "StageClearBanner",
+      "StageProgressChip"
+    ],
+    "forbiddenTemplates": [
+      "六年级第7课课堂应用关卡结构",
+      "双条件机关推箱子奖励",
+      "五年级算法题面",
+      "旧期末5qimokaoshi"
+    ],
+    "unlock": {
+      "rule": "answeredCount >= questionCount in current stage",
+      "scoreGate": false,
+      "note": "不因正确率／分数卡关"
+    },
+    "flow": [
+      "login",
+      "campMap_seeUnlockedStages",
+      "enterStage_answerAll",
+      "submitStage_clearFeedback",
+      "unlockNextStage",
+      "after8MainStages_submitMainOrEnterBonus",
+      "challengeOptional_skipOk",
+      "result_mainPercent_plus_challengeBonus"
+    ],
+    "fields": {
+      "currentStage": "当前所在关 stage 值（1–8 或 challenge）",
+      "stagesCompleted": "已通关 stageId 数组（答完即记，不论对错）",
+      "stageProgress": "{ answeredCount, questionCount, stageId }",
+      "stageClearFeedback": "过关短反馈文案（用 stages[].clearFeedback 模板）",
+      "firstSubmitMain": "主卷首次整卷提交锁定百分",
+      "latestSubmit": "最近一次提交",
+      "history": "历史提交列表"
+    }
+  },
+  "coverageMatrix": {
+    "rule": "L1–L8 每条 G1/G2/K1/D1 至少 1 道主卷题；有 G3 的课尽量覆盖，不虚构目标。挑战不计入「至少1」硬门槛。",
+    "note": "goalIds 学生端不下发。覆盖已按 v0.2 主卷 40 题重算。",
+    "lessons": {
+      "L1": {
+        "G1": {
+          "goalId": "L1-G1",
+          "mainQuestionIds": [
+            "GM01",
+            "GM04"
+          ],
+          "mainCount": 2
+        },
+        "G2": {
+          "goalId": "L1-G2",
+          "mainQuestionIds": [
+            "GM02",
+            "GM03"
+          ],
+          "mainCount": 2
+        },
+        "G3": {
+          "goalId": "L1-G3",
+          "mainQuestionIds": [
+            "GM02",
+            "GM05"
+          ],
+          "mainCount": 2
+        },
+        "K1": {
+          "goalId": "L1-K1",
+          "mainQuestionIds": [
+            "GM01",
+            "GM04"
+          ],
+          "mainCount": 2
+        },
+        "D1": {
+          "goalId": "L1-D1",
+          "mainQuestionIds": [
+            "GM03"
+          ],
+          "mainCount": 1
+        }
+      },
+      "L2": {
+        "G1": {
+          "goalId": "L2-G1",
+          "mainQuestionIds": [
+            "GM06",
+            "GM07"
+          ],
+          "mainCount": 2
+        },
+        "G2": {
+          "goalId": "L2-G2",
+          "mainQuestionIds": [
+            "GM07",
+            "GM08",
+            "GM10"
+          ],
+          "mainCount": 3
+        },
+        "G3": {
+          "goalId": "L2-G3",
+          "mainQuestionIds": [
+            "GM09"
+          ],
+          "mainCount": 1
+        },
+        "K1": {
+          "goalId": "L2-K1",
+          "mainQuestionIds": [
+            "GM06",
+            "GM08",
+            "GM09"
+          ],
+          "mainCount": 3
+        },
+        "D1": {
+          "goalId": "L2-D1",
+          "mainQuestionIds": [
+            "GM07",
+            "GM09",
+            "GM10"
+          ],
+          "mainCount": 3
+        }
+      },
+      "L3": {
+        "G1": {
+          "goalId": "L3-G1",
+          "mainQuestionIds": [
+            "GM12",
+            "GM13"
+          ],
+          "mainCount": 2
+        },
+        "G2": {
+          "goalId": "L3-G2",
+          "mainQuestionIds": [
+            "GM11",
+            "GM15"
+          ],
+          "mainCount": 2
+        },
+        "G3": {
+          "goalId": "L3-G3",
+          "mainQuestionIds": [
+            "GM12",
+            "GM15"
+          ],
+          "mainCount": 2
+        },
+        "K1": {
+          "goalId": "L3-K1",
+          "mainQuestionIds": [
+            "GM11",
+            "GM12",
+            "GM13"
+          ],
+          "mainCount": 3
+        },
+        "D1": {
+          "goalId": "L3-D1",
+          "mainQuestionIds": [
+            "GM14",
+            "GM15"
+          ],
+          "mainCount": 2
+        }
+      },
+      "L4": {
+        "G1": {
+          "goalId": "L4-G1",
+          "mainQuestionIds": [
+            "GM16",
+            "GM17",
+            "GM18"
+          ],
+          "mainCount": 3
+        },
+        "G2": {
+          "goalId": "L4-G2",
+          "mainQuestionIds": [
+            "GM16",
+            "GM18"
+          ],
+          "mainCount": 2
+        },
+        "G3": {
+          "goalId": "L4-G3",
+          "mainQuestionIds": [
+            "GM19"
+          ],
+          "mainCount": 1
+        },
+        "K1": {
+          "goalId": "L4-K1",
+          "mainQuestionIds": [
+            "GM17",
+            "GM20"
+          ],
+          "mainCount": 2
+        },
+        "D1": {
+          "goalId": "L4-D1",
+          "mainQuestionIds": [
+            "GM16",
+            "GM17",
+            "GM20"
+          ],
+          "mainCount": 3
+        }
+      },
+      "L5": {
+        "G1": {
+          "goalId": "L5-G1",
+          "mainQuestionIds": [
+            "GM21"
+          ],
+          "mainCount": 1
+        },
+        "G2": {
+          "goalId": "L5-G2",
+          "mainQuestionIds": [
+            "GM22",
+            "GM23",
+            "GM25"
+          ],
+          "mainCount": 3
+        },
+        "G3": {
+          "goalId": "L5-G3",
+          "mainQuestionIds": [
+            "GM24"
+          ],
+          "mainCount": 1
+        },
+        "K1": {
+          "goalId": "L5-K1",
+          "mainQuestionIds": [
+            "GM22",
+            "GM23",
+            "GM25"
+          ],
+          "mainCount": 3
+        },
+        "D1": {
+          "goalId": "L5-D1",
+          "mainQuestionIds": [
+            "GM24"
+          ],
+          "mainCount": 1
+        }
+      },
+      "L6": {
+        "G1": {
+          "goalId": "L6-G1",
+          "mainQuestionIds": [
+            "GM26",
+            "GM29"
+          ],
+          "mainCount": 2
+        },
+        "G2": {
+          "goalId": "L6-G2",
+          "mainQuestionIds": [
+            "GM27",
+            "GM28"
+          ],
+          "mainCount": 2
+        },
+        "G3": {
+          "goalId": "L6-G3",
+          "mainQuestionIds": [
+            "GM30"
+          ],
+          "mainCount": 1
+        },
+        "K1": {
+          "goalId": "L6-K1",
+          "mainQuestionIds": [
+            "GM26",
+            "GM27",
+            "GM29"
+          ],
+          "mainCount": 3
+        },
+        "D1": {
+          "goalId": "L6-D1",
+          "mainQuestionIds": [
+            "GM30"
+          ],
+          "mainCount": 1
+        }
+      },
+      "L7": {
+        "G1": {
+          "goalId": "L7-G1",
+          "mainQuestionIds": [
+            "GM31",
+            "GM33"
+          ],
+          "mainCount": 2
+        },
+        "G2": {
+          "goalId": "L7-G2",
+          "mainQuestionIds": [
+            "GM32",
+            "GM35"
+          ],
+          "mainCount": 2
+        },
+        "G3": {
+          "goalId": "L7-G3",
+          "mainQuestionIds": [
+            "GM34"
+          ],
+          "mainCount": 1
+        },
+        "K1": {
+          "goalId": "L7-K1",
+          "mainQuestionIds": [
+            "GM31",
+            "GM33"
+          ],
+          "mainCount": 2
+        },
+        "D1": {
+          "goalId": "L7-D1",
+          "mainQuestionIds": [
+            "GM32",
+            "GM35"
+          ],
+          "mainCount": 2
+        }
+      },
+      "L8": {
+        "G1": {
+          "goalId": "L8-G1",
+          "mainQuestionIds": [
+            "GM36"
+          ],
+          "mainCount": 1
+        },
+        "G2": {
+          "goalId": "L8-G2",
+          "mainQuestionIds": [
+            "GM37",
+            "GM38",
+            "GM40"
+          ],
+          "mainCount": 3
+        },
+        "G3": {
+          "goalId": "L8-G3",
+          "mainQuestionIds": [
+            "GM39",
+            "GM40"
+          ],
+          "mainCount": 2
+        },
+        "K1": {
+          "goalId": "L8-K1",
+          "mainQuestionIds": [
+            "GM36",
+            "GM39"
+          ],
+          "mainCount": 2
+        },
+        "D1": {
+          "goalId": "L8-D1",
+          "mainQuestionIds": [
+            "GM37",
+            "GM38",
+            "GM39",
+            "GM40"
+          ],
+          "mainCount": 4
+        }
+      }
+    }
+  },
+  "recallImageSpec": {
+    "layout": "oneQuestionPerPage_imageAboveQuestion",
+    "fillScreenMinimizeBlank": true,
+    "staticPreferred": true,
+    "animatedAllowed": true,
+    "animatedNote": "必要时可用短循环 webp/gif；宜短、轻量；面向 Win7 Chrome 流畅",
+    "generatorsPriority": [
+      "GPT",
+      "Gemini"
+    ],
+    "maxWidthPx": 800,
+    "preferredFormats": [
+      "webp",
+      "jpg"
+    ],
+    "studentReceives": [
+      "recallSceneAnchor",
+      "recallCaption",
+      "recallImage",
+      "recallImageMaxWidthPx",
+      "recallImageAnimated"
+    ],
+    "serverOnlyOrTeacherPack": [
+      "recallImagePrompt",
+      "recallImageMotionNote",
+      "recallListItem",
+      "recallStillPath",
+      "recallStillNote"
+    ],
+    "artNotGeneratedYet": true,
+    "sourceList": "/workspace/g6-midterm/design/第1-8课课堂情境回忆点清单.md",
+    "localLessonRoot": "/Users/jun/Desktop/2026-2027教学备课/六年级 过程与控制/按课拆分/",
+    "textQuestionNoBlankImageSlot": true,
+    "mustNotContain": [
+      "题干",
+      "对勾",
+      "已填好的完整真值表",
+      "正确选项高亮"
+    ]
+  },
+  "questions": [
+    {
+      "analysis": "正确推导：两次试验说明播放器和投影都不能让过道变亮；要获得照明，须按对应设备的控制方法打开灯。干扰项错因：把发声、出画面误当成照明，或以为不必再控制设备、照明会自行出现。回学：第1课学习活动1（控制教室里的灯）及课堂应用「光影入口」。",
+      "answer": "操作照明灯的开关，开启灯以提供过道照明",
+      "appRef": null,
+      "ctTags": [
+        "问题分解"
+      ],
+      "difficultyEstimate": 0.8,
+      "estimatedMinutes": 1.1,
+      "examPoint": "在多设备并存的场景中，根据功能需求选择正确的设备及其控制方法。",
+      "goalIds": [
+        "L1-G1",
+        "L1-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM01",
+      "interactionSpecKey": "single_choice",
+      "lesson": 1,
+      "lessonTitle": "设备控制处处在",
+      "literacy": [
+        "信息意识",
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "将播放器音量调至最大，用发声使过道变亮": {
+          "misconceptionId": "U-mix-device-function",
+          "solo": "U",
+          "explain": "把播放器的发声功能当成照明"
+        },
+        "再次开启投影设备，用画面使过道变亮": {
+          "misconceptionId": "U-mix-device-function",
+          "solo": "U",
+          "explain": "把投影出画面当成让过道变亮"
+        },
+        "不必再控制任何设备，过道会自行达到足够照明": {
+          "misconceptionId": "U-ignore-control-method",
+          "solo": "U",
+          "explain": "忽略「通过控制设备实现功能」"
+        }
+      },
+      "options": [
+        "操作照明灯的开关，开启灯以提供过道照明",
+        "将播放器音量调至最大，用发声使过道变亮",
+        "再次开启投影设备，用画面使过道变亮",
+        "不必再控制任何设备，过道会自行达到足够照明"
+      ],
+      "prompt": "光影入口中三件设备均处于关闭状态。根据两次试验记录，要使过道获得足够照明，应采用哪一种控制方法？",
+      "recallCaption": "回想密室里灯还没打开、看不太清的教室",
+      "recallImage": "assets/recall/GM01.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D课堂友好插画：昏暗教室/密室入口，灯、投影和播放器都关着，两名小学生探险搭档在墙边找开关，尚未按下；气氛略暗但能看清设备轮廓；无题干文字、无对勾、无选项字母、无正确答案黄框。cartoon dim classroom, soft colors, no text overlay, no answer cue. static. 优先GPT，其次Gemini。Win7 Chrome轻量。",
+      "recallListItem": "第1课-1 光影入口（灯、投影、播放器都在，先看清再控制）",
+      "recallSceneAnchor": "机关密室·光影入口",
+      "recallStillPath": "第1课 设备控制处处在/课堂导入图片（2026-09-10）/01-看不清的教室.png",
+      "remixFrom": "new:教材L1学习活动1＋机关密室光影入口",
+      "remixNote": "新编。未抄五年级题面。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM01",
+      "stage": 1,
+      "stageId": "gate_l1",
+      "stageName": "机关密室·寻设备",
+      "stateTable": {
+        "caption": "试验记录",
+        "headers": [
+          "做法",
+          "结果"
+        ],
+        "rows": [
+          [
+            "只打开播放器",
+            "有朗诵声，过道仍暗"
+          ],
+          [
+            "只打开投影",
+            "墙上有画面，过道仍暗"
+          ]
+        ]
+      },
+      "teacherNote": "情境含排他性试验数据：遮住记录后，「播放器/投影也能让过道亮」的干扰会失去依据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第1课G1「了解一些常见设备的控制方法」与重难点「常见设备的功能以及控制其功能实现的方法」。不涉及第9课及以后内容。"
+    },
+    {
+      "analysis": "正确推导：本阶段把「由部件按规则运行、实现特定功能的整体」看作控制系统；机械锁与智能锁都在实现开锁，体现控制系统的发展演变，早期形式也可能仍在使用。干扰项错因：只把最新电气形态当控制系统，或把「当前关闭」当成「不是控制系统」。回学：第1课对控制系统的描述及拓展（门锁演变）。",
+      "answer": "两种门锁都能按规则实现开锁功能，都可以看作控制系统；形态变了，开锁需求仍然存在",
+      "appRef": null,
+      "ctTags": [
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.74,
+      "estimatedMinutes": 1.2,
+      "examPoint": "识别生活中的设备属于控制系统，并从门锁演变体会科技发展。",
+      "goalIds": [
+        "L1-G2",
+        "L1-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM02",
+      "interactionSpecKey": "single_choice",
+      "lesson": 1,
+      "lessonTitle": "设备控制处处在",
+      "literacy": [
+        "信息意识"
+      ],
+      "misconceptionMap": {
+        "只有采用指纹识别的门锁才属于控制系统，机械钥匙门锁不能看作控制系统": {
+          "misconceptionId": "U-only-modern-is-system",
+          "solo": "U",
+          "explain": "把控制系统狭隘理解为必须是电子／智能形态"
+        },
+        "机械钥匙门锁出现较早，因此这两种门锁都不能看作控制系统": {
+          "misconceptionId": "U-history-denies-system",
+          "solo": "U",
+          "explain": "用「早期形式」否定控制系统的存在"
+        },
+        "两扇门当前都处于关闭状态，因此它们目前都不能称作控制系统": {
+          "misconceptionId": "M-state-denies-system",
+          "solo": "M",
+          "explain": "把设备当前状态（关）当成能否称为控制系统的条件"
+        }
+      },
+      "options": [
+        "两种门锁都能按规则实现开锁功能，都可以看作控制系统；形态变了，开锁需求仍然存在",
+        "只有采用指纹识别的门锁才属于控制系统，机械钥匙门锁不能看作控制系统",
+        "机械钥匙门锁出现较早，因此这两种门锁都不能看作控制系统",
+        "两扇门当前都处于关闭状态，因此它们目前都不能称作控制系统"
+      ],
+      "prompt": "档案室中一扇机械钥匙门锁、一扇指纹密码锁均处于关闭状态。关于这两扇门锁，哪一项认识更恰当？",
+      "recallCaption": "回想并排的两扇门锁，都还关着",
+      "recallImage": "assets/recall/GM02.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D课堂友好插画：并排两扇关着的门，左边机械钥匙门锁，右边指纹/电子密码锁，手尚未插入或按下；无「正确答案」对照结论、无题干、无对勾、无黄框。cartoon two closed doors, soft colors, no text wall. static. GPT优先，其次Gemini。",
+      "recallListItem": "第1课-5 时间锁档案室／门锁对照（机械锁与指纹/电子锁都关着，手还没按下）",
+      "recallSceneAnchor": "机关密室·时间锁档案室",
+      "recallStillNote": "若导入图已写满功能结论或标准答案式对比文字，须裁去文字，只留两扇未打开的门。",
+      "recallStillPath": "第1课 设备控制处处在/课堂导入图片（2026-09-10）/04-门锁的功能与控制方式.png",
+      "remixFrom": "new:教材L1控制系统描述＋拓展门锁演变",
+      "remixNote": "新编。用对照情境承载G2与G3。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM03",
+      "stage": 1,
+      "stageId": "gate_l1",
+      "stageName": "机关密室·寻设备",
+      "stateTable": {
+        "caption": "对照",
+        "headers": [
+          "门锁",
+          "现在"
+        ],
+        "rows": [
+          [
+            "机械钥匙门锁",
+            "关着，手还没插入钥匙"
+          ],
+          [
+            "指纹密码锁",
+            "关着，手指还没按下"
+          ]
+        ]
+      },
+      "teacherNote": "两扇门都未打开，避免图上出现开锁结果；题面不给「标准定义填空」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第1课G2、G3及教参蓝栏门锁从木锁、机械锁到智能门锁的启发。不要求记忆概念条文，不涉及第9课自动化定义。"
+    },
+    {
+      "analysis": "正确推导：教材指出公共服务设备由专门机构或人员控制，也可看作控制系统；当前是否点亮只是状态，不能用来否定系统存在。干扰项错因：把控制系统限定在家用、随身，或把「关／不亮」当成「不是系统」。回学：第1课正文公共服务设备及学习活动3。",
+      "answer": "这些公共服务设备也可以看作控制系统；路灯当前未点亮只是状态，不能据此否定系统存在",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.78,
+      "estimatedMinutes": 1.1,
+      "examPoint": "在真实街道场景中识别公共服务设备属于控制系统。",
+      "goalIds": [
+        "L1-G2",
+        "L1-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM03",
+      "interactionSpecKey": "single_choice",
+      "lesson": 1,
+      "lessonTitle": "设备控制处处在",
+      "literacy": [
+        "信息意识"
+      ],
+      "misconceptionMap": {
+        "只有家庭中的电器才属于控制系统，街道上的公共设备不能算": {
+          "misconceptionId": "U-only-home-devices",
+          "solo": "U",
+          "explain": "把控制系统范围缩到家用电器"
+        },
+        "路灯当前尚未点亮，说明这条街道上不存在控制系统": {
+          "misconceptionId": "M-off-means-not-system",
+          "solo": "M",
+          "explain": "用当前不亮的状态否定系统"
+        },
+        "只有能够随身携带的设备才属于控制系统，路灯和信号灯都不能算": {
+          "misconceptionId": "U-must-be-portable",
+          "solo": "U",
+          "explain": "把「可携带」误当成控制系统的必要条件"
+        }
+      },
+      "options": [
+        "这些公共服务设备也可以看作控制系统；路灯当前未点亮只是状态，不能据此否定系统存在",
+        "只有家庭中的电器才属于控制系统，街道上的公共设备不能算",
+        "路灯当前尚未点亮，说明这条街道上不存在控制系统",
+        "只有能够随身携带的设备才属于控制系统，路灯和信号灯都不能算"
+      ],
+      "prompt": "放学路上可见：公交正在完成扣费，路口信号灯正在变换，路灯尚未点亮。对眼前这些设备，哪一项认识更恰当？",
+      "remixFrom": "new:教材L1公共服务设备＋学习活动3路口场景",
+      "remixNote": "新编校园放学路情境，不抄教材填空句。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM25",
+      "stage": 1,
+      "stageId": "gate_l1",
+      "stageName": "机关密室·寻设备",
+      "stateTable": {
+        "caption": "眼前的设备",
+        "headers": [
+          "设备",
+          "此刻"
+        ],
+        "rows": [
+          [
+            "公交刷卡机／扫码机",
+            "正在扣费"
+          ],
+          [
+            "交通信号灯",
+            "正在变换"
+          ],
+          [
+            "路灯",
+            "还没亮"
+          ]
+        ]
+      },
+      "teacherNote": "「路灯还没亮」是排他约束，专门拦截「不亮就不是系统」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第1课G2与重难点「实际场景中用到的各种设备」。题中不出现电梯、自动驾驶等超纲对象。"
+    },
+    {
+      "analysis": "正确推导：实现制冷须控制具有该功能的空调，并用遥控器对其启动。干扰项错因：把台灯点亮当成制冷控制已经完成，或以为待机就不再具备制冷功能，或忽略控制必须作用在对应设备上。回学：第1课教室场景2（遥控启动空调制冷）及「控制方法要对应设备功能」。",
+      "answer": "控制对象选择错误：制冷功能在空调上，对台灯发出制冷指令不能降低室温",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "问题分解"
+      ],
+      "difficultyEstimate": 0.77,
+      "estimatedMinutes": 1.2,
+      "examPoint": "故障诊断：功能没有出现时，先检查是否控制了正确的设备。",
+      "goalIds": [
+        "L1-G1",
+        "L1-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM04",
+      "interactionSpecKey": "single_choice",
+      "lesson": 1,
+      "lessonTitle": "设备控制处处在",
+      "literacy": [
+        "信息意识",
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "台灯已经点亮，说明制冷所需的控制已经完成，室温应当下降": {
+          "misconceptionId": "U-mix-device-function",
+          "solo": "U",
+          "explain": "把照明当成制冷"
+        },
+        "空调处于待机状态，说明它不具备制冷功能，不必再对空调进行控制": {
+          "misconceptionId": "M-standby-means-unable",
+          "solo": "M",
+          "explain": "把待机状态理解成设备没有该功能"
+        },
+        "遥控器只要按下制冷键，对准哪一台设备都能实现制冷": {
+          "misconceptionId": "U-ignore-target-device",
+          "solo": "U",
+          "explain": "忽略控制必须作用在对应设备上"
+        }
+      },
+      "options": [
+        "控制对象选择错误：制冷功能在空调上，对台灯发出制冷指令不能降低室温",
+        "台灯已经点亮，说明制冷所需的控制已经完成，室温应当下降",
+        "空调处于待机状态，说明它不具备制冷功能，不必再对空调进行控制",
+        "遥控器只要按下制冷键，对准哪一台设备都能实现制冷"
+      ],
+      "prompt": "房间闷热。小华用遥控器对准台灯按下「制冷」，房间温度没有下降。最可能的原因是什么？",
+      "remixFrom": "new:教材L1教室空调场景迁移为排障",
+      "remixNote": "逆向排障，非简单顺推。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM26",
+      "stage": 1,
+      "stageId": "gate_l1",
+      "stageName": "机关密室·寻设备",
+      "stateTable": {
+        "caption": "现场",
+        "headers": [
+          "对象",
+          "状态"
+        ],
+        "rows": [
+          [
+            "空调",
+            "已插电，显示待机"
+          ],
+          [
+            "台灯",
+            "亮着"
+          ],
+          [
+            "遥控器按键",
+            "对准台灯按下了制冷"
+          ]
+        ]
+      },
+      "teacherNote": "删掉「对准台灯」与「空调待机」后，本题会失去排他性，故保留现场表。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "服务第1课G1/K1，属课内控制方法，不是第9课自动控制。"
+    },
+    {
+      "analysis": "正确推导：教材拓展要求从发展演变感受科技进步；教参明确早期形式仍可能在使用，多种形态并存也体现演变。干扰项错因：把「升级」理解成「旧的立刻灭迹」或「旧的不是系统」，或以为需求随形态消失。回学：第1课拓展与提升及教参门锁例。",
+      "answer": "控制系统会经历升级改造，早期形式与后来的形式可能并存，从中可以体会科技发展",
+      "appRef": null,
+      "ctTags": [
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.75,
+      "estimatedMinutes": 1.1,
+      "examPoint": "从控制系统的发展演变体会科技发展，不把「新」等同于「唯—合法」。",
+      "goalIds": [
+        "L1-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM05",
+      "interactionSpecKey": "single_choice",
+      "lesson": 1,
+      "lessonTitle": "设备控制处处在",
+      "literacy": [
+        "信息意识",
+        "数字化学习与创新"
+      ],
+      "misconceptionMap": {
+        "智能门锁出现以后，木锁就不再具有锁的功能，早期形式必须全部消失": {
+          "misconceptionId": "M-upgrade-erases-old",
+          "solo": "M",
+          "explain": "把发展理解成旧形式必须立刻全部淘汰"
+        },
+        "只有最新形态才能称为控制系统，早期的木锁、机械锁一律不能算": {
+          "misconceptionId": "U-only-modern-is-system",
+          "solo": "U",
+          "explain": "用新旧否定早期形式也可以看作控制系统"
+        },
+        "门锁的形态一旦改变，开锁这一功能需求也就随之消失": {
+          "misconceptionId": "U-form-erases-need",
+          "solo": "U",
+          "explain": "把形态变化误当成功能需求消失"
+        }
+      },
+      "options": [
+        "控制系统会经历升级改造，早期形式与后来的形式可能并存，从中可以体会科技发展",
+        "智能门锁出现以后，木锁就不再具有锁的功能，早期形式必须全部消失",
+        "只有最新形态才能称为控制系统，早期的木锁、机械锁一律不能算",
+        "门锁的形态一旦改变，开锁这一功能需求也就随之消失"
+      ],
+      "prompt": "资料表明：门锁从木锁、机械锁发展到智能门锁，有的地方木锁仍在使用。对这一演变，哪一项认识更恰当？",
+      "remixFrom": "new:教材L1拓展与提升＋教参蓝栏门锁演变",
+      "remixNote": "新编资料卡题，不要求学生当场上网。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM28",
+      "stage": 1,
+      "stageId": "gate_l1",
+      "stageName": "机关密室·寻设备",
+      "stateTable": {
+        "caption": "资料卡",
+        "headers": [
+          "阶段",
+          "例子"
+        ],
+        "rows": [
+          [
+            "早期形式",
+            "木锁、机械锁"
+          ],
+          [
+            "后来的发展",
+            "智能门锁"
+          ],
+          [
+            "现在",
+            "多种形式都可能仍在使用"
+          ]
+        ]
+      },
+      "teacherNote": "数字化学习与创新体现在「能根据资料比较演变并得出合适判断」，不空贴标签。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第1课G3。上网搜资料是教参建议的学习方式，题面用已给资料卡考查认识，不另超纲。"
+    },
+    {
+      "analysis": "正确推导：开与关是操作，亮／不亮是状态；操作会影响状态，但二者不能画等号，实际状态要观察。本题灯可能故障，更能把二者分开。干扰项错因：用操作直接代替状态，或因结果未变就否认操作发生，或把操作与状态混为一谈。回学：第2课学习活动1分析表及教参「开关」与「开与关」的区分。",
+      "answer": "按「开」是开与关操作；灯现在的状态仍是不亮，不能用操作代替观察状态",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.74,
+      "estimatedMinutes": 1.2,
+      "examPoint": "区分开与关操作与控制系统当前状态，并能根据实际表现描述状态。",
+      "goalIds": [
+        "L2-G1",
+        "L2-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM06",
+      "interactionSpecKey": "single_choice",
+      "lesson": 2,
+      "lessonTitle": "一分为二开与关",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "只要按下了「开」，灯的状态就是亮，不必再观察灯的实际表现": {
+          "misconceptionId": "M-op-equals-state",
+          "solo": "M",
+          "explain": "把开与关操作直接当成设备状态"
+        },
+        "灯现在不亮，说明这次并没有发生开与关操作": {
+          "misconceptionId": "M-no-change-no-op",
+          "solo": "M",
+          "explain": "因状态没按预期改变，就否认操作已经发生"
+        },
+        "开与关操作和设备状态含义相同，不必加以区分": {
+          "misconceptionId": "U-op-state-mix",
+          "solo": "U",
+          "explain": "开与关操作和状态边界含混"
+        }
+      },
+      "options": [
+        "按「开」是开与关操作；灯现在的状态仍是不亮，不能用操作代替观察状态",
+        "只要按下了「开」，灯的状态就是亮，不必再观察灯的实际表现",
+        "灯现在不亮，说明这次并没有发生开与关操作",
+        "开与关操作和设备状态含义相同，不必加以区分"
+      ],
+      "prompt": "按钮式台灯刚才处于不亮状态。小屿按下了「开」，但灯没有亮。哪一项把「操作」和「状态」区分得最清楚？",
+      "recallCaption": "回想书桌上的关节台灯和面板，灯的状态要自己看",
+      "recallImage": "assets/recall/GM06.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D课堂友好插画：书桌中央一盏关节台灯，面板有开/关标识但不要写成题干；台灯看起来仍不亮，学生的手刚离开按钮；无对勾、无「正确答案」标签、无黄框。cartoon desk lamp, soft colors, no text overlay. static. GPT优先，其次Gemini。",
+      "recallListItem": "第2课-1 光影档案室（分清「按了什么」和「灯现在是什么状态」）",
+      "recallSceneAnchor": "机关密室Ⅱ·光影档案室",
+      "recallStillPath": "第2课 一分为二开与关/机关密室Ⅱ—开与关的秘密/美术素材/光影档案室-v2.webp",
+      "remixFrom": "new:教材L2台灯状态分析表＋光影档案室",
+      "remixNote": "排障式再创编，不用课堂原数原关。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM04",
+      "stage": 2,
+      "stageId": "gate_l2",
+      "stageName": "开与关的秘密",
+      "stateTable": {
+        "caption": "现场",
+        "headers": [
+          "项目",
+          "情况"
+        ],
+        "rows": [
+          [
+            "操作",
+            "按了「开」"
+          ],
+          [
+            "灯的实际表现",
+            "仍然不亮"
+          ],
+          [
+            "同伴的说法",
+            "既然按了开，状态就是亮"
+          ]
+        ]
+      },
+      "teacherNote": "「按了开但灯仍不亮」是最小冲突，用来证伪「操作＝状态」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第2课G1、K1。教参强调不要把「开关」设备与「开与关」操作、状态混为一谈。"
+    },
+    {
+      "analysis": "正确推导：三种照明效果是三种状态，「不亮」也是一种状态，共4种；可用同一按钮在这些状态之间循环切换。干扰项错因：漏掉不亮（教材特别提醒）、把按钮数量当成状态数、把每次按下当成永不重复的新状态。回学：第2课学习活动2。",
+      "answer": "4种：白光、暖光、中性光，还有不亮",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.72,
+      "estimatedMinutes": 1.2,
+      "examPoint": "完整描述多状态系统所包含的状态（含关闭），并理解状态可循环切换。",
+      "goalIds": [
+        "L2-G1",
+        "L2-G2",
+        "L2-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM07",
+      "interactionSpecKey": "single_choice",
+      "lesson": 2,
+      "lessonTitle": "一分为二开与关",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "3种：只算三种光，不亮不算状态": {
+          "misconceptionId": "U-forget-off-state",
+          "solo": "U",
+          "explain": "忽略「不亮」也是一种状态（教材强调的常见遗漏）"
+        },
+        "1种：因为只有一个按钮": {
+          "misconceptionId": "U-buttons-equal-states",
+          "solo": "U",
+          "explain": "把按钮数量当成状态数量"
+        },
+        "无数种：每按一次都是全新的、不会重复的状态": {
+          "misconceptionId": "M-no-cycle",
+          "solo": "M",
+          "explain": "没看出状态会循环重复，而不是无限新增"
+        }
+      },
+      "options": [
+        "4种：白光、暖光、中性光，还有不亮",
+        "3种：只算三种光，不亮不算状态",
+        "1种：因为只有一个按钮",
+        "无数种：每按一次都是全新的、不会重复的状态"
+      ],
+      "prompt": "三色变光灯只有一个按钮。小屿记下的循环如下。这种灯一共有几种状态？",
+      "recallCaption": "回想只有中间一颗按钮的变光灯",
+      "recallImage": "assets/recall/GM07.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D课堂友好插画：密室中一盏三色变光台灯，中央只有一颗按钮，灯罩呈中性光但不要标注「这就是第几种」；旁边不要写出完整状态循环或对勾。cartoon color-changing lamp, one button, no answer text. static. GPT优先，其次Gemini。",
+      "recallListItem": "第2课-2 三色光密码间（一颗按钮，颜色/状态一轮一轮变）",
+      "recallSceneAnchor": "机关密室Ⅱ·三色光密码间",
+      "recallStillPath": "第2课 一分为二开与关/机关密室Ⅱ—开与关的秘密/美术素材/三色光密码间-v2.webp",
+      "remixFrom": "new:教材L2三色变光灯＋三色光密码间",
+      "remixNote": "保留「漏算不亮」这一优质误解，换记录表呈现。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM05",
+      "stage": 2,
+      "stageId": "gate_l2",
+      "stageName": "开与关的秘密",
+      "stateTable": {
+        "caption": "按一次按钮后的变化",
+        "headers": [
+          "现在",
+          "按一次后"
+        ],
+        "rows": [
+          [
+            "不亮",
+            "白光"
+          ],
+          [
+            "白光",
+            "暖光"
+          ],
+          [
+            "暖光",
+            "中性光"
+          ],
+          [
+            "中性光",
+            "不亮"
+          ]
+        ]
+      },
+      "teacherNote": "删掉状态循环表就无法排除「无数种」；表是排他数据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第2课G1/G2/D1及教材三色变光灯例。循环顺序以题内微表为准，不靠背课堂原顺序。"
+    },
+    {
+      "analysis": "正确推导：教材总结，对开与关操作合理设计，就能把系统由一种状态切换为另一种状态，如绿灯切换为黄灯。干扰项错因：把切换当成发明新状态、用关闭整个系统代替切换，或否认需要开与关操作。回学：第2课学习活动2总结。",
+      "answer": "通过开与关操作，让系统从一种状态切换到另一种状态",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.8,
+      "estimatedMinutes": 1.0,
+      "examPoint": "理解「状态切换」是在已有状态之间，借助开与关操作完成的。",
+      "goalIds": [
+        "L2-G2",
+        "L2-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM08",
+      "interactionSpecKey": "single_choice",
+      "lesson": 2,
+      "lessonTitle": "一分为二开与关",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "这次变化是在增加一种设计中原本没有的新颜色": {
+          "misconceptionId": "U-switch-means-invent",
+          "solo": "U",
+          "explain": "把状态切换理解成新增未知状态"
+        },
+        "关闭整个路口系统，状态就会消失，因而不需要在状态之间切换": {
+          "misconceptionId": "M-shutdown-instead-of-switch",
+          "solo": "M",
+          "explain": "用关闭整个系统代替状态之间的切换"
+        },
+        "状态可以在无开与关操作的情况下自行任意切换": {
+          "misconceptionId": "U-no-need-operation",
+          "solo": "U",
+          "explain": "忽略开与关操作对状态的影响"
+        }
+      },
+      "options": [
+        "通过开与关操作，让系统从一种状态切换到另一种状态",
+        "这次变化是在增加一种设计中原本没有的新颜色",
+        "关闭整个路口系统，状态就会消失，因而不需要在状态之间切换",
+        "状态可以在无开与关操作的情况下自行任意切换"
+      ],
+      "prompt": "信号灯刚才是绿灯，按规则下一步应变成黄灯。这次变化，本质上是在做什么？",
+      "remixFrom": "new:教材L2状态切换总结句再创编",
+      "remixNote": "不用课堂闯关原关。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "M",
+      "sourceId": "GM30",
+      "stage": 2,
+      "stageId": "gate_l2",
+      "stageName": "开与关的秘密",
+      "stateTable": {
+        "caption": "一次变化",
+        "headers": [
+          "原来",
+          "按规则下一步"
+        ],
+        "rows": [
+          [
+            "绿灯亮",
+            "黄灯亮"
+          ]
+        ]
+      },
+      "teacherNote": "微表给出「绿→黄」这一具体切换，避免空谈定义。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第2课G2/K1。不考信号灯时长（那不是本课目标）。"
+    },
+    {
+      "analysis": "正确推导：教材流程图为「指令是开？是→灯亮，否→灯不亮」。残局把真假出口接反了，最小修改是对调出口。干扰项错因：否定判断框、否认可用流程图描述开与关算法，或让两个出口同样输出。回学：第2课学习活动1控制算法流程图。交互为点选改法，不是填空。",
+      "answer": "把两个出口对调：指令是「开」时台灯亮，否则台灯不亮",
+      "appRef": null,
+      "cards": [
+        "把两个出口对调：指令是「开」时台灯亮，否则台灯不亮",
+        "菱形里不能放判断条件，应改成动作",
+        "开与关操作不必用流程图来描述，应取消这张控制算法图",
+        "两个出口都应接到「台灯亮」"
+      ],
+      "ctTags": [
+        "算法设计",
+        "验证优化"
+      ],
+      "diagram": {
+        "visual": "输入开关指令 → 菱形：指令是「开」？ → 标「是」的一侧写着「台灯不亮」；标「否」的一侧写着「台灯亮」",
+        "note": "点选正确改法；未作答前不要给某一侧加黄框。"
+      },
+      "difficultyEstimate": 0.73,
+      "estimatedMinutes": 1.3,
+      "examPoint": "检查并修正开与关算法流程图中接反的真假出口。",
+      "goalIds": [
+        "L2-G3",
+        "L2-D1",
+        "L2-K1"
+      ],
+      "guides": "先看残局里「是／否」两侧写了什么，再点选改法。未作答前不要给某一侧出口加黄框或小手。",
+      "hasRecallImage": false,
+      "id": "GM09",
+      "interactionSpecKey": "flowchart_pick_fix",
+      "lesson": 2,
+      "lessonTitle": "一分为二开与关",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "菱形里不能放判断条件，应改成动作": {
+          "misconceptionId": "U-diamond-not-condition",
+          "solo": "U",
+          "explain": "把判断框和动作框搞混"
+        },
+        "开与关操作不必用流程图来描述，应取消这张控制算法图": {
+          "misconceptionId": "U-reject-flowchart",
+          "solo": "U",
+          "explain": "否认可用流程图描述开与关算法"
+        },
+        "两个出口都应接到「台灯亮」": {
+          "misconceptionId": "M-both-exits-same",
+          "solo": "M",
+          "explain": "改了条件却让两个出口结果相同"
+        }
+      },
+      "options": [
+        "把两个出口对调：指令是「开」时台灯亮，否则台灯不亮",
+        "菱形里不能放判断条件，应改成动作",
+        "开与关操作不必用流程图来描述，应取消这张控制算法图",
+        "两个出口都应接到「台灯亮」"
+      ],
+      "prompt": "台灯控制流程图残局如下。两个出口接错了。应怎样修改？",
+      "remixFrom": "new:教材L2台灯控制算法流程图改错",
+      "remixNote": "流程图点选改错，全程免打字。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM31",
+      "stage": 2,
+      "stageId": "gate_l2",
+      "stageName": "开与关的秘密",
+      "teacherNote": "残局本身就是反例；学生须对照规则改出口，不是默背空图。",
+      "tier": "main",
+      "type": "flowchart_op",
+      "whyInSyllabus": "对齐第2课「能用流程图描述开与关操作的算法」（单元评价）及G3/D1。无填空。"
+    },
+    {
+      "analysis": "正确推导：按题给循环，从「不亮」按1次到白光，再按1次到暖光，最少2次。干扰项错因：跳步、把不同状态当成同一状态、把3次后的中性光误当成暖光。回学：第2课状态切换。必须依据本题循环表，不能靠记忆别的产品顺序。",
+      "answer": "2次（不亮→白光→暖光）",
+      "appRef": null,
+      "ctTags": [
+        "算法设计",
+        "问题分解"
+      ],
+      "difficultyEstimate": 0.7,
+      "estimatedMinutes": 1.3,
+      "examPoint": "依据给定的状态循环，计算从当前状态切换到目标状态的最少操作次数。",
+      "goalIds": [
+        "L2-G2",
+        "L2-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM10",
+      "interactionSpecKey": "single_choice",
+      "lesson": 2,
+      "lessonTitle": "一分为二开与关",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "1次（不亮会直接变成暖光）": {
+          "misconceptionId": "M-skip-state",
+          "solo": "M",
+          "explain": "忽略循环中的中间状态"
+        },
+        "0次（不亮和暖光是同一种状态）": {
+          "misconceptionId": "U-merge-states",
+          "solo": "U",
+          "explain": "把不同状态混成一种"
+        },
+        "3次（再按三次刚好停在中性光，也就到了暖光）": {
+          "misconceptionId": "M-wrong-count",
+          "solo": "M",
+          "explain": "按次数算到了中性光，却当成已经到达暖光"
+        }
+      },
+      "options": [
+        "2次（不亮→白光→暖光）",
+        "1次（不亮会直接变成暖光）",
+        "0次（不亮和暖光是同一种状态）",
+        "3次（再按三次刚好停在中性光，也就到了暖光）"
+      ],
+      "prompt": "变光灯按下面的循环工作。现在是「不亮」。要回到「暖光」，最少还要按几次？",
+      "remixFrom": "new:教材L2三色变光灯切换的计算题",
+      "remixNote": "新编计数，不用课堂原关。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM32",
+      "stage": 2,
+      "stageId": "gate_l2",
+      "stageName": "开与关的秘密",
+      "stateTable": {
+        "caption": "循环顺序（按一次走一步）",
+        "headers": [
+          "顺序"
+        ],
+        "rows": [
+          [
+            "不亮 → 白光 → 暖光 → 中性光 → 不亮（再循环）"
+          ]
+        ]
+      },
+      "teacherNote": "不同产品顺序可能不同，故循环表不可删。第4个选项故意把「3次到中性光」说成到了暖光。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第2课G2/D1。循环顺序以题内数据为准。"
+    },
+    {
+      "analysis": "正确推导：学习活动1要求体验控制过程——直行、变速，遇到障碍或转角要调整方向。记录表明直行到转角却不转向，所以缺的是方向控制。干扰项错因：以为一次推动即可、用加速代替转向，或把控制完全交给车子自行决定。回学：第3课学习活动1及「先由你来控制」。",
+      "answer": "到转角时要根据车头朝向调整前进方向，而不能一直沿原方向直行",
+      "appRef": null,
+      "ctTags": [
+        "问题分解",
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.76,
+      "estimatedMinutes": 1.2,
+      "examPoint": "在真实推车路径中体验并诊断控制过程：遇转角须调整方向。",
+      "goalIds": [
+        "L3-G2",
+        "L3-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM11",
+      "interactionSpecKey": "single_choice",
+      "lesson": 3,
+      "lessonTitle": "我是小小控制员",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "只要在起点完成一次推动，后续过程就不必再实施控制": {
+          "misconceptionId": "M-one-push-enough",
+          "solo": "M",
+          "explain": "把控制理解成只在开始时作用一次"
+        },
+        "只要在转角处持续加速，就不必再调整前进方向": {
+          "misconceptionId": "M-speed-replaces-steer",
+          "solo": "M",
+          "explain": "改了速度却忘了在转角改变方向这一出口"
+        },
+        "车辆会自行选择路线，人不必再进行判断和方向调整": {
+          "misconceptionId": "U-no-human-control",
+          "solo": "U",
+          "explain": "尚未把「人的判断与控制」放进过程里"
+        }
+      },
+      "options": [
+        "到转角时要根据车头朝向调整前进方向，而不能一直沿原方向直行",
+        "只要在起点完成一次推动，后续过程就不必再实施控制",
+        "只要在转角处持续加速，就不必再调整前进方向",
+        "车辆会自行选择路线，人不必再进行判断和方向调整"
+      ],
+      "prompt": "把图书车从收发室推到阅览室，通道有两个转角。记录里车在第一个转角顶到护栏。缺了哪类控制？",
+      "recallCaption": "回想校园地图上从收发室到阅览室、带转角的通道",
+      "recallImage": "assets/recall/GM11.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D俯视校园插画：收发室到阅览室的通道有两个转角，一辆图书车停在通道中，车头朝向清晰但不要画出「标准绕行答案路线」或对勾；无题干文字。cartoon campus path, soft colors, no answer route highlight. static. GPT优先，其次Gemini。",
+      "recallListItem": "第3课-1 先由你来控制（手动开图书车，通道有转角，看车头朝向并停稳）",
+      "recallSceneAnchor": "校园配送实验室·先由你来控制",
+      "recallStillPath": "第3课 我是小小控制员/校园配送实验室/assets/campus.png",
+      "remixFrom": "new:教材L3推车活动＋校园配送「先由你来控制」",
+      "remixNote": "排障式再创编，不用课堂原路线原数。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM07",
+      "stage": 3,
+      "stageId": "gate_l3",
+      "stageName": "校园配送实验室",
+      "stateTable": {
+        "caption": "推车记录",
+        "headers": [
+          "位置",
+          "做法",
+          "结果"
+        ],
+        "rows": [
+          [
+            "直行段",
+            "保持前进",
+            "正常"
+          ],
+          [
+            "第一个转角",
+            "仍按原方向直行",
+            "车头顶到护栏，没能拐过去"
+          ]
+        ]
+      },
+      "teacherNote": "「转角仍直行顶到护栏」是过程中的反例。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第3课G2、K1及学习活动1。不把后续「坐电梯」功能写入题干。"
+    },
+    {
+      "analysis": "正确推导：教材指出，开与关启动后，系统会按特定规则或原理工作，如煮饭多久后转入保温。控制不只是人手的一次按键。干扰项错因：把控制窄化为按键瞬间，否认内部规则，或以为离开持续人工按键就无法完成过程。回学：第3课导入与「控制的作用」，课堂应用中「把经验交给小达」也是把规则交给系统执行。",
+      "answer": "人们启动后，控制系统内部仍会按特定规则或原理继续控制工作过程",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.77,
+      "estimatedMinutes": 1.2,
+      "examPoint": "理解控制系统中「控制」的作用：启动之后仍按规则推进过程。",
+      "goalIds": [
+        "L3-G1",
+        "L3-G3",
+        "L3-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM12",
+      "interactionSpecKey": "single_choice",
+      "lesson": 3,
+      "lessonTitle": "我是小小控制员",
+      "literacy": [
+        "计算思维",
+        "信息意识"
+      ],
+      "misconceptionMap": {
+        "控制只发生在手指按下的那一下，之后内部就没有控制了": {
+          "misconceptionId": "U-control-only-at-press",
+          "solo": "U",
+          "explain": "把「控制」理解为仅存在于启动瞬间"
+        },
+        "电饭锅在启动后会任意决定工作时长，并不遵循特定规则或原理": {
+          "misconceptionId": "U-no-rule",
+          "solo": "U",
+          "explain": "否认工作过程遵循规则或原理"
+        },
+        "只有人持续守在旁边反复按键，煮饭过程才能完成": {
+          "misconceptionId": "M-must-keep-pressing",
+          "solo": "M",
+          "explain": "以为离开持续的人工按键就无法完成过程"
+        }
+      },
+      "options": [
+        "人们启动后，控制系统内部仍会按特定规则或原理继续控制工作过程",
+        "控制只发生在手指按下的那一下，之后内部就没有控制了",
+        "电饭锅在启动后会任意决定工作时长，并不遵循特定规则或原理",
+        "只有人持续守在旁边反复按键，煮饭过程才能完成"
+      ],
+      "prompt": "按下电饭锅「煮饭」后，人不用一直守着，它会完成煮饭并切到保温。这最能说明什么？",
+      "recallCaption": "回想把「送到、停好、提醒」交给配送机器人去执行",
+      "recallImage": "assets/recall/GM12.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D课堂友好插画：轮式配送机器人小达停在任务卡编辑器旁，卡片槽是空的或文字模糊，不要写出正确任务顺序或对勾；校园阅览室门口隐约可见。cartoon delivery robot and empty task cards, no answer text. static. GPT优先，其次Gemini。",
+      "recallListItem": "第3课-2 把经验交给小达（任务卡按顺序执行，缺一步就停在哪）",
+      "recallSceneAnchor": "校园配送实验室·把经验交给小达",
+      "recallStillNote": "本机任务卡编辑器无单独静帧，采用小达造型图，生图中可补空槽任务卡但不得填好正确答案。",
+      "recallStillPath": "第3课 我是小小控制员/校园配送实验室/assets/robot-xiaoda.png",
+      "remixFrom": "new:教材L3导入电饭锅例＋把经验交给系统",
+      "remixNote": "用教材家电例说明控制作用，不套第7课模板。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM08",
+      "stage": 3,
+      "stageId": "gate_l3",
+      "stageName": "校园配送实验室",
+      "stateTable": {
+        "caption": "对照",
+        "headers": [
+          "阶段",
+          "发生的事"
+        ],
+        "rows": [
+          [
+            "人做的",
+            "接通电源并按下煮饭开关"
+          ],
+          [
+            "之后",
+            "锅内按规则完成煮饭，再切换到保温"
+          ]
+        ]
+      },
+      "teacherNote": "题面用「按规则完成并切换」，避免引入「开环／闭环／反馈」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第3课G1/G3/K1及教材电饭锅、信号灯例。不把「自动」写成第9课「自动控制／开闭环」概念题。"
+    },
+    {
+      "analysis": "正确推导：教材总结人通过对车的控制使它按预定方向和速度到达目的地，并启发用控制系统代替类似「推车」的工作。干扰项错因：把控制当成只改变外形、把「自动」理解成无需规则，或用人能完成任务来否定系统的作用。回学：第3课活动1总结与活动2过渡。",
+      "answer": "让对象按预定方向、速度和规则到达目的地；人也可以把这类控制交给系统来完成",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.78,
+      "estimatedMinutes": 1.1,
+      "examPoint": "概括控制系统中控制的作用，并理解可以把控制交给系统。",
+      "goalIds": [
+        "L3-G1",
+        "L3-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM13",
+      "interactionSpecKey": "single_choice",
+      "lesson": 3,
+      "lessonTitle": "我是小小控制员",
+      "literacy": [
+        "计算思维",
+        "信息意识"
+      ],
+      "misconceptionMap": {
+        "控制的作用只是改变小车的外形，并不能使它按预定方向和速度到达目的地": {
+          "misconceptionId": "U-control-is-decoration",
+          "solo": "U",
+          "explain": "把控制降低为只改变外形"
+        },
+        "配送机器人不需要预先设定规则，它会自行决定如何完成运送": {
+          "misconceptionId": "U-no-rule-needed",
+          "solo": "U",
+          "explain": "以为「自动」等于没有规则"
+        },
+        "人能够手动推车，说明在这一过程中控制系统没有作用": {
+          "misconceptionId": "U-human-denies-system",
+          "solo": "U",
+          "explain": "用人能完成任务来否定控制系统的作用"
+        }
+      },
+      "options": [
+        "让对象按预定方向、速度和规则到达目的地；人也可以把这类控制交给系统来完成",
+        "控制的作用只是改变小车的外形，并不能使它按预定方向和速度到达目的地",
+        "配送机器人不需要预先设定规则，它会自行决定如何完成运送",
+        "人能够手动推车，说明在这一过程中控制系统没有作用"
+      ],
+      "prompt": "比较「自己推车送到阅览室」和「让配送机器人按指令去送」。控制的作用主要是什么？",
+      "remixFrom": "new:教材L3活动1总结＋活动2过渡",
+      "remixNote": "新编比较题。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM33",
+      "stage": 3,
+      "stageId": "gate_l3",
+      "stageName": "校园配送实验室",
+      "stateTable": {
+        "caption": "两种做法",
+        "headers": [
+          "做法",
+          "过程"
+        ],
+        "rows": [
+          [
+            "人来推",
+            "人判断方向、速度、何时停"
+          ],
+          [
+            "交给机器人",
+            "设定目的地和指令，由它按规则执行"
+          ]
+        ]
+      },
+      "teacherNote": "两种做法对照是情境数据，避免空定义。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第3课G1/K1。不扩展到第9课人工/自动控制定义对比的超纲表述。"
+    },
+    {
+      "analysis": "正确推导：教材设计表要求思考「它能自动实现的功能」和「使用方法」；教参启发是否要发出送到提示。缺到站提醒会导致「到了但没人知道」。干扰项错因：用外形代替功能、取消目标、把提醒放在错误时机。回学：第3课活动2设计表及教参酒店送货机器人提示语音例。",
+      "answer": "到达目的地后发出送达提醒，让读者前来取书",
+      "appRef": null,
+      "ctTags": [
+        "算法设计",
+        "问题分解"
+      ],
+      "difficultyEstimate": 0.73,
+      "estimatedMinutes": 1.2,
+      "examPoint": "补全送货机器人关键功能：到站提醒，注意提醒时机。",
+      "goalIds": [
+        "L3-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM14",
+      "interactionSpecKey": "single_choice",
+      "lesson": 3,
+      "lessonTitle": "我是小小控制员",
+      "literacy": [
+        "计算思维",
+        "数字化学习与创新"
+      ],
+      "misconceptionMap": {
+        "只要把外形改成带轮子的箱子，所需功能就已经齐全": {
+          "misconceptionId": "U-shape-equals-function",
+          "solo": "U",
+          "explain": "用外形选项代替功能设计"
+        },
+        "取消已设定的目的地，改为让它在校园中自行移动": {
+          "misconceptionId": "M-drop-goal",
+          "solo": "M",
+          "explain": "出了问题就取消目的地"
+        },
+        "在尚未出发时就开始循环播放「书到了」的提醒": {
+          "misconceptionId": "M-wrong-timing",
+          "solo": "M",
+          "explain": "有了提醒功能，却接在错误的时机"
+        }
+      },
+      "options": [
+        "到达目的地后发出送达提醒，让读者前来取书",
+        "只要把外形改成带轮子的箱子，所需功能就已经齐全",
+        "取消已设定的目的地，改为让它在校园中自行移动",
+        "在尚未出发时就开始循环播放「书到了」的提醒"
+      ],
+      "prompt": "机器人已放入图书并设定了阅览室为目的地。试运行到达门口后，读者仍不知道书到了。设计还缺哪一项？",
+      "remixFrom": "new:教材L3送货机器人设计表「到站提醒」缺口",
+      "remixNote": "新编试运行残局。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM35",
+      "stage": 3,
+      "stageId": "gate_l3",
+      "stageName": "校园配送实验室",
+      "stateTable": {
+        "caption": "已有设计",
+        "headers": [
+          "项目",
+          "情况"
+        ],
+        "rows": [
+          [
+            "货物",
+            "已放入"
+          ],
+          [
+            "目的地",
+            "已设为阅览室"
+          ],
+          [
+            "试运行结果",
+            "到达门口后无人来取，读者不知道书到了"
+          ]
+        ]
+      },
+      "teacherNote": "试运行结果是排他证据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第3课D1。不要求真实编程，点选设计方案即可。"
+    },
+    {
+      "analysis": "正确推导：应先沿通道前进并在转角转向进入阅览室，到达后再提醒，最后停止。原顺序把「到站提醒」放在到达前，控制过程与目标不符。干扰项错因：提醒过早、或把停止／转向放错位置。回学：第3课控制过程体验及「写给小达的指令」。点选入槽，不打字。",
+      "answer": {
+        "①": "前进",
+        "②": "转向进入阅览室",
+        "③": "到站提醒",
+        "④": "停止"
+      },
+      "appRef": null,
+      "cards": [
+        "前进",
+        "转向进入阅览室",
+        "到站提醒",
+        "停止"
+      ],
+      "ctTags": [
+        "算法设计",
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.71,
+      "estimatedMinutes": 1.3,
+      "examPoint": "把送达过程重组为有序、可执行的控制步骤，修正提前提醒的错误。",
+      "goalIds": [
+        "L3-G2",
+        "L3-G3",
+        "L3-D1"
+      ],
+      "guides": "把四张步骤卡点选放入①②③④。未放入前不要给某一张卡加黄框或小手。",
+      "hasRecallImage": false,
+      "id": "GM15",
+      "interactionSpecKey": "flowchart_order_cards",
+      "lesson": 3,
+      "lessonTitle": "我是小小控制员",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "把「到站提醒」放在前进之后、转向之前": {
+          "misconceptionId": "M-wrong-timing",
+          "solo": "M",
+          "explain": "改了顺序仍把提醒放在未到达时"
+        },
+        "先停止再前进": {
+          "misconceptionId": "M-stop-before-move",
+          "solo": "M",
+          "explain": "步骤顺序与到达目标相反"
+        },
+        "取消转向，只前进和提醒": {
+          "misconceptionId": "M-forget-turn",
+          "solo": "M",
+          "explain": "通道有转角却漏掉转向这一步"
+        }
+      },
+      "prompt": "小达按下面顺序执行后，还在走廊就播放「书到了」，然后才转向进入阅览室。请按合理顺序点选放入①②③④。",
+      "remixFrom": "new:教材L3控制过程＋指令顺序残局",
+      "remixNote": "全新步骤残局，非课堂原任务卡照搬。",
+      "reverseDebug": true,
+      "section": "main",
+      "slots": [
+        "①",
+        "②",
+        "③",
+        "④"
+      ],
+      "soloLevel": "R",
+      "sourceId": "GM36",
+      "stage": 3,
+      "stageId": "gate_l3",
+      "stageName": "校园配送实验室",
+      "stateTable": {
+        "caption": "当前错误顺序与结果",
+        "headers": [
+          "现顺序",
+          "结果"
+        ],
+        "rows": [
+          [
+            "前进 → 到站提醒 → 转向进入阅览室 → 停止",
+            "还在走廊就播放「书到了」"
+          ]
+        ]
+      },
+      "teacherNote": "错误顺序及其结果必须保留，否则变成无约束排序。",
+      "tier": "main",
+      "type": "flowchart_op",
+      "whyInSyllabus": "对齐第3课G2/G3/D1。不是第7课值日关卡流程。"
+    },
+    {
+      "analysis": "正确推导：教材以过马路遇红灯为例：获得红灯信息、判断不能通行、脚停止运动；人作为系统时，输入是外界信号，计算是分析判断，输出是身体表现。干扰项错因：把输出当成输入、否认计算、把灯和人混成同一系统（课堂特别提醒要分开）。回学：第4课学习活动1及「校门口红灯反应」。",
+      "answer": "输入：看到红灯；计算：判断现在不能过；输出：脚停止",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.75,
+      "estimatedMinutes": 1.2,
+      "examPoint": "结合案例描述人作为系统时的输入、计算和输出，且不与信号灯系统混同。",
+      "goalIds": [
+        "L4-G1",
+        "L4-G2",
+        "L4-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM16",
+      "interactionSpecKey": "single_choice",
+      "lesson": 4,
+      "lessonTitle": "输入输出与计算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "输入：脚停止；输出：红灯亮起；没有计算": {
+          "misconceptionId": "M-io-reversed",
+          "solo": "M",
+          "explain": "把输出动作当成输入，又漏掉计算环节"
+        },
+        "输入和输出都是红灯，人只是站着，没有三个环节": {
+          "misconceptionId": "U-no-three-parts",
+          "solo": "U",
+          "explain": "不能把人的反应拆成输入、计算、输出"
+        },
+        "应当把信号灯和行人当成同一个系统，不再分开描述人的三个环节": {
+          "misconceptionId": "U-merge-two-systems",
+          "solo": "U",
+          "explain": "把灯和人混成同一个系统，边界含混"
+        }
+      },
+      "options": [
+        "输入：看到红灯；计算：判断现在不能过；输出：脚停止",
+        "输入：脚停止；输出：红灯亮起；没有计算",
+        "输入和输出都是红灯，人只是站着，没有三个环节",
+        "应当把信号灯和行人当成同一个系统，不再分开描述人的三个环节"
+      ],
+      "prompt": "校门口行人信号为红灯，你停在路边。若把行人本身看作一个系统，三个环节分别是什么？",
+      "recallCaption": "回想校门口红灯亮着、行人停在路边的画面",
+      "recallImage": "assets/recall/GM16.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "写实或2D课堂友好：校园门口斑马线，行人信号灯为红，学生停在路边等待；不要在图上标注输入/计算/输出的标准答案，无对勾、无题干。no answer labels. static. GPT优先，其次Gemini。",
+      "recallListItem": "第4课-1 校门口红灯反应（行人信号为红，学生停在路边等待）",
+      "recallSceneAnchor": "校园系统探索站·校门口红灯",
+      "recallStillPath": "第4课 输入输出与计算/校园系统探索站/public/assets/scenes/road.jpg",
+      "remixFrom": "new:教材L4过马路红灯例＋校门口红灯反应画面",
+      "remixNote": "再创编，保留「不要把灯和人混成一个系统」。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM10",
+      "stage": 4,
+      "stageId": "gate_l4",
+      "stageName": "校园系统探索站",
+      "stateTable": {
+        "caption": "场景（只分析行人，不把灯和人混成同一个系统）",
+        "headers": [
+          "你看到的",
+          "你做的"
+        ],
+        "rows": [
+          [
+            "行人信号是红灯",
+            "停在路边，脚不再向前"
+          ]
+        ]
+      },
+      "teacherNote": "题干写明「只分析行人」，对工作课堂易混点。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第4课G1/G2/D1及教材参考答案。不涉及反馈。"
+    },
+    {
+      "analysis": "正确推导：自动门输入是采集到人靠近的数据，计算是处理数据并生成指令，输出是门扇打开。「当日进馆人次的统计结果」与当前这次开门的工作过程无关。干扰项错因：输入输出对调，或把无关信息放入槽中。回学：第4课拓展与提升自动门及「图书馆自动门」探究。",
+      "answer": {
+        "输入": "检测到附近有人靠近",
+        "计算": "处理采集到的数据并生成指令",
+        "输出": "门扇向两边打开"
+      },
+      "appRef": null,
+      "cards": [
+        "检测到附近有人靠近",
+        "处理采集到的数据并生成指令",
+        "门扇向两边打开",
+        "当日进馆人次的统计结果"
+      ],
+      "ctTags": [
+        "抽象建模",
+        "算法设计"
+      ],
+      "diagram": {
+        "visual": "工作过程示意图空槽：输入 → 计算 → 输出（门上方有传感模块）",
+        "note": "一对一放入；多出的卡片不使用。"
+      },
+      "difficultyEstimate": 0.74,
+      "estimatedMinutes": 1.4,
+      "examPoint": "绘制／补全控制系统工作过程示意图，正确安置三个环节。",
+      "goalIds": [
+        "L4-G1",
+        "L4-K1",
+        "L4-D1"
+      ],
+      "guides": "把卡片点选放入三个空槽，有一张卡用不上。未放入前不要给某一张卡或某一个槽加黄框。",
+      "hasRecallImage": true,
+      "id": "GM17",
+      "interactionSpecKey": "flowchart_fill_slots",
+      "lesson": 4,
+      "lessonTitle": "输入输出与计算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "把「门扇向两边打开」放入输入": {
+          "misconceptionId": "M-io-reversed",
+          "solo": "M",
+          "explain": "把输出结果当成输入"
+        },
+        "把「检测到附近有人靠近」放入输出": {
+          "misconceptionId": "M-io-reversed",
+          "solo": "M",
+          "explain": "把输入数据当成输出"
+        },
+        "把「当日进馆人次的统计结果」放入某一槽": {
+          "misconceptionId": "U-irrelevant-data",
+          "solo": "U",
+          "explain": "把与当前过程无关的信息当成输入、计算或输出"
+        }
+      },
+      "prompt": "图书馆自动门：人靠近，门向两边滑开。请把合适的卡片点选放入「输入」「计算」「输出」。",
+      "recallCaption": "回想人走近时，图书馆玻璃门向两边滑开",
+      "recallImage": "assets/recall/GM17.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂友好插画：图书馆玻璃感应门，人走近后门扇向两边滑开，门上有小传感模块；不要在图上填好输入—计算—输出的标准答案或对勾。no completed flowchart answers. static. GPT优先，其次Gemini。",
+      "recallListItem": "第4课-4 图书馆自动门（人走近后门扇向两边滑开，门上有传感模块）",
+      "recallSceneAnchor": "校园系统探索站·图书馆自动门",
+      "recallStillPath": "第4课 输入输出与计算/校园系统探索站/public/assets/scenes/door.jpg",
+      "remixFrom": "new:教材L4自动门拓展＋三步流程图",
+      "remixNote": "残局补槽，图上不写本题答案。",
+      "reverseDebug": false,
+      "section": "main",
+      "slots": [
+        "输入",
+        "计算",
+        "输出"
+      ],
+      "soloLevel": "R",
+      "sourceId": "GM12",
+      "stage": 4,
+      "stageId": "gate_l4",
+      "stageName": "校园系统探索站",
+      "teacherNote": "多一张无关卡片作为同质干扰；未作答前各槽与各卡均不得单独黄框高亮。",
+      "tier": "main",
+      "type": "flowchart_op",
+      "whyInSyllabus": "对齐第4课K1/G1/D1及拓展自动门。点选入槽，无填空。"
+    },
+    {
+      "analysis": "正确推导：教参建议更换为「用手机播放唐诗」等案例，分析输入和输出；计算是对数据的处理，不限于算术。干扰项错因：颠倒输入输出、把计算狭隘理解为算术、否认输出环节。回学：第4课学习活动3教参蓝栏。",
+      "answer": "输入：选择并开始播放；计算：设备内部处理音频数据；输出：扬声器出声",
+      "appRef": null,
+      "ctTags": [
+        "迁移运用",
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.77,
+      "estimatedMinutes": 1.1,
+      "examPoint": "把手机播放音频迁移为「输入—计算—输出」三个环节。",
+      "goalIds": [
+        "L4-G1",
+        "L4-G2"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM18",
+      "interactionSpecKey": "single_choice",
+      "lesson": 4,
+      "lessonTitle": "输入输出与计算",
+      "literacy": [
+        "计算思维",
+        "数字化学习与创新"
+      ],
+      "misconceptionMap": {
+        "输入：扬声器出声；输出：点播放；没有计算": {
+          "misconceptionId": "M-io-reversed",
+          "solo": "M",
+          "explain": "输入输出接反并漏掉计算"
+        },
+        "没有计算环节，因为这里没有做加减法": {
+          "misconceptionId": "U-compute-only-arithmetic",
+          "solo": "U",
+          "explain": "把「计算」狭隘理解为四则运算"
+        },
+        "只有输入，声音会自己出现，不必输出": {
+          "misconceptionId": "U-no-output",
+          "solo": "U",
+          "explain": "看不到扬声器出声这一输出环节"
+        }
+      },
+      "options": [
+        "输入：选择并开始播放；计算：设备内部处理音频数据；输出：扬声器出声",
+        "输入：扬声器出声；输出：点播放；没有计算",
+        "没有计算环节，因为这里没有做加减法",
+        "只有输入，声音会自己出现，不必输出"
+      ],
+      "prompt": "用手机点了播放，扬声器里响起古诗朗读。三个环节怎样对应最合适？",
+      "remixFrom": "new:教材L4教参「用手机播放唐诗」案例",
+      "remixNote": "新编，不抄五年级IPO题面。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM37",
+      "stage": 4,
+      "stageId": "gate_l4",
+      "stageName": "校园系统探索站",
+      "stateTable": {
+        "caption": "一次使用",
+        "headers": [
+          "你做的",
+          "你听到的"
+        ],
+        "rows": [
+          [
+            "点了播放，选中一首古诗",
+            "扬声器响起朗读"
+          ]
+        ]
+      },
+      "teacherNote": "数字化学习体现在用熟悉的数字设备分析三个环节，而非空贴标签。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第4课G1/G2及教参可更换案例。手机也是控制系统，属课内。"
+    },
+    {
+      "analysis": "正确推导：教材把工作过程中的处理称为计算，教参说明它与算法中的「处理」本质相同，并为强调数据及其运算而采用「计算」一词；人的计算可以是分析判断。干扰项错因：把计算等同于算术或输出动作，或以为只有电子计算机才有计算。回学：第4课正文与教参蓝栏。",
+      "answer": "计算是对输入的数据进行处理并生成指令，像分析、判断；不限于算术",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.72,
+      "estimatedMinutes": 1.1,
+      "examPoint": "准确理解控制系统中「计算」的含义，提升分析问题的能力。",
+      "goalIds": [
+        "L4-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM19",
+      "interactionSpecKey": "single_choice",
+      "lesson": 4,
+      "lessonTitle": "输入输出与计算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "例子里没有出现加减乘除，所以这些系统都没有计算环节": {
+          "misconceptionId": "U-compute-only-arithmetic",
+          "solo": "U",
+          "explain": "把计算狭隘理解为四则运算"
+        },
+        "计算等于把灯拧亮、把门打开这些动作本身": {
+          "misconceptionId": "M-compute-is-output",
+          "solo": "M",
+          "explain": "把输出动作当成计算"
+        },
+        "只有计算机里才有计算，声控灯和人都没有": {
+          "misconceptionId": "U-only-computer-computes",
+          "solo": "U",
+          "explain": "认为计算只存在于电子计算机中"
+        }
+      },
+      "options": [
+        "计算是对输入的数据进行处理并生成指令，像分析、判断；不限于算术",
+        "例子里没有出现加减乘除，所以这些系统都没有计算环节",
+        "计算等于把灯拧亮、把门打开这些动作本身",
+        "只有计算机里才有计算，声控灯和人都没有"
+      ],
+      "prompt": "同学说：「控制系统里的计算，就是做加减乘除。」哪项更准确？",
+      "remixFrom": "new:教材L4「计算」含义＋教参蓝栏",
+      "remixNote": "新编概念辨析，带例不贴皮。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM39",
+      "stage": 4,
+      "stageId": "gate_l4",
+      "stageName": "校园系统探索站",
+      "stateTable": {
+        "caption": "讨论中的例子",
+        "headers": [
+          "系统",
+          "中间环节在做什么"
+        ],
+        "rows": [
+          [
+            "声控灯",
+            "处理声音数据，生成亮或不亮的指令"
+          ],
+          [
+            "过马路的人",
+            "根据看到的信号作出判断"
+          ]
+        ]
+      },
+      "teacherNote": "例子微表防止空谈；教参「不必深究，让学生知道即可」，选项保持六年级表述。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第4课G3。不提前展开连续量四则或开关量逻辑的专题运算（那些在第5–8课再考）。"
+    },
+    {
+      "analysis": "正确推导：自动门应先采集「有人靠近」，再经计算，输出「门打开」。残局把结果与输入接反。干扰项错因：因发现错误就否认计算或输入，或否认「有人靠近」可以作为输入数据。回学：第4课拓展自动门。",
+      "answer": "把输出结果当成了输入，把输入数据当成了输出，两个环节接反了",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.73,
+      "estimatedMinutes": 1.2,
+      "examPoint": "诊断工作过程示意图中输入与输出接反的错误。",
+      "goalIds": [
+        "L4-K1",
+        "L4-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM20",
+      "interactionSpecKey": "single_choice",
+      "lesson": 4,
+      "lessonTitle": "输入输出与计算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "自动门没有计算环节，所以整张图都不对": {
+          "misconceptionId": "U-no-compute",
+          "solo": "U",
+          "explain": "发现输入输出接反后，连带否定计算环节"
+        },
+        "自动门应该只有输出，不该画输入": {
+          "misconceptionId": "U-no-input",
+          "solo": "U",
+          "explain": "认为这类系统不必有输入"
+        },
+        "「有人靠近」不属于输入数据，不能作为自动门工作过程的输入": {
+          "misconceptionId": "U-not-data",
+          "solo": "U",
+          "explain": "不承认被采集到的接近信息属于输入数据"
+        }
+      },
+      "options": [
+        "把输出结果当成了输入，把输入数据当成了输出，两个环节接反了",
+        "自动门没有计算环节，所以整张图都不对",
+        "自动门应该只有输出，不该画输入",
+        "「有人靠近」不属于输入数据，不能作为自动门工作过程的输入"
+      ],
+      "prompt": "有人把自动门示意图画成：输入「门已经打开」→计算→输出「有人靠近」。错在哪里？",
+      "remixFrom": "new:教材L4自动门示意图改错",
+      "remixNote": "逆向排障。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM40",
+      "stage": 4,
+      "stageId": "gate_l4",
+      "stageName": "校园系统探索站",
+      "stateTable": {
+        "caption": "待检查的示意图",
+        "headers": [
+          "他画的输入",
+          "他画的输出"
+        ],
+        "rows": [
+          [
+            "门已经打开",
+            "有人靠近"
+          ]
+        ]
+      },
+      "teacherNote": "残局本身是最小反例。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第4课K1/D1。属课内改错，不是第9课反馈回路。"
+    },
+    {
+      "analysis": "正确推导：教材明确，输入、计算和输出三个环节都离不开数据，数据是「流动」在控制系统中的要素。干扰项错因：只看到电能或装置外壳，或以为有了一次提示就不再需要数据。回学：第5课导入及监测站门口透视三格。",
+      "answer": "在输入、计算和输出中持续流动并被处理的要素是数据",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.8,
+      "estimatedMinutes": 1.1,
+      "examPoint": "认识到控制系统工作时始终离不开数据。",
+      "goalIds": [
+        "L5-G1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM21",
+      "interactionSpecKey": "single_choice",
+      "lesson": 5,
+      "lessonTitle": "连续变化的数据",
+      "literacy": [
+        "计算思维",
+        "信息意识"
+      ],
+      "misconceptionMap": {
+        "在三个环节中流动的只是电能，系统工作不依赖数据": {
+          "misconceptionId": "U-only-electricity",
+          "solo": "U",
+          "explain": "看不到流动的是数据"
+        },
+        "真正贯穿三个环节的要素是显示装置的外壳，不是数据": {
+          "misconceptionId": "U-only-shell",
+          "solo": "U",
+          "explain": "把设备外壳当成工作过程中的要素"
+        },
+        "提示发出以后，监测过程就不再需要数据继续参与": {
+          "misconceptionId": "M-stop-needing-data",
+          "solo": "M",
+          "explain": "以为一次输出后数据不再参与系统工作"
+        }
+      },
+      "options": [
+        "在输入、计算和输出中持续流动并被处理的要素是数据",
+        "在三个环节中流动的只是电能，系统工作不依赖数据",
+        "真正贯穿三个环节的要素是显示装置的外壳，不是数据",
+        "提示发出以后，监测过程就不再需要数据继续参与"
+      ],
+      "prompt": "噪声监测会采集声音、算出分贝并显示，超标还发提示。在输入、计算、输出中一直「流动」的要素是什么？",
+      "recallCaption": "回想广场上的噪声监测屏和分贝数字",
+      "recallImage": "assets/recall/GM21.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "2D或像素风课堂插画：校园广场噪声监测屏显示分贝数字，旁边输入—计算—输出三格在变化但不要写本题结论「数据」或对勾；屏幕不要用「超标已判定」的标准答案红牌。no answer badge. static. GPT优先，其次Gemini。",
+      "recallListItem": "第5课-1 监测站门口（监测屏显示分贝，透视三格随声音变化；选用时避开超标答案特写）",
+      "recallSceneAnchor": "噪声监测数据站·监测站门口",
+      "recallStillNote": "清单未给单张文件名，选用应用 public/assets 或 docs 中监测站门口／监测屏画面，避开教师大屏与答案页。",
+      "recallStillPath": "第5课 连续变化的数据/噪声监测数据站-局域网部署/public/assets/",
+      "remixFrom": "new:教材L5噪声监测系统组成＋数据流动",
+      "remixNote": "新编。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM13",
+      "stage": 5,
+      "stageId": "gate_l5",
+      "stageName": "噪声监测数据站",
+      "stateTable": {
+        "caption": "系统组成",
+        "headers": [
+          "部分",
+          "工作"
+        ],
+        "rows": [
+          [
+            "采集装置",
+            "采集环境声音"
+          ],
+          [
+            "处理装置",
+            "对数据计算"
+          ],
+          [
+            "显示／报警",
+            "显示分贝，超标则发提示"
+          ]
+        ]
+      },
+      "teacherNote": "社会责任在后续阈值题中再落实；本题先锁定「数据」这一要素。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第5课G1。噪声监测是本课主案例，不是第五单元种植园系统。"
+    },
+    {
+      "analysis": "正确推导：教材指出噪声数据属于连续量，并让学生比较哪一种图形更符合其特点；连续量是在一定范围内连续变化的数据。干扰项错因：把稀疏点子当成「更连续」、把声音当成只有开与关、或否定波形中的数据。回学：第5课学习活动1。",
+      "answer": "噪声在一定范围内连续变化，用连续波形更能表现连续量的特点",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.74,
+      "estimatedMinutes": 1.2,
+      "examPoint": "识别连续量的表现形式，能说明为何波形更符合连续变化。",
+      "goalIds": [
+        "L5-G2",
+        "L5-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM22",
+      "interactionSpecKey": "single_choice",
+      "lesson": 5,
+      "lessonTitle": "连续变化的数据",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "只有左侧三个稀疏散点才属于连续量，连续波形反而不算": {
+          "misconceptionId": "M-sparse-is-continuous",
+          "solo": "M",
+          "explain": "把少量离散点子误当成连续量的典型形式"
+        },
+        "声音数据只有开与关两种状态，因此不属于连续量": {
+          "misconceptionId": "U-sound-is-switch",
+          "solo": "U",
+          "explain": "把声音数据误判为只有两种状态的开关量"
+        },
+        "出现连续波形，说明这段图形中并不包含数据": {
+          "misconceptionId": "U-wave-is-not-data",
+          "solo": "U",
+          "explain": "不认识波形是连续量数据的一种表现"
+        }
+      },
+      "options": [
+        "噪声在一定范围内连续变化，用连续波形更能表现连续量的特点",
+        "只有左侧三个稀疏散点才属于连续量，连续波形反而不算",
+        "声音数据只有开与关两种状态，因此不属于连续量",
+        "出现连续波形，说明这段图形中并不包含数据"
+      ],
+      "prompt": "同一段教室噪声，左图只稀疏散了3个点，右图是连续波形。哪项判断更合理？",
+      "recallCaption": "回想同一段声音左边是散点、右边是波形的展示墙",
+      "recallImage": "assets/recall/GM22.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂插画：一面数据展示墙，左侧稀疏散点、右侧连续波形，学生伸手但尚未点出「标准读数」；无对勾、无「这就是连续量」结论条文。no answer caption. static. GPT优先，其次Gemini。",
+      "recallListItem": "第5课-2 数据展示墙（左稀疏散点、右连续波形，不要在图上圈出标准答案）",
+      "recallSceneAnchor": "噪声监测数据站·数据展示墙",
+      "recallStillPath": "第5课 连续变化的数据/噪声监测数据站-局域网部署/public/assets/",
+      "remixFrom": "new:教材L5波形图与散点图比较＋数据展示墙",
+      "remixNote": "再创编。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM14",
+      "stage": 5,
+      "stageId": "gate_l5",
+      "stageName": "噪声监测数据站",
+      "stateTable": {
+        "caption": "两种图形",
+        "headers": [
+          "图形",
+          "画出来的内容"
+        ],
+        "rows": [
+          [
+            "左：散点",
+            "只标了3个时刻的点子"
+          ],
+          [
+            "右：波形",
+            "一段连续起伏的曲线"
+          ]
+        ]
+      },
+      "teacherNote": "左右图对比是排他数据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第5课G2/K1。不把开关量专题提前作为正确项定义题（对比仅作干扰）。"
+    },
+    {
+      "analysis": "正确推导：连续量是在一定范围内连续变化的数据，如水位、温度；亮／不亮、开／关只有两种状态，不是本题要找的连续量。干扰项错因：把开关类变化当成连续量，或以为「会变化」就等于连续量。回学：第5课连续量定义与学习活动2。",
+      "answer": "①和④",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.75,
+      "estimatedMinutes": 1.2,
+      "examPoint": "在混合现象中辨别连续量与非连续量。",
+      "goalIds": [
+        "L5-G2",
+        "L5-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM23",
+      "interactionSpecKey": "single_choice",
+      "lesson": 5,
+      "lessonTitle": "连续变化的数据",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "②和③": {
+          "misconceptionId": "U-switch-as-continuous",
+          "solo": "U",
+          "explain": "把只有两种状态的变化当成连续量"
+        },
+        "只有②": {
+          "misconceptionId": "U-only-light",
+          "solo": "U",
+          "explain": "选错对象，且把开关状态当成连续量"
+        },
+        "四项都是连续量，因为它们都会变化": {
+          "misconceptionId": "U-change-means-continuous",
+          "solo": "U",
+          "explain": "把「有变化」与「连续变化的数据」混为一谈"
+        }
+      },
+      "options": [
+        "①和④",
+        "②和③",
+        "只有②",
+        "四项都是连续量，因为它们都会变化"
+      ],
+      "prompt": "校园里有下面四项。哪些属于连续量？",
+      "remixFrom": "new:教材L5连续量例子迁移到校园观察",
+      "remixNote": "新编分类。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM41",
+      "stage": 5,
+      "stageId": "gate_l5",
+      "stageName": "噪声监测数据站",
+      "stateTable": {
+        "caption": "观察记录",
+        "headers": [
+          "编号",
+          "现象"
+        ],
+        "rows": [
+          [
+            "①",
+            "接水时杯中水面高度慢慢上升"
+          ],
+          [
+            "②",
+            "走廊灯的亮与不亮"
+          ],
+          [
+            "③",
+            "教室门的开与关"
+          ],
+          [
+            "④",
+            "水温从20℃升到80℃"
+          ]
+        ]
+      },
+      "teacherNote": "四项并列是排他数据，遮住①④的「慢慢上升／从20到80」就难以判断。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第5课G2/K1及教材水位、温度例。不用种植园土壤湿度作为题面。"
+    },
+    {
+      "analysis": "正确推导：拓展活动建议把多数同学能接受的音量作为阈值；过低导致误报，过高导致漏报，都会削弱对教室秩序与他人的关照。干扰项错因：单向认为越大／越小越好，或否认可按实际情况设定。回学：第5课拓展与提升及第5站迁移设计。",
+      "answer": "阈值过低会误报，过高会漏报，要根据可接受的音量来设定",
+      "appRef": null,
+      "ctTags": [
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.7,
+      "estimatedMinutes": 1.3,
+      "examPoint": "用误报／漏报两则反例理解阈值要合理设定，才能真正发挥作用。",
+      "goalIds": [
+        "L5-G3",
+        "L5-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM24",
+      "interactionSpecKey": "single_choice",
+      "lesson": 5,
+      "lessonTitle": "连续变化的数据",
+      "literacy": [
+        "计算思维",
+        "信息社会责任",
+        "数字化学习与创新"
+      ],
+      "misconceptionMap": {
+        "阈值越大越好，90dB还不够大": {
+          "misconceptionId": "M-bigger-always-better",
+          "solo": "M",
+          "explain": "只看到误报，把阈值推向极端导致漏报"
+        },
+        "阈值越小越好，30dB还不够小": {
+          "misconceptionId": "M-smaller-always-better",
+          "solo": "M",
+          "explain": "只看到漏报，把阈值推向极端导致误报"
+        },
+        "阈值不能根据实际情况调整，这两次结果都正常": {
+          "misconceptionId": "U-threshold-fixed",
+          "solo": "U",
+          "explain": "忽略教材「阈值一般可以根据实际情况自行设定」"
+        }
+      },
+      "options": [
+        "阈值过低会误报，过高会漏报，要根据可接受的音量来设定",
+        "阈值越大越好，90dB还不够大",
+        "阈值越小越好，30dB还不够小",
+        "阈值不能根据实际情况调整，这两次结果都正常"
+      ],
+      "prompt": "课间教室监测：阈值设为30dB时正常交谈也频繁报警；改成90dB后大声喧哗却几乎不报。问题出在哪？",
+      "remixFrom": "new:教材L5拓展设定可接受音量＋第5站迁移",
+      "remixNote": "排障新数据。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM42",
+      "stage": 5,
+      "stageId": "gate_l5",
+      "stageName": "噪声监测数据站",
+      "stateTable": {
+        "caption": "两次设定",
+        "headers": [
+          "阈值",
+          "现象"
+        ],
+        "rows": [
+          [
+            "30 dB",
+            "正常交谈也频繁报警"
+          ],
+          [
+            "90 dB",
+            "大声喧哗却几乎不报警"
+          ]
+        ]
+      },
+      "teacherNote": "两组相反结果必须同时给出，否则无法排除「越大越好／越小越好」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第5课G3/D1及拓展。不使用屋顶种植园开水泵画面作题面。"
+    },
+    {
+      "analysis": "正确推导：活动2通过慢慢拉窗帘感受光照强度逐渐变化；连续量可以升高也可以降低，关键是连续变化。干扰项错因：把光照当成只有两值、认为下降就是故障、否定曲线中的数据。回学：第5课学习活动2。",
+      "answer": "光照强度在一定范围内连续变化，属于连续量",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.78,
+      "estimatedMinutes": 1.1,
+      "examPoint": "从连续下降的光照读数认识连续量，破除「只能上升」的误解。",
+      "goalIds": [
+        "L5-G2",
+        "L5-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM25",
+      "interactionSpecKey": "single_choice",
+      "lesson": 5,
+      "lessonTitle": "连续变化的数据",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "光照只有「亮」和「暗」两个值，中间不会出现其他读数": {
+          "misconceptionId": "U-light-only-two",
+          "solo": "U",
+          "explain": "把连续变化的光照当成两种状态"
+        },
+        "读数下降说明传感器坏了，连续量必须只升不降": {
+          "misconceptionId": "M-must-only-increase",
+          "solo": "M",
+          "explain": "把「连续」误解为「只能上升」"
+        },
+        "读数曲线平滑，说明这次观察中并没有产生数据": {
+          "misconceptionId": "U-curve-not-data",
+          "solo": "U",
+          "explain": "不认识曲线是连续量的表现"
+        }
+      },
+      "options": [
+        "光照强度在一定范围内连续变化，属于连续量",
+        "光照只有「亮」和「暗」两个值，中间不会出现其他读数",
+        "读数下降说明传感器坏了，连续量必须只升不降",
+        "读数曲线平滑，说明这次观察中并没有产生数据"
+      ],
+      "prompt": "慢慢拉上窗帘，光照表读数从800降到120，曲线平滑下降。这说明什么？",
+      "remixFrom": "new:教材L5拉窗帘感受光照连续变化",
+      "remixNote": "新编判断。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM44",
+      "stage": 5,
+      "stageId": "gate_l5",
+      "stageName": "噪声监测数据站",
+      "stateTable": {
+        "caption": "观察",
+        "headers": [
+          "操作",
+          "读数变化"
+        ],
+        "rows": [
+          [
+            "慢慢拉上窗帘",
+            "光照表从800连续降到120，曲线平滑"
+          ]
+        ]
+      },
+      "teacherNote": "从800到120的平滑下降是必要数据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第5课G2/K1。可用水表、温度计、车速表作同类迁移，本题聚焦窗帘光照。"
+    },
+    {
+      "analysis": "正确推导：开关量用于控制设备开与关，只有两种状态；控制报警器是否发提示的指令属于开关量，多种音量读数是连续量。干扰项错因：把连续量当成开关量，或认为全部是／全部不是。回学：第6课学习活动1及「指令哪来」对照表。",
+      "answer": "控制报警器发不发提示的指令",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.75,
+      "estimatedMinutes": 1.2,
+      "examPoint": "在同时出现连续读数与两种指令的系统中找出开关量。",
+      "goalIds": [
+        "L6-G1",
+        "L6-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM26",
+      "interactionSpecKey": "single_choice",
+      "lesson": 6,
+      "lessonTitle": "开关量的真与假",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "42、55、61这些音量读数": {
+          "misconceptionId": "U-continuous-as-switch",
+          "solo": "U",
+          "explain": "把多种连续变化的读数当成开关量"
+        },
+        "表里所有数据都是开关量": {
+          "misconceptionId": "U-all-are-switch",
+          "solo": "U",
+          "explain": "不能区分连续量与开关量"
+        },
+        "这个系统里没有开关量": {
+          "misconceptionId": "U-no-switch",
+          "solo": "U",
+          "explain": "认不出「发提示／不发提示」这类指令"
+        }
+      },
+      "options": [
+        "控制报警器发不发提示的指令",
+        "42、55、61这些音量读数",
+        "表里所有数据都是开关量",
+        "这个系统里没有开关量"
+      ],
+      "prompt": "噪声监测里，音量有多种读数，控制报警器的指令却只有两种。哪一项是开关量？",
+      "recallCaption": "回想流程图旁边那张表：左边很多音量，右边只有两种指令",
+      "recallImage": "assets/recall/GM26.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂插画：噪声监测流程图旁有对照表，左边多个不同音量读数，右边「发提示／不发提示」两格为空或模糊，不要勾出「标准答案是右边」或填好对错。no checkmarks. static. GPT优先，其次Gemini。",
+      "recallListItem": "第6课-1 监测站门口·指令哪来（左边多种音量，右边只有发提示／不发提示）",
+      "recallSceneAnchor": "校园开关站·监测站门口",
+      "recallStillNote": "若截图目录中有答案页或大屏统计，不要用；优先「指令哪来」对照表且表内结论未勾选。",
+      "recallStillPath": "第6课 开关量的真与假/6-06kaiguanliang-pub/docs/screenshots/",
+      "remixFrom": "new:教材L6噪声监测开关量例＋监测站门口对照表",
+      "remixNote": "再创编。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM16",
+      "stage": 6,
+      "stageId": "gate_l6",
+      "stageName": "校园开关站",
+      "stateTable": {
+        "caption": "对照",
+        "headers": [
+          "类别",
+          "例子"
+        ],
+        "rows": [
+          [
+            "音量读数",
+            "42 dB、55 dB、61 dB……"
+          ],
+          [
+            "控制报警器的指令",
+            "发提示／不发提示"
+          ]
+        ]
+      },
+      "teacherNote": "对照表是排他数据：遮住「只有两种指令」就难以定位。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第6课G1/K1。沿用本单元噪声监测衔接，不超纲。"
+    },
+    {
+      "analysis": "正确推导：教材写明开关量只有开与关两种状态，在计算机中用1和0表示，没有「开一半」。干扰项错因：引入中间值、不接受1和0这种数字形式，或把「用1表示开」理解成系统不能出现0。回学：第6课活动1及校园控制室面板。",
+      "answer": "不行。开关量只有开与关两种状态，在计算机中分别用1和0表示",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.76,
+      "estimatedMinutes": 1.2,
+      "examPoint": "掌握开关量的两种状态及其1/0表示，排除「开一半」。",
+      "goalIds": [
+        "L6-G2",
+        "L6-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM27",
+      "interactionSpecKey": "single_choice",
+      "lesson": 6,
+      "lessonTitle": "开关量的真与假",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "可以。0.5是开关量的一种正常取值，能够表示「开一半」": {
+          "misconceptionId": "U-half-switch",
+          "solo": "U",
+          "explain": "以为开关量可以取中间值"
+        },
+        "开关量不能用1和0表示，必须改用其他数值才能参与控制": {
+          "misconceptionId": "U-wrong-digits",
+          "solo": "U",
+          "explain": "不接受1和0这种数字形式"
+        },
+        "系统中必须出现1才能工作，因此灯不能处于用0表示的关闭状态": {
+          "misconceptionId": "M-must-be-one",
+          "solo": "M",
+          "explain": "把「用1表示开」理解成系统不能出现0"
+        }
+      },
+      "options": [
+        "不行。开关量只有开与关两种状态，在计算机中分别用1和0表示",
+        "可以。0.5是开关量的一种正常取值，能够表示「开一半」",
+        "开关量不能用1和0表示，必须改用其他数值才能参与控制",
+        "系统中必须出现1才能工作，因此灯不能处于用0表示的关闭状态"
+      ],
+      "prompt": "控制室约定：用1表示开灯，0表示关灯。有同学想把灯「开一半」，输入0.5。这样行吗？",
+      "recallCaption": "回想用1和0去开、关灯或阀门的面板",
+      "recallImage": "assets/recall/GM27.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂插画：教室控制面板上灯、饮水阀等开关，旁边标注1/0但不要圈出本题答案或写「禁止0.5」的标准结论；无对勾。no answer highlight. static. GPT优先，其次Gemini。",
+      "recallListItem": "第6课-2 校园控制室·设备面板（用1表示开、0表示关，没有开一半）",
+      "recallSceneAnchor": "校园开关站·校园控制室",
+      "recallStillPath": "第6课 开关量的真与假/6-06kaiguanliang-pub/docs/screenshots/",
+      "remixFrom": "new:教材L6开关量1和0表示＋校园控制室",
+      "remixNote": "新编。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM17",
+      "stage": 6,
+      "stageId": "gate_l6",
+      "stageName": "校园开关站",
+      "stateTable": {
+        "caption": "约定",
+        "headers": [
+          "指令",
+          "设备状态",
+          "数字形式"
+        ],
+        "rows": [
+          [
+            "开设备",
+            "开",
+            "1"
+          ],
+          [
+            "关设备",
+            "关",
+            "0"
+          ]
+        ]
+      },
+      "teacherNote": "「想输入0.5」是排他冲突。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第6课G2/K1及真值说明表。"
+    },
+    {
+      "analysis": "正确推导：教材真值说明及举牌活动：1对应真，0对应假。小夏举0即真值为假、不同意。干扰项错因：把0当成真、两值并存，或以为只有灯的开与关才叫开关量。回学：第6课学习活动2。",
+      "answer": "数字形式是0，真值是假，表示不同意",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.79,
+      "estimatedMinutes": 1.0,
+      "examPoint": "把生活中的两种选择与开关量的真值、数字形式对应起来。",
+      "goalIds": [
+        "L6-G2"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM28",
+      "interactionSpecKey": "single_choice",
+      "lesson": 6,
+      "lessonTitle": "开关量的真与假",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "数字形式是0，但真值是真，表示同意去野炊": {
+          "misconceptionId": "M-zero-is-true",
+          "solo": "M",
+          "explain": "把0和「真」接反"
+        },
+        "0可以同时对应真和假两种真值，含义不能确定": {
+          "misconceptionId": "U-both-truth-values",
+          "solo": "U",
+          "explain": "真值边界含混"
+        },
+        "举0与灯的开、关无关，因此这件事不能用开关量描述": {
+          "misconceptionId": "U-only-lamps-are-switch",
+          "solo": "U",
+          "explain": "把开关量只理解成灯的开与关"
+        }
+      },
+      "options": [
+        "数字形式是0，真值是假，表示不同意",
+        "数字形式是0，但真值是真，表示同意去野炊",
+        "0可以同时对应真和假两种真值，含义不能确定",
+        "举0与灯的开、关无关，因此这件事不能用开关量描述"
+      ],
+      "prompt": "按约定：同意去野炊举1，不同意举0。小夏举的是0。哪一项描述最准确？",
+      "remixFrom": "new:教材L6举牌投票＋真值说明表",
+      "remixNote": "新编个体数据。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM45",
+      "stage": 6,
+      "stageId": "gate_l6",
+      "stageName": "校园开关站",
+      "stateTable": {
+        "caption": "约定",
+        "headers": [
+          "举牌",
+          "真值",
+          "含义"
+        ],
+        "rows": [
+          [
+            "1",
+            "真",
+            "同意去"
+          ],
+          [
+            "0",
+            "假",
+            "不同意"
+          ]
+        ]
+      },
+      "teacherNote": "约定表必须保留。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第6课G2及举牌投票。换「小夏举0」的具体数据，不是课堂原统计结果。"
+    },
+    {
+      "analysis": "正确推导：开关量只有两种状态；多个温度读数属于连续量。仅因「和开水有关」不能改变数据形态。干扰项错因：凡数字即开关量、拒绝辨析、或否认1和0的表示。回学：第6课与第5课衔接。",
+      "answer": "这些是在一定范围内连续变化的数据，不是只有两种状态的开关量",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.73,
+      "estimatedMinutes": 1.2,
+      "examPoint": "纠正把连续量误判为开关量的错误，依据是「是否只有两种状态」。",
+      "goalIds": [
+        "L6-G1",
+        "L6-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM29",
+      "interactionSpecKey": "single_choice",
+      "lesson": 6,
+      "lessonTitle": "开关量的真与假",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "凡是带有数字的量都是开关量，因此这个说法是正确的": {
+          "misconceptionId": "U-number-means-switch",
+          "solo": "U",
+          "explain": "把「有数字」当成开关量的判据"
+        },
+        "温度读数不可能被误判为开关量，因此不必再做数据类型的辨析": {
+          "misconceptionId": "U-only-lamps",
+          "solo": "U",
+          "explain": "把开关量讨论限定在灯上，回避温度数据的类型判断"
+        },
+        "开关量不能用1和0来表示，因而无法判断这些温度数据的类型": {
+          "misconceptionId": "U-reject-binary",
+          "solo": "U",
+          "explain": "连1和0的表示都否定，无法进入判断"
+        }
+      },
+      "options": [
+        "这些是在一定范围内连续变化的数据，不是只有两种状态的开关量",
+        "凡是带有数字的量都是开关量，因此这个说法是正确的",
+        "温度读数不可能被误判为开关量，因此不必再做数据类型的辨析",
+        "开关量不能用1和0来表示，因而无法判断这些温度数据的类型"
+      ],
+      "prompt": "有人把「水温37℃、38℃、39℃」都称作开关量，理由是「都和开水有关」。这一说法的主要问题是什么？",
+      "remixFrom": "new:教材L6开关量与连续量对比排障",
+      "remixNote": "新编误判诊断。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM47",
+      "stage": 6,
+      "stageId": "gate_l6",
+      "stageName": "校园开关站",
+      "stateTable": {
+        "caption": "被讨论的数据",
+        "headers": [
+          "读数"
+        ],
+        "rows": [
+          [
+            "37℃、38℃、39℃（还可以出现其他温度值）"
+          ]
+        ]
+      },
+      "teacherNote": "「37、38、39还可以有其他值」是排他证据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第6课G1/K1，并巩固与第5课连续量的区分。"
+    },
+    {
+      "analysis": "正确推导：非运算对两种状态都要成立；只测「开→关」会以偏概全，最小补测是相反方向「关→开」。干扰项错因：重复同一例、用「开→开」去支持错误规则、拒绝补测。回学：第6课非运算规则。",
+      "answer": "对「关」做非运算，看是否得到「开」",
+      "appRef": null,
+      "ctTags": [
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.7,
+      "estimatedMinutes": 1.3,
+      "examPoint": "选择检验非运算规则的最小补测，避免以偏概全。",
+      "goalIds": [
+        "L6-D1",
+        "L6-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM30",
+      "interactionSpecKey": "single_choice",
+      "lesson": 6,
+      "lessonTitle": "开关量的真与假",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "再把「开→关」重复做一次就够了，不必换输入": {
+          "misconceptionId": "M-repeat-same-case",
+          "solo": "M",
+          "explain": "局部测试以偏概全，没换输入"
+        },
+        "测「开→开」，用来证明非运算保持原状": {
+          "misconceptionId": "M-test-wrong-rule",
+          "solo": "M",
+          "explain": "用错误预期去设计测试"
+        },
+        "一个例子就能代表全部情况，不必再测": {
+          "misconceptionId": "U-one-example-enough",
+          "solo": "U",
+          "explain": "以为单例即可证明规则"
+        }
+      },
+      "options": [
+        "对「关」做非运算，看是否得到「开」",
+        "再把「开→关」重复做一次就够了，不必换输入",
+        "测「开→开」，用来证明非运算保持原状",
+        "一个例子就能代表全部情况，不必再测"
+      ],
+      "prompt": "要检验「非运算会得到相反状态」，目前只测了「开→关」。最少还应补测哪一组？",
+      "remixFrom": "new:教材L6非运算规则的最小完备测试",
+      "remixNote": "新编验证题。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM48",
+      "stage": 6,
+      "stageId": "gate_l6",
+      "stageName": "校园开关站",
+      "stateTable": {
+        "caption": "已做测试",
+        "headers": [
+          "输入",
+          "输出"
+        ],
+        "rows": [
+          [
+            "开",
+            "关"
+          ]
+        ]
+      },
+      "teacherNote": "「只测了一半」是本题的关键缺口。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第6课D1/G3。属验证方法，不超纲。"
+    },
+    {
+      "analysis": "正确推导：生活中的与运算是「同时满足两个条件才能得到预期结果」。只有小安两项都有。干扰项错因：把与当成「任一条件即可」，或反过来排除同时满足的人。回学：第7课学习活动1的规则（既…又…才能…），题面改为科技节器材室，不使用失物认领原句，也不套值日关卡。",
+      "answer": "只有小安能进",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.78,
+      "estimatedMinutes": 1.2,
+      "examPoint": "在新的生活情境中应用与运算：两个条件都要满足。",
+      "goalIds": [
+        "L7-G1",
+        "L7-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM31",
+      "interactionSpecKey": "single_choice",
+      "lesson": 7,
+      "lessonTitle": "开关量的与运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "三个人都能进": {
+          "misconceptionId": "M-and-as-or",
+          "solo": "M",
+          "explain": "把与运算当成满足任一条件即可"
+        },
+        "小琪和小宇能进，小安不能进": {
+          "misconceptionId": "M-and-reversed",
+          "solo": "M",
+          "explain": "把「两项都有」反而当成不能进入"
+        },
+        "只要有通行证或只要有签字，就能进": {
+          "misconceptionId": "M-and-as-or",
+          "solo": "M",
+          "explain": "用「或」的规则代替「与」"
+        }
+      },
+      "options": [
+        "只有小安能进",
+        "三个人都能进",
+        "小琪和小宇能进，小安不能进",
+        "只要有通行证或只要有签字，就能进"
+      ],
+      "prompt": "科技节器材室规定：既要佩戴通行证，又要指导教师签字，才能进入。根据核验记录，谁符合进入条件？",
+      "recallCaption": "回想校园里要核验两个条件的服务台，桌上的东西还在",
+      "recallImage": "assets/recall/GM31.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂友好插画：校园服务台上放着待核验的物品和两张空白核验卡，书或物品仍在台上；不要写出「两项都对才能还」的结论条文，无对勾、无题干、无已填真值表。no answer text. static. GPT优先，其次Gemini。",
+      "recallListItem": "第7课-1 校园服务台·失物认领（两项都对才能还书；只作回忆，不作题面模板）",
+      "recallSceneAnchor": "课堂回忆·校园服务台",
+      "recallStillNote": "清单无单独服务台静帧，暂用体验馆世界图；若画面含对勾、题干或完整真值表则不用，改用无文字世界一角。题目本身不采用值日关卡结构。",
+      "recallStillPath": "第7课 开关量的与运算/与运算·校园安全体验馆/output/deployed-v2-lan-world.png",
+      "remixFrom": "new:教材L7与运算生活规则＋科技节双条件（非值日模板）",
+      "remixNote": "全新情境。课堂失物认领只作回忆素材，不作本题题面。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM19",
+      "stage": 7,
+      "stageId": "gate_l7",
+      "stageName": "双条件才通行",
+      "stateTable": {
+        "caption": "核验记录",
+        "headers": [
+          "同学",
+          "通行证",
+          "教师签字"
+        ],
+        "rows": [
+          [
+            "小琪",
+            "有",
+            "没有"
+          ],
+          [
+            "小宇",
+            "没有",
+            "有"
+          ],
+          [
+            "小安",
+            "有",
+            "有"
+          ]
+        ]
+      },
+      "teacherNote": "三人对照表是排他数据。回忆图可用服务台画面，但题目不复述认领剧本。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第7课G1/K1。未使用「最后一班值日」或拨开关真值表模板，也未写入第9课内容。"
+    },
+    {
+      "analysis": "正确推导：与运算须两个开关量都为真才输出预期结果。120不低于80，第二条件为假，灯却亮，说明规则未被正确执行（或被做成只需一个条件）。干扰项错因：把与当成单一条件、比反大小、因有输出就否认规则。回学：第7课学习活动3人体感应光控灯规则，题面改为阅览座灯新数据。",
+      "answer": "控制没有按与运算执行：光照并未低于标准，却仍输出灯亮",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "算法设计"
+      ],
+      "difficultyEstimate": 0.7,
+      "estimatedMinutes": 1.3,
+      "examPoint": "用一次「缺条件却仍输出」的反例，诊断控制系统中的与运算未被遵守。",
+      "goalIds": [
+        "L7-G2",
+        "L7-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM32",
+      "interactionSpecKey": "single_choice",
+      "lesson": 7,
+      "lessonTitle": "开关量的与运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "与运算的规则就是只要检测到有人就亮灯，这次输出是正确的": {
+          "misconceptionId": "M-and-as-single",
+          "solo": "M",
+          "explain": "把与运算降成只看一个条件"
+        },
+        "光照读数120已经低于阈值80，因此按规则应当亮灯": {
+          "misconceptionId": "M-compare-reversed",
+          "solo": "M",
+          "explain": "把120和80的大小看反"
+        },
+        "灯已经点亮，说明该系统并不存在控制规则": {
+          "misconceptionId": "U-output-means-no-rule",
+          "solo": "U",
+          "explain": "看到输出就否定控制规则的存在"
+        }
+      },
+      "options": [
+        "控制没有按与运算执行：光照并未低于标准，却仍输出灯亮",
+        "与运算的规则就是只要检测到有人就亮灯，这次输出是正确的",
+        "光照读数120已经低于阈值80，因此按规则应当亮灯",
+        "灯已经点亮，说明该系统并不存在控制规则"
+      ],
+      "prompt": "阅览座灯规则：座位上有人，并且光照低于80，才亮灯。实测「有人、光照120」时灯却亮了。最可能是什么问题？",
+      "recallCaption": "回想走廊里那盏灯，附近有人和光照读数，但不要在图上圈出对错",
+      "recallImage": "assets/recall/GM32.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂友好插画：校园走廊顶灯和一位路过的学生，墙上有光照读数仪表但不要高亮「标准答案组合」或打对勾；不要出现便携巡检仪操作引导或已填真值表。no checklist answers. static. GPT优先，其次Gemini。",
+      "recallListItem": "第7课-2 校园走廊·感应灯（有人/无人与够暗/不够暗；只作回忆）",
+      "recallSceneAnchor": "课堂回忆·走廊感应灯",
+      "recallStillNote": "选用校园巡查／世界图，避免考核卷、对勾和完整真值表。",
+      "recallStillPath": "第7课 开关量的与运算/与运算·校园安全体验馆/output/最终画面-校园巡查.png",
+      "remixFrom": "new:教材L7人体感应光控灯规则迁移为阅览座灯排障",
+      "remixNote": "全新情境与新阈值，不照搬第7课课堂关卡。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM20",
+      "stage": 7,
+      "stageId": "gate_l7",
+      "stageName": "双条件才通行",
+      "stateTable": {
+        "caption": "规则与实测",
+        "headers": [
+          "项目",
+          "内容"
+        ],
+        "rows": [
+          [
+            "预定规则",
+            "有人 并且 光照低于80 → 灯亮"
+          ],
+          [
+            "实测",
+            "有人；光照120；灯亮"
+          ]
+        ]
+      },
+      "teacherNote": "「光照120对照阈值80」是排他数据，遮住后无法判断第二条件真假。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第7课G2/D1。不用值日巡检仪或坏灯关卡流程，不用完整已填真值表作回忆图。"
+    },
+    {
+      "analysis": "正确推导：这是生活中的与运算，须同时满足两个条件才能入选。干扰项错因：把与运算理解成满足一条即可、把同时满足当成排除条件，或把与运算当成非运算。回学：第7课活动2「既…又…才能…」。新情境，非值日。",
+      "answer": "该规则属于与运算：两个条件必须同时满足，才能得到入选的结果",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.77,
+      "estimatedMinutes": 1.1,
+      "examPoint": "用规范表述识别生活中的与运算规则。",
+      "goalIds": [
+        "L7-G1",
+        "L7-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM33",
+      "interactionSpecKey": "single_choice",
+      "lesson": 7,
+      "lessonTitle": "开关量的与运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "该规则属于或运算：两个条件中只要满足其中一条，就能入选": {
+          "misconceptionId": "M-and-as-or",
+          "solo": "M",
+          "explain": "与、或规则混淆"
+        },
+        "两个条件都满足时，反而不能入选，应当排除这类情况": {
+          "misconceptionId": "M-and-reversed",
+          "solo": "M",
+          "explain": "把与运算的结果接反"
+        },
+        "需要先对两个条件分别做非运算，然后才能决定是否入选": {
+          "misconceptionId": "M-and-as-not",
+          "solo": "M",
+          "explain": "把与运算当成非运算"
+        }
+      },
+      "options": [
+        "该规则属于与运算：两个条件必须同时满足，才能得到入选的结果",
+        "该规则属于或运算：两个条件中只要满足其中一条，就能入选",
+        "两个条件都满足时，反而不能入选，应当排除这类情况",
+        "需要先对两个条件分别做非运算，然后才能决定是否入选"
+      ],
+      "prompt": "评选校园讲解员：既要参加过宣讲排练，又要完成过一次校园讲解，才能入选。哪一项准确描述了这一规则？",
+      "remixFrom": "new:教材L7生活与运算（环保小卫士类案例迁移）",
+      "remixNote": "改为讲解员评选，避免教材原句照搬，也避开值日。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM49",
+      "stage": 7,
+      "stageId": "gate_l7",
+      "stageName": "双条件才通行",
+      "stateTable": {
+        "caption": "条件",
+        "headers": [
+          "条件1",
+          "条件2",
+          "结果"
+        ],
+        "rows": [
+          [
+            "参加过宣讲排练",
+            "完成过一次校园讲解",
+            "才能入选"
+          ]
+        ]
+      },
+      "teacherNote": "评选规则本身就是知识的具象化。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第7课G1/K1。可与第8课或运算对照，但本题正确项只考「与」。"
+    },
+    {
+      "analysis": "正确推导：第7课拓展指出，连续量可通过与阈值比较生成开关量（指令），再参与与运算；系统输入既可以是连续量也可以是开关量。干扰项错因：方向说反、取消采集、用相加代替判断。回学：第7课拓展与提升。",
+      "answer": "把连续量转换成只有两种状态的开关量，再拿去进行与运算",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "问题分解"
+      ],
+      "difficultyEstimate": 0.71,
+      "estimatedMinutes": 1.3,
+      "examPoint": "理解连续量如何经由阈值判断转换为开关量，再进入与运算。",
+      "goalIds": [
+        "L7-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM34",
+      "interactionSpecKey": "single_choice",
+      "lesson": 7,
+      "lessonTitle": "开关量的与运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "把已经得到的开关量再转换回连续变化的曲线": {
+          "misconceptionId": "M-conversion-reversed",
+          "solo": "M",
+          "explain": "把转换方向弄反"
+        },
+        "完成判断后就取消输入，此后不再采集压力和光照数据": {
+          "misconceptionId": "M-drop-input",
+          "solo": "M",
+          "explain": "有了判断就取消输入"
+        },
+        "把两个连续量直接相加后决定灯是否点亮，不必再做阈值判断": {
+          "misconceptionId": "U-add-instead-of-threshold",
+          "solo": "U",
+          "explain": "用数值相加代替阈值判断和逻辑运算"
+        }
+      },
+      "options": [
+        "把连续量转换成只有两种状态的开关量，再拿去进行与运算",
+        "把已经得到的开关量再转换回连续变化的曲线",
+        "完成判断后就取消输入，此后不再采集压力和光照数据",
+        "把两个连续量直接相加后决定灯是否点亮，不必再做阈值判断"
+      ],
+      "prompt": "系统先用阈值把连续读数变成两种状态，再决定灯亮不亮。阈值判断在这里起什么作用？",
+      "remixFrom": "new:教材L7拓展连续量转开关量",
+      "remixNote": "用阅览座灯数据新编，不套课堂原关。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM50",
+      "stage": 7,
+      "stageId": "gate_l7",
+      "stageName": "双条件才通行",
+      "stateTable": {
+        "caption": "处理步骤",
+        "headers": [
+          "原来的数据",
+          "判断后"
+        ],
+        "rows": [
+          [
+            "压力0–200（连续变化）",
+            "有人／无人"
+          ],
+          [
+            "光照0–200（连续变化）",
+            "够暗／不够暗"
+          ],
+          [
+            "下一步",
+            "用这两个结果决定灯亮不亮"
+          ]
+        ]
+      },
+      "teacherNote": "步骤表不可删，否则易变成贴标签。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第7课G3，属本课拓展，不是第9课反馈。阈值本身已在第5课学习。"
+    },
+    {
+      "analysis": "正确推导：仅测「两真→亮」无法区分与运算和「只要有一个条件就亮」甚至「永远亮」。最小有力反例是「一个为真一个为假却仍亮」。只测「两假→不亮」时，与运算和或运算结果相同，不能证明是与。干扰项错因：重复同一组、只用双假组作证据、验证时不观察输出。回学：第7课四组状态均应验证的思想，但不使用值日关卡流程。",
+      "answer": "有人但不够暗（或无人但够暗）：若灯仍亮，就说明不是与运算",
+      "appRef": null,
+      "ctTags": [
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.68,
+      "estimatedMinutes": 1.3,
+      "examPoint": "为与运算规则选择最小关键反例，避免只测「双真」一组。",
+      "goalIds": [
+        "L7-D1",
+        "L7-G2"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM35",
+      "interactionSpecKey": "single_choice",
+      "lesson": 7,
+      "lessonTitle": "开关量的与运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "把「有人且够暗、灯亮」再重复测试一次，就足以证明是与运算": {
+          "misconceptionId": "M-repeat-same-case",
+          "solo": "M",
+          "explain": "局部测试以偏概全"
+        },
+        "再测「无人且不够暗」：若此时灯不亮，就足以证明正在做与运算": {
+          "misconceptionId": "M-only-both-false",
+          "solo": "M",
+          "explain": "与、或在双假时结果相同，不能证明是与"
+        },
+        "验证时不必观察灯的输出，只需统计座位上是否有人": {
+          "misconceptionId": "M-ignore-output",
+          "solo": "M",
+          "explain": "验证时不看输出"
+        }
+      },
+      "options": [
+        "有人但不够暗（或无人但够暗）：若灯仍亮，就说明不是与运算",
+        "把「有人且够暗、灯亮」再重复测试一次，就足以证明是与运算",
+        "再测「无人且不够暗」：若此时灯不亮，就足以证明正在做与运算",
+        "验证时不必观察灯的输出，只需统计座位上是否有人"
+      ],
+      "prompt": "规则声称「有人 与 够暗 → 灯亮」。目前只测了「有人且够暗，灯亮」。哪一组最能检查它是不是真的在做与运算？",
+      "remixFrom": "new:教材L7四组状态思想改写为最小反例",
+      "remixNote": "全新设问，非拨开关逐步操作模板。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM51",
+      "stage": 7,
+      "stageId": "gate_l7",
+      "stageName": "双条件才通行",
+      "stateTable": {
+        "caption": "已测",
+        "headers": [
+          "有人",
+          "够暗",
+          "灯"
+        ],
+        "rows": [
+          [
+            "是",
+            "是",
+            "亮"
+          ]
+        ]
+      },
+      "teacherNote": "已测组必须写出，学生才能判断「还缺什么」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第7课D1/G2。方法在课内，不引入第9课优化/反馈。"
+    },
+    {
+      "analysis": "正确推导：这是生活中的或运算，满足其中一个条件即可提交。干扰项错因：把或当成与、指定必须是某一条件、把「已满足一个」当成失败。回学：第8课学习活动1场景3，回忆画面可用港口「备好一样就能展」。",
+      "answer": "可以提交。按或运算，满足其中任何一个条件即可",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.8,
+      "estimatedMinutes": 1.1,
+      "examPoint": "在生活事件中应用或运算：满足其中一个条件即可。",
+      "goalIds": [
+        "L8-G1",
+        "L8-K1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM36",
+      "interactionSpecKey": "single_choice",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "不能提交。按与运算，必须两个条件同时满足才可以": {
+          "misconceptionId": "M-or-as-and",
+          "solo": "M",
+          "explain": "把或运算当成与运算"
+        },
+        "只有爸爸签字才有效，仅有妈妈签字不能提交": {
+          "misconceptionId": "U-only-one-side-counts",
+          "solo": "U",
+          "explain": "在或的两个条件里任意指定只有一侧有效"
+        },
+        "已经有一个人签字，按规则反而不能提交": {
+          "misconceptionId": "M-or-reversed",
+          "solo": "M",
+          "explain": "把「满足一个条件」的结果接反"
+        }
+      },
+      "options": [
+        "可以提交。按或运算，满足其中任何一个条件即可",
+        "不能提交。按与运算，必须两个条件同时满足才可以",
+        "只有爸爸签字才有效，仅有妈妈签字不能提交",
+        "已经有一个人签字，按规则反而不能提交"
+      ],
+      "prompt": "秋游通知写明「请爸爸或妈妈签字」，一位签字即可。记录显示只请到了妈妈签字。该通知是否可以提交？",
+      "recallCaption": "回想码头库房前的展台和两只箱子，还没有下结论",
+      "recallImage": "assets/recall/GM36.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂友好插画：码头库房前，瓷器箱和丝绸箱旁边是空展台，管事在等候；不要写出「有一样就能展」的结论条文或对勾，也不要填好四组结果。no answer banner. static. GPT优先，其次Gemini。",
+      "recallListItem": "第8课-2 港口展台（备好瓷器或丝绸其中一样就能展，两样都有也可以）",
+      "recallSceneAnchor": "郑和远航·港口展台",
+      "recallStillNote": "云电脑可用 /workspace/g6l8_ten_fix_shots/13_port_empty_table.png 作为空表备选，更不易泄题。",
+      "recallStillPath": "第8课 开关量的或运算/协作记录/2026-10-29_画面身份与提示修复/修复后_港口全景与操作提示.png",
+      "remixFrom": "new:教材L8秋游通知签字＋港口展台回忆",
+      "remixNote": "再创编。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM22",
+      "stage": 8,
+      "stageId": "gate_l8",
+      "stageName": "郑和远航·或运算",
+      "stateTable": {
+        "caption": "签字情况",
+        "headers": [
+          "爸爸签字",
+          "妈妈签字"
+        ],
+        "rows": [
+          [
+            "没有",
+            "有"
+          ]
+        ]
+      },
+      "teacherNote": "「只有妈妈签」是排他数据，用来对抗「必须都签」。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第8课G1/K1及教材签字例，换成记录数据题，避免填空原句。"
+    },
+    {
+      "analysis": "正确推导：控制系统中，只要有一个开关量为真，就能产生符合预期的输出，这是或运算。密码不正确、指纹正确，门仍应打开。干扰项错因：因一个条件为假就否定输出（把或做成与），或把结果接反。回学：第8课学习活动3。",
+      "answer": "门应打开，因为已经有一个条件为真",
+      "appRef": null,
+      "ctTags": [
+        "算法设计"
+      ],
+      "difficultyEstimate": 0.76,
+      "estimatedMinutes": 1.2,
+      "examPoint": "结合智能门锁实例，在「一真一假」时正确应用或运算。",
+      "goalIds": [
+        "L8-G2",
+        "L8-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GM37",
+      "interactionSpecKey": "single_choice",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "门应保持关闭，因为数字密码不正确": {
+          "misconceptionId": "M-or-as-and",
+          "solo": "M",
+          "explain": "一个条件为假就判定失败，把或当成与"
+        },
+        "必须两个条件都为真才能打开，所以这次不应打开": {
+          "misconceptionId": "M-or-as-and",
+          "solo": "M",
+          "explain": "用与运算规则理解或运算"
+        },
+        "两个条件中只要有一个为真，门就一定保持关闭": {
+          "misconceptionId": "M-or-reversed",
+          "solo": "M",
+          "explain": "把或运算的输出接反"
+        }
+      },
+      "options": [
+        "门应打开，因为已经有一个条件为真",
+        "门应保持关闭，因为数字密码不正确",
+        "必须两个条件都为真才能打开，所以这次不应打开",
+        "两个条件中只要有一个为真，门就一定保持关闭"
+      ],
+      "prompt": "智能门锁规定：数字密码或指纹，其中一个正确就能打开。记录：密码不正确，指纹正确。门应处于什么状态？",
+      "recallCaption": "回想控制室左边的门锁台，表还空着",
+      "recallImage": "assets/recall/GM37.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂友好插画：现代控制室左侧门锁台，密码区和指纹区指示灯不要给出对错结论，旁边状态表为空；不要使用已填满对勾的真值表。empty tables only. static. GPT优先，其次Gemini。",
+      "recallListItem": "第8课-5 现代控制室·门锁台（状态分析表/真值表区域须为空，不能用已填好的表）",
+      "recallSceneAnchor": "郑和远航·现代控制室门锁台",
+      "recallStillNote": "不要用可能已填好的 door-tables-current.png；若 controlroom 图含完整真值表须裁去表内对错。",
+      "recallStillPath": "第8课 开关量的或运算/协作记录/2026-10-29_剧情与控制室联调/controlroom-supported-current.png",
+      "remixFrom": "new:教材L8智能门锁状态分析",
+      "remixNote": "再创编单组数据。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM23",
+      "stage": 8,
+      "stageId": "gate_l8",
+      "stageName": "郑和远航·或运算",
+      "stateTable": {
+        "caption": "一次开门",
+        "headers": [
+          "数字密码",
+          "指纹"
+        ],
+        "rows": [
+          [
+            "不正确",
+            "正确"
+          ]
+        ]
+      },
+      "teacherNote": "回忆图用控制室门锁台，须避开已填完整真值表的截图（如可能含答案的 door-tables）。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第8课G2/D1。教参说明两项都真时也能开，但本题先考「一个为真即开」。"
+    },
+    {
+      "analysis": "正确推导：或运算中只要有一个为真，输出为真。干扰项错因：按与运算给出假、只看指纹这一侧、认为真值不同就不能判断。回学：第8课真值表。",
+      "answer": "门锁打开的真值为真，因为已经有一个条件为真",
+      "appRef": null,
+      "ctTags": [
+        "算法设计"
+      ],
+      "difficultyEstimate": 0.78,
+      "estimatedMinutes": 1.1,
+      "examPoint": "根据或运算为「真、假」组合给出输出真值。",
+      "goalIds": [
+        "L8-D1",
+        "L8-G2"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM38",
+      "interactionSpecKey": "single_choice",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "门锁打开的真值为假，因为其中有一个条件为假": {
+          "misconceptionId": "M-or-as-and",
+          "solo": "M",
+          "explain": "按与运算给出假"
+        },
+        "或运算只依据指纹判断，指纹为假则输出一定为假": {
+          "misconceptionId": "U-only-one-input",
+          "solo": "U",
+          "explain": "丢掉密码这一路输入"
+        },
+        "两个条件的真值不同，或运算无法给出确定结果": {
+          "misconceptionId": "U-cannot-decide",
+          "solo": "U",
+          "explain": "遇到一真一假就认为或运算无法给出结果"
+        }
+      },
+      "options": [
+        "门锁打开的真值为真，因为已经有一个条件为真",
+        "门锁打开的真值为假，因为其中有一个条件为假",
+        "或运算只依据指纹判断，指纹为假则输出一定为假",
+        "两个条件的真值不同，或运算无法给出确定结果"
+      ],
+      "prompt": "按或运算判断：数字密码为真、指纹为假时，门锁打开的真值应是什么？",
+      "remixFrom": "new:教材L8门锁真值表其中一行",
+      "remixNote": "单行点选。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "R",
+      "sourceId": "GM54",
+      "stage": 8,
+      "stageId": "gate_l8",
+      "stageName": "郑和远航·或运算",
+      "stateTable": {
+        "caption": "当前组合",
+        "headers": [
+          "数字密码正确",
+          "指纹正确"
+        ],
+        "rows": [
+          [
+            "真",
+            "假"
+          ]
+        ]
+      },
+      "teacherNote": "组合表必须保留。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第8课D1/G2。点选，无填空。"
+    },
+    {
+      "analysis": "正确推导：第8课教参建议把与、或对照——两把钥匙都要用是与，任意一把能开是或。本题换成实验室双卡与大厅门禁，考查综合辨认。干扰项错因：认为相同、名称对调、都看成只要一个条件。回学：第8课与／或对照。",
+      "answer": "前者要两个条件同时满足（与），后者满足其中一个即可（或）",
+      "appRef": null,
+      "ctTags": [
+        "抽象建模",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.72,
+      "estimatedMinutes": 1.3,
+      "examPoint": "在新情境中对照与运算和或运算的规则。",
+      "goalIds": [
+        "L8-G3",
+        "L8-K1",
+        "L8-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM39",
+      "interactionSpecKey": "single_choice",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "两套规则的逻辑完全相同，称作与运算或或运算都可以": {
+          "misconceptionId": "U-and-or-same",
+          "solo": "U",
+          "explain": "不能区分与、或"
+        },
+        "实验室设备的规则是或运算，大厅门禁的规则是与运算": {
+          "misconceptionId": "M-names-swapped",
+          "solo": "M",
+          "explain": "名称接反"
+        },
+        "两套规则都只要求满足其中一个条件即可": {
+          "misconceptionId": "M-both-as-or",
+          "solo": "M",
+          "explain": "把与的那一套也当成或"
+        }
+      },
+      "options": [
+        "前者要两个条件同时满足（与），后者满足其中一个即可（或）",
+        "两套规则的逻辑完全相同，称作与运算或或运算都可以",
+        "实验室设备的规则是或运算，大厅门禁的规则是与运算",
+        "两套规则都只要求满足其中一个条件即可"
+      ],
+      "prompt": "实验室规定：两张管理员卡都插入才能启动设备。大厅门禁：刷卡或人脸识别，对一个就能进。两种逻辑的差别是什么？",
+      "remixFrom": "new:教材L8教参与／或对照，改换实验室与门禁外壳",
+      "remixNote": "再创编，避免保险箱原句照搬。",
+      "reverseDebug": false,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM55",
+      "stage": 8,
+      "stageId": "gate_l8",
+      "stageName": "郑和远航·或运算",
+      "stateTable": {
+        "caption": "两套规则",
+        "headers": [
+          "场合",
+          "规则"
+        ],
+        "rows": [
+          [
+            "实验室设备",
+            "两张管理员卡都插入才能启动"
+          ],
+          [
+            "大厅门禁",
+            "刷卡或人脸识别，对一个就能进入"
+          ]
+        ]
+      },
+      "teacherNote": "两套规则表是排他数据。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第8课G3及教参对照建议。不引入第9课内容。"
+    },
+    {
+      "analysis": "正确推导：与、或在「两真」时结果相同，要区分必须测「一真一假」。若单件不能展，实际是与而不是或。「两假仍能展」不是或运算（那是恒真）。只重复双真无法区分。回学：第8课四组状态与港口／补给舱「先找出不符合要求的组合」。",
+      "answer": "只备A不备B（或只备B不备A）：若这时不能展，就说明被做成了与运算",
+      "appRef": null,
+      "ctTags": [
+        "验证优化"
+      ],
+      "difficultyEstimate": 0.68,
+      "estimatedMinutes": 1.3,
+      "examPoint": "选择能把或运算与与运算区分开的最小测试组合。",
+      "goalIds": [
+        "L8-D1",
+        "L8-G2",
+        "L8-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GM40",
+      "interactionSpecKey": "single_choice",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "再测一次两样都有就够了": {
+          "misconceptionId": "M-repeat-same-case",
+          "solo": "M",
+          "explain": "局部测试不能区分与和或"
+        },
+        "两样都不备还能展，更能证明这是或运算": {
+          "misconceptionId": "U-false-false-as-or",
+          "solo": "U",
+          "explain": "把「两假仍真」误当成或运算的证据"
+        },
+        "或运算只看「两样都有」这一组，不必测单件": {
+          "misconceptionId": "M-or-only-both",
+          "solo": "M",
+          "explain": "以为或运算不必检验单条件为真的情况"
+        }
+      },
+      "options": [
+        "只备A不备B（或只备B不备A）：若这时不能展，就说明被做成了与运算",
+        "再测一次两样都有就够了",
+        "两样都不备还能展，更能证明这是或运算",
+        "或运算只看「两样都有」这一组，不必测单件"
+      ],
+      "prompt": "声称「备齐货物A或货物B就能开展」。目前只测了「A、B都有，能展」。哪组最能检查它是不是或运算（会不会其实被做成了与）？",
+      "remixFrom": "new:教材L8港口/展台或运算与四组检验",
+      "remixNote": "新编最小测试集，不照搬课堂日志原数。",
+      "reverseDebug": true,
+      "section": "main",
+      "soloLevel": "EA",
+      "sourceId": "GM56",
+      "stage": 8,
+      "stageId": "gate_l8",
+      "stageName": "郑和远航·或运算",
+      "stateTable": {
+        "caption": "已测",
+        "headers": [
+          "货物A",
+          "货物B",
+          "开展"
+        ],
+        "rows": [
+          [
+            "有",
+            "有",
+            "能展"
+          ]
+        ]
+      },
+      "teacherNote": "已测「两真」必须写明。",
+      "tier": "main",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第8课D1/G2/G3。测试思想来自课内四组分析，不是第9课。"
+    },
+    {
+      "analysis": "正确推导：迁移第4课三个环节：已有采集迹象（话筒指示在跳）和启动操作，输出端却无声，应向计算或输出排查，而不是断言「没有输入」或「系统没有三个环节」。回学：第4课输入输出与计算，第3课控制持续作用于过程。",
+      "answer": "采集迹象已经出现，故障更可能出在计算或输出环节（信号处理或喇叭）",
+      "appRef": null,
+      "ctTags": [
+        "问题分解",
+        "验证优化",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.65,
+      "estimatedMinutes": 1.5,
+      "examPoint": "在新的广播系统中用三个环节做故障定位。",
+      "goalIds": [
+        "L4-G2",
+        "L4-D1",
+        "L3-G1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GC01",
+      "interactionSpecKey": "single_choice",
+      "lesson": null,
+      "lessonTitle": "跨课迁移",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "喇叭没有声音，就说明输入环节没有采集到信号": {
+          "misconceptionId": "M-no-output-means-no-input",
+          "solo": "M",
+          "explain": "用输出缺失直接否定已经出现的输入迹象"
+        },
+        "校园广播不必按输入、计算、输出三个环节来分析，因而无需排查": {
+          "misconceptionId": "U-no-ipo",
+          "solo": "U",
+          "explain": "不肯把新系统抽象为三个环节"
+        },
+        "喇叭无声说明控制只存在于按下播出键的瞬间，之后不可能再出现故障": {
+          "misconceptionId": "U-control-only-at-press",
+          "solo": "U",
+          "explain": "把控制窄化为启动瞬间"
+        }
+      },
+      "options": [
+        "采集迹象已经出现，故障更可能出在计算或输出环节（信号处理或喇叭）",
+        "喇叭没有声音，就说明输入环节没有采集到信号",
+        "校园广播不必按输入、计算、输出三个环节来分析，因而无需排查",
+        "喇叭无声说明控制只存在于按下播出键的瞬间，之后不可能再出现故障"
+      ],
+      "prompt": "校园广播：按下播出后，话筒信号经处理从操场喇叭放出。现在播出已按下，话筒指示在跳，喇叭却没有声音。故障最可能卡在哪一环节？",
+      "remixFrom": "new:跨课迁移校园广播排障",
+      "remixNote": "全新情境。",
+      "reverseDebug": true,
+      "section": "challenge",
+      "soloLevel": "EA",
+      "sourceId": "GC01",
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "stateTable": {
+        "caption": "现场",
+        "headers": [
+          "观察",
+          "情况"
+        ],
+        "rows": [
+          [
+            "播出键",
+            "已按下"
+          ],
+          [
+            "话筒指示",
+            "在跳动，说明已经采集到声音"
+          ],
+          [
+            "操场喇叭",
+            "没有声音"
+          ]
+        ]
+      },
+      "teacherNote": "挑战另计加分。话筒指示是排他线索。",
+      "tier": "challenge",
+      "type": "single_choice",
+      "whyInSyllabus": "跨第3–4课迁移，不涉及反馈、开闭环或后续单元设备。"
+    },
+    {
+      "analysis": "正确推导：原测试说明70是有效分界；改成7后，多数现场音量都会「超标」，指令虽仍是开关量，但阈值过低导致误报，影响场馆秩序提醒的有效性。干扰项错因：认为越小越好、方向判断反了、把指令类型改错。回学：第5课阈值作用与第6课开关量指令。",
+      "answer": "正常交谈也可能频繁提示，出现大量误报，阈值失去合理的判断作用",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.66,
+      "estimatedMinutes": 1.5,
+      "examPoint": "结合边界实测，推断错误阈值带来的误报，并保持对开关量指令的认识。",
+      "goalIds": [
+        "L5-G3",
+        "L5-D1",
+        "L6-G1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GC02",
+      "interactionSpecKey": "single_choice",
+      "lesson": null,
+      "lessonTitle": "跨课迁移",
+      "literacy": [
+        "计算思维",
+        "信息社会责任"
+      ],
+      "misconceptionMap": {
+        "阈值越小越精确，7dB一定比70dB更好": {
+          "misconceptionId": "M-smaller-always-better",
+          "solo": "M",
+          "explain": "忽略过低阈值的误报"
+        },
+        "改成7dB后，71dB反而不会再提示": {
+          "misconceptionId": "M-direction-reversed",
+          "solo": "M",
+          "explain": "把阈值改小后的效果说反"
+        },
+        "提示指令会从开关量变成连续曲线": {
+          "misconceptionId": "U-type-changes",
+          "solo": "U",
+          "explain": "把阈值改动误当成数据类型改变"
+        }
+      },
+      "options": [
+        "正常交谈也可能频繁提示，出现大量误报，阈值失去合理的判断作用",
+        "阈值越小越精确，7dB一定比70dB更好",
+        "改成7dB后，71dB反而不会再提示",
+        "提示指令会从开关量变成连续曲线"
+      ],
+      "prompt": "体育馆音量超过70dB才发「请降低」指令。记录：69无提示，70有提示，71有提示。若有人把阈值改成7dB，最可能出现什么问题？",
+      "remixFrom": "new:第5课阈值＋第6课开关量指令，体育馆新情境",
+      "remixNote": "挑战迁移。",
+      "reverseDebug": true,
+      "section": "challenge",
+      "soloLevel": "EA",
+      "sourceId": "GC02",
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "stateTable": {
+        "caption": "原规则与原测试",
+        "headers": [
+          "音量",
+          "提示"
+        ],
+        "rows": [
+          [
+            "69 dB",
+            "无"
+          ],
+          [
+            "70 dB",
+            "有"
+          ],
+          [
+            "71 dB",
+            "有"
+          ]
+        ],
+        "note": "原阈值70dB"
+      },
+      "teacherNote": "三组边界数据必须保留。",
+      "tier": "challenge",
+      "type": "single_choice",
+      "whyInSyllabus": "第5–6课综合，不用种植园自动控制。"
+    },
+    {
+      "analysis": "正确推导：白天该命题为真，非运算得假，不允许灯亮——符合夜灯只在非白天时亮的设计。干扰项错因：非运算保持原值、出现半亮、以为有非运算就恒亮。回学：第6课非运算规则的新情境迁移。不是第9课光控反馈。",
+      "answer": "白天「现在是白天」为真，非运算后为假，灯不应亮",
+      "appRef": null,
+      "ctTags": [
+        "算法设计",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.67,
+      "estimatedMinutes": 1.4,
+      "examPoint": "在多步规则中正确执行非运算，判断白天灯是否应亮。",
+      "goalIds": [
+        "L6-G3",
+        "L6-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GC03",
+      "interactionSpecKey": "single_choice",
+      "lesson": null,
+      "lessonTitle": "跨课迁移",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "白天经过非运算后真值仍为真，因此灯应当亮": {
+          "misconceptionId": "M-not-is-same",
+          "solo": "M",
+          "explain": "没有真正取反"
+        },
+        "对开关量做非运算后，灯会处于介于开与关之间的半亮状态": {
+          "misconceptionId": "U-not-half",
+          "solo": "U",
+          "explain": "给开关量加上中间状态"
+        },
+        "规则中包含非运算，因此无论白天还是夜间，灯都一定亮": {
+          "misconceptionId": "U-not-means-always-on",
+          "solo": "U",
+          "explain": "把「有非运算」理解成输出恒真"
+        }
+      },
+      "options": [
+        "白天「现在是白天」为真，非运算后为假，灯不应亮",
+        "白天经过非运算后真值仍为真，因此灯应当亮",
+        "对开关量做非运算后，灯会处于介于开与关之间的半亮状态",
+        "规则中包含非运算，因此无论白天还是夜间，灯都一定亮"
+      ],
+      "prompt": "走廊夜灯规则：先判断「现在是白天」的真假，再对这个结果做非运算；非运算结果为真时才允许灯亮。白天时灯应怎样？",
+      "remixFrom": "new:第6课非运算迁移为走廊夜灯规则",
+      "remixNote": "挑战新情境。",
+      "reverseDebug": false,
+      "section": "challenge",
+      "soloLevel": "R",
+      "sourceId": "GC03",
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "stateTable": {
+        "caption": "规则",
+        "headers": [
+          "步骤",
+          "内容"
+        ],
+        "rows": [
+          [
+            "1",
+            "得到「现在是白天」的真值"
+          ],
+          [
+            "2",
+            "对它做非运算"
+          ],
+          [
+            "3",
+            "非运算结果为真时，允许灯亮"
+          ]
+        ]
+      },
+      "teacherNote": "步骤表是规则本身，遮住则无法逐步推导。",
+      "tier": "challenge",
+      "type": "single_choice",
+      "whyInSyllabus": "第6课非运算迁移，不涉及闭环。"
+    },
+    {
+      "analysis": "正确推导：一真一假时门仍开，符合或运算而不是与运算；宣传语「都要满足」与记录冲突。仅看「两假不开」不能区分与和或（两者在两假时都为假）。回学：第7–8课与／或规则及四组分析。",
+      "answer": "实际是或运算（一个条件为真就开门）；宣传语写成了与，与记录不符",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "抽象建模"
+      ],
+      "difficultyEstimate": 0.64,
+      "estimatedMinutes": 1.6,
+      "examPoint": "用完整四组记录判断实际是或还是与，并指出宣传语写错。",
+      "goalIds": [
+        "L7-D1",
+        "L8-D1",
+        "L8-G3"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": false,
+      "id": "GC04",
+      "interactionSpecKey": "single_choice",
+      "lesson": null,
+      "lessonTitle": "跨课迁移",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "实际是与运算，宣传语完全正确": {
+          "misconceptionId": "M-ignore-single-true",
+          "solo": "M",
+          "explain": "忽略「一真一假仍开」的两组反例"
+        },
+        "四组记录自相矛盾，无法判断": {
+          "misconceptionId": "U-cannot-decide",
+          "solo": "U",
+          "explain": "不能根据四组表作出判断"
+        },
+        "「否、否、不开」证明这一定是与运算": {
+          "misconceptionId": "M-false-false-as-and-only",
+          "solo": "M",
+          "explain": "用与、或相同的那一组去证明它是与"
+        }
+      },
+      "options": [
+        "实际是或运算（一个条件为真就开门）；宣传语写成了与，与记录不符",
+        "实际是与运算，宣传语完全正确",
+        "四组记录自相矛盾，无法判断",
+        "「否、否、不开」证明这一定是与运算"
+      ],
+      "prompt": "社团教室门禁留下四组记录。宣传语写「两个条件都满足才能进」。根据记录，实际逻辑和宣传语谁对谁错？",
+      "remixFrom": "new:与／或易混点，社团门禁四组记录",
+      "remixNote": "挑战。不用第7课值日模板。",
+      "reverseDebug": true,
+      "section": "challenge",
+      "soloLevel": "EA",
+      "sourceId": "GC04",
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "stateTable": {
+        "caption": "门禁记录",
+        "headers": [
+          "学生卡有效",
+          "时段允许",
+          "门开"
+        ],
+        "rows": [
+          [
+            "是",
+            "是",
+            "开"
+          ],
+          [
+            "是",
+            "否",
+            "开"
+          ],
+          [
+            "否",
+            "是",
+            "开"
+          ],
+          [
+            "否",
+            "否",
+            "不开"
+          ]
+        ]
+      },
+      "teacherNote": "四组全给是最小完备证据。",
+      "tier": "challenge",
+      "type": "single_choice",
+      "whyInSyllabus": "第7–8课综合对照，不超第8课。"
+    },
+    {
+      "analysis": "正确推导：与运算须在四种组合下都符合「仅双真时启动」。只测双真无法发现「单真仍启动」的故障；只测双假无法区分与和或；抽测任一组也不能构成完备验证。回学：第7课四组状态、第5课阈值（湿度低于40是连续量经阈值形成开关量）。展柜不是种植园系统。点选方案卡，无填空。",
+      "answer": {
+        "应选择的测试方案": "四组都测：是是、是否、否是、否否，并核对是否只有「是是」才启动"
+      },
+      "appRef": null,
+      "cards": [
+        "四组都测：是是、是否、否是、否否，并核对是否只有「是是」才启动",
+        "只测试「两个条件都为真」这一组，即可证明规则是与运算",
+        "只测试「两个条件都为假」这一组，即可证明规则是与运算",
+        "任意抽测其中一组组合，就足以验证这条与运算规则"
+      ],
+      "ctTags": [
+        "验证优化",
+        "算法设计"
+      ],
+      "difficultyEstimate": 0.63,
+      "estimatedMinutes": 1.6,
+      "examPoint": "为带阈值的与运算规则选择最小完备测试集合（四组）。",
+      "goalIds": [
+        "L7-G2",
+        "L7-D1",
+        "L5-G3"
+      ],
+      "guides": "点选一张测试方案卡放入槽中。未作答前不要给某一张卡加黄框或小手。",
+      "hasRecallImage": false,
+      "id": "GC05",
+      "interactionSpecKey": "flowchart_pick_plan",
+      "lesson": null,
+      "lessonTitle": "跨课迁移",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "只测试「两个条件都为真」这一组，即可证明规则是与运算": {
+          "misconceptionId": "M-only-both-true",
+          "solo": "M",
+          "explain": "局部测试不能暴露「单条件为真仍启动」"
+        },
+        "只测试「两个条件都为假」这一组，即可证明规则是与运算": {
+          "misconceptionId": "M-only-both-false",
+          "solo": "M",
+          "explain": "与、或在双假时结果相同，不能证明是与"
+        },
+        "任意抽测其中一组组合，就足以验证这条与运算规则": {
+          "misconceptionId": "U-any-one-enough",
+          "solo": "U",
+          "explain": "以偏概全"
+        }
+      },
+      "options": null,
+      "prompt": "展柜加湿规则：湿度低于40，并且柜门已关，才启动。要验证这条「与」规则，最小完备测试应包含哪一组？",
+      "remixFrom": "new:与运算四组完备测试＋阈值，博物馆展柜情境",
+      "remixNote": "挑战。",
+      "reverseDebug": true,
+      "section": "challenge",
+      "slots": [
+        "应选择的测试方案"
+      ],
+      "soloLevel": "EA",
+      "sourceId": "GC05",
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "stateTable": {
+        "caption": "规则",
+        "headers": [
+          "条件1",
+          "条件2",
+          "预期"
+        ],
+        "rows": [
+          [
+            "湿度低于40",
+            "柜门已关",
+            "启动加湿"
+          ]
+        ]
+      },
+      "teacherNote": "挑战流程图／方案点选。",
+      "tier": "challenge",
+      "type": "flowchart_op",
+      "whyInSyllabus": "第5课阈值＋第7课与运算，新情境展柜加湿，不写种植园自动控制、不写反馈。"
+    },
+    {
+      "analysis": "正确推导：第8课拓展将按钮与自动识别做成或的关系，任一为真杆应抬起。识别已通过而杆不抬，说明或运算未被执行（或被做成了与）。干扰项错因：用与解释、只承认一个输入、把故障说成正常或运算。回学：第8课拓展与提升。此为课内停车场升降杆，不是后续汽车巡线或电梯单元。",
+      "answer": "控制逻辑没有按或运算执行：已经有一个条件为真，却没有出现预期输出",
+      "appRef": null,
+      "ctTags": [
+        "验证优化",
+        "迁移运用"
+      ],
+      "difficultyEstimate": 0.7,
+      "estimatedMinutes": 1.3,
+      "examPoint": "在升降杆系统中诊断或运算未被执行的故障。",
+      "goalIds": [
+        "L8-G2",
+        "L8-G3",
+        "L8-D1"
+      ],
+      "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
+      "hasRecallImage": true,
+      "id": "GC06",
+      "interactionSpecKey": "single_choice",
+      "lesson": 8,
+      "lessonTitle": "开关量的或运算",
+      "literacy": [
+        "计算思维"
+      ],
+      "misconceptionMap": {
+        "或运算要求两个条件都为真，所以这次不抬是对的": {
+          "misconceptionId": "M-or-as-and",
+          "solo": "M",
+          "explain": "用与运算规则为错误输出辩护"
+        },
+        "车牌识别通过不能算一个条件，只有按钮才算": {
+          "misconceptionId": "U-only-button-counts",
+          "solo": "U",
+          "explain": "不承认第二种输入也是有效条件"
+        },
+        "按钮没按就不能再用识别，这正是正常的或运算": {
+          "misconceptionId": "M-or-reversed",
+          "solo": "M",
+          "explain": "把故障表现说成或运算的正常规则"
+        }
+      },
+      "options": [
+        "控制逻辑没有按或运算执行：已经有一个条件为真，却没有出现预期输出",
+        "或运算要求两个条件都为真，所以这次不抬是对的",
+        "车牌识别通过不能算一个条件，只有按钮才算",
+        "按钮没按就不能再用识别，这正是正常的或运算"
+      ],
+      "prompt": "停车场升降杆：按下值班按钮，或车牌识别通过，杆就抬起。记录：按钮没按，识别已通过，杆却不抬。最可能是什么问题？",
+      "recallCaption": "回想控制室右边的升降杆、按钮盒和识别器，杆还没抬起",
+      "recallImage": "assets/recall/GC06.webp",
+      "recallImageAnimated": false,
+      "recallImageMaxWidthPx": 800,
+      "recallImageMotionNote": null,
+      "recallImagePrompt": "课堂友好插画：车库入口升降杆，杆仍落下，前方有按钮盒和车牌识别器；不要标注「哪一个条件已经满足」的对勾或标准答案抬杆结果。no raised-barrier answer, no ticks. static. GPT优先，其次Gemini。",
+      "recallListItem": "第8课-5 现代控制室右侧·车库升降杆（杆前有按钮盒和车牌识别器）",
+      "recallSceneAnchor": "郑和远航·现代控制室升降杆",
+      "recallStillNote": "与GM37可共用控制室全景，但裁切焦点改为右侧升降杆；仍须避开已填真值表。",
+      "recallStillPath": "第8课 开关量的或运算/协作记录/2026-10-29_剧情与控制室联调/controlroom-supported-current.png",
+      "remixFrom": "new:教材L8拓展停车场升降杆排障",
+      "remixNote": "用新实测记录考或运算，不作超纲汽车题。",
+      "reverseDebug": true,
+      "section": "challenge",
+      "soloLevel": "R",
+      "sourceId": "GM24",
+      "stage": "challenge",
+      "stageId": "gate_bonus",
+      "stageName": "加分挑战关（可选）",
+      "stateTable": {
+        "caption": "实测",
+        "headers": [
+          "值班按钮",
+          "车牌识别",
+          "杆"
+        ],
+        "rows": [
+          [
+            "没有按下",
+            "已经通过",
+            "不抬"
+          ]
+        ]
+      },
+      "teacherNote": "老师已定：不进主卷，由 v0.1 主卷旧 GM24 全文改入挑战 GC06。回忆用控制室右侧升降杆，避开已填表。",
+      "tier": "challenge",
+      "type": "single_choice",
+      "whyInSyllabus": "对齐第8课G2/G3/D1及拓展「按钮或自动识别」。不是第七单元汽车、也不是电梯专元。"
+    }
+  ],
+  "resolvedConfirmations": [
+    "教学重难点两项继续按 K1／D1 编号，老师已同意。",
+    "第7课「回忆图可用体验馆／值日静帧，题面须全新」老师已同意，维持。",
+    "第8课「停车场升降杆」不放主卷，旧 GM24 全文改入挑战 GC06，老师已定。",
+    "题型仍以单选为主，不另造 4 套微系统，无填空，老师已同意。",
+    "主卷 40 题、同场约 35 分钟、留下题不压缩原文，老师已定（此处仅备查，不再作为待定项）。"
+  ]
+}

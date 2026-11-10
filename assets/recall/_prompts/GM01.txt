@@ -1,0 +1,1 @@
+2D课堂友好插画：昏暗教室/密室入口，灯、投影和播放器都关着，两名小学生探险搭档在墙边找开关，尚未按下；气氛略暗但能看清设备轮廓；无题干文字、无对勾、无选项字母、无正确答案黄框。cartoon dim classroom, soft colors, no text overlay, no answer cue. static. 优先GPT，其次Gemini。Win7 Chrome轻量。

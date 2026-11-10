@@ -1,0 +1,1 @@
+2D课堂友好插画：密室中一盏三色变光台灯，中央只有一颗按钮，灯罩呈中性光但不要标注「这就是第几种」；旁边不要写出完整状态循环或对勾。cartoon color-changing lamp, one button, no answer text. static. GPT优先，其次Gemini。
