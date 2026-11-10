@@ -1,0 +1,1 @@
+课堂友好插画：车库入口升降杆，杆仍落下，前方有按钮盒和车牌识别器；不要标注「哪一个条件已经满足」的对勾或标准答案抬杆结果。no raised-barrier answer, no ticks. static. GPT优先，其次Gemini。

@@ -1,0 +1,17 @@
+{
+  "name": "g6-midterm-explorer",
+  "private": true,
+  "version": "1.0.1",
+  "description": "六年级《过程与控制》期中 · 控制探秘营·八站通行证",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "postinstall": "npm --prefix client install",
+    "build": "npm --prefix client run build",
+    "start": "node --no-warnings server/index.cjs",
+    "dev:server": "DATA_DIR=./.data-test PORT=8830 node --no-warnings server/index.cjs",
+    "test:grade": "node --test server/grade.test.cjs",
+    "selftest": "node --no-warnings server/selftest.cjs"
+  }
+}
