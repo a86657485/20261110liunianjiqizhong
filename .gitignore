@@ -10,3 +10,5 @@ app/.data-test/
 screenshots/
 assets/recall/_downloads/
 drafts/_qa_*.json
+assets/recall/_previews/
+assets/recall/_held/*.webp
