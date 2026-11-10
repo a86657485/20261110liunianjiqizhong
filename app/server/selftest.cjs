@@ -150,6 +150,7 @@ async function main() {
       ['把四张步骤卡点选放入①②③④。未放入前不要给某一张卡加黄框或小手。', '把四张步骤卡点选放入①②③④。'],
       ['把卡片点选放入三个空槽，有一张卡用不上。未放入前不要给某一张卡或某一个槽加黄框。', '把卡片点选放入三个空槽，有一张卡用不上。'],
       ['点选一张测试方案卡放入槽中。未作答前不要给某一张卡加黄框或小手。', '点选一张测试方案卡放入槽中。'],
+      ['点选正确改法；未作答前不要给某一侧加黄框。', '点选正确改法。'],
     ];
     guideCases.forEach(([src, exp], i) => {
       ok('sanitize student guide ' + (i + 1), sanitizeStudentGuide(src) === exp, sanitizeStudentGuide(src));
@@ -162,6 +163,38 @@ async function main() {
       leftoverGuides.length === 0,
       leftoverGuides.map((q) => q.id).join(',')
     );
+
+    const allStageIds = full.stages.map((s) => s.stageId);
+    const unlockedAtLogin = login.json.progress.unlockedStageIds || [];
+    ok(
+      'login unlocks all eight main stages plus bonus',
+      allStageIds.every((id) => unlockedAtLogin.includes(id)) && unlockedAtLogin.length === allStageIds.length,
+      JSON.stringify(unlockedAtLogin)
+    );
+    const earlyGm15 = await req(port, 'POST', '/api/answer', {
+      studentId: s1.id,
+      questionId: 'GM15',
+      answer: fullById.GM15.answer,
+    });
+    ok('can answer GM15 before any stage is submitted', earlyGm15.status === 200, String(earlyGm15.status));
+    const earlyGm17 = await req(port, 'POST', '/api/answer', {
+      studentId: s1.id,
+      questionId: 'GM17',
+      answer: fullById.GM17.answer,
+    });
+    ok('can answer GM17 before any stage is submitted', earlyGm17.status === 200, String(earlyGm17.status));
+    const earlyGc05 = await req(port, 'POST', '/api/answer', {
+      studentId: s1.id,
+      questionId: 'GC05',
+      answer: fullById.GC05.answer,
+    });
+    ok('can answer GC05 before main stages are submitted', earlyGc05.status === 200, String(earlyGc05.status));
+    const earlyGm09 = await req(port, 'POST', '/api/answer', {
+      studentId: s1.id,
+      questionId: 'GM09',
+      answer: fullById.GM09.answer,
+    });
+    ok('can answer GM09 before stage 2 is submitted', earlyGm09.status === 200, String(earlyGm09.status));
 
     // Unlock independent of score: all-wrong stage 1 still unlocks stage 2; persist after "refresh"
     await req(port, 'POST', '/api/login', { studentId: s3.id });

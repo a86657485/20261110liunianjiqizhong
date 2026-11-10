@@ -175,23 +175,10 @@ function createService(options = {}) {
     return { answeredCount: answered, questionCount: stage.questionIds.length };
   }
 
-  function unlockedStageIds(state) {
-    const completed = new Set(state.stagesCompleted || []);
-    const out = [];
-    for (const s of paper.stages) {
-      if (s.unlockRule === 'start') {
-        out.push(s.stageId);
-        continue;
-      }
-      if (s.stageId === 'gate_bonus' || s.unlockRule === 'allMainStagesAnswered') {
-        const mains = paper.stages.filter((x) => x.required);
-        if (mains.every((m) => completed.has(m.stageId))) out.push(s.stageId);
-        continue;
-      }
-      const prev = paper.stages.find((x) => x.order === s.order - 1);
-      if (prev && completed.has(prev.stageId)) out.push(s.stageId);
-    }
-    return out;
+  function unlockedStageIds(_state) {
+    // 2026-11-10 老师：所有关卡一开始都打开，学生可自由选关答题。
+    // 不改题库 unlockRule 字段；提交本关仍须本关题全部作答，交主卷仍须八站都提交。
+    return paper.stages.map((s) => s.stageId);
   }
 
   function publicProgress(state) {

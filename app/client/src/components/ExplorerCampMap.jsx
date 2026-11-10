@@ -15,7 +15,7 @@ export default function ExplorerCampMap({
       <div className="card map-intro">
         <h2>探秘营站点地图 · 八站通行证</h2>
         <p className="muted" style={{ margin: 0 }}>
-          一站接一站闯关。本关题全部作答提交即可解锁下一站（不因分数卡关）。主卷 40
+          八个主站和加分挑战关一开始都可以进入，可自由选关、选题作答。每关题全部作答后才能提交本关（不因分数卡关）。主卷 40
           题，建议用时约 35 分钟。到时不强制锁死交卷。
         </p>
       </div>

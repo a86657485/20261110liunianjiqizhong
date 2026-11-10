@@ -113,6 +113,41 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   padding: 0 2px 2px;
   margin-top: 8px;
 }
+.stage-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  padding: 0 2px;
+}
+.q-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.q-jump-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: #fff;
+  color: var(--brand-dark);
+  font-weight: 700;
+}
+.q-jump-btn.current {
+  border-color: var(--brand);
+  background: var(--chip);
+}
+.q-jump-btn.done:not(.current) {
+  border-color: #99d6cc;
+}
+.slot-hint {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+}
 .login-shell .login-card { margin-top: 0; }
 .muted { color: var(--muted); }
 .panel-title { margin-top: 0; color: var(--brand-dark); }

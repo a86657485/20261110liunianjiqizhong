@@ -53,12 +53,26 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
   const used = new Set(Object.values(mapping));
 
   function place(card) {
-    const target = activeSlot || (slots || []).find((s) => !mapping[s]);
-    if (!target) return;
     const next = { ...mapping };
-    for (const k of Object.keys(next)) {
-      if (next[k] === card) delete next[k];
+    const currentSlot = Object.keys(next).find((k) => next[k] === card);
+    let target = activeSlot || (slots || []).find((s) => !next[s]);
+    if (!target) {
+      // All slots filled and none selected.
+      if (currentSlot) {
+        delete next[currentSlot];
+        onChange(next);
+        setActiveSlot(currentSlot);
+        return;
+      }
+      // One-slot items (e.g. GC05): clicking another card replaces the current one,
+      // so the student is not stuck with the first pick.
+      if ((slots || []).length === 1) {
+        target = slots[0];
+      } else {
+        return;
+      }
     }
+    if (currentSlot) delete next[currentSlot];
     next[target] = card;
     onChange(next);
     const idx = (slots || []).indexOf(target);
@@ -74,16 +88,25 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
     setActiveSlot(slot);
   }
 
+  function onSlotClick(slot) {
+    if (activeSlot === slot && mapping[slot]) {
+      clearSlot(slot);
+      return;
+    }
+    setActiveSlot(slot);
+  }
+
   return (
     <div>
       <GuideText text={guide || '先点下方空位，再点卡片放入。点空位上的内容可清除。'} />
+      <p className="muted slot-hint">点空位再点卡片放入；再点已放入的空位可取出，也可点已放入的卡片改放。</p>
       <div className="slots-row">
         {(slots || []).map((slot) => (
           <button
             key={slot}
             type="button"
             className={'slot-box' + (activeSlot === slot ? ' active' : '')}
-            onClick={() => (mapping[slot] ? clearSlot(slot) : setActiveSlot(slot))}
+            onClick={() => onSlotClick(slot)}
           >
             <div className="muted" style={{ fontSize: '0.75rem' }}>
               {slot}
@@ -99,7 +122,6 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
             type="button"
             className={'card-chip' + (used.has(card) ? ' used' : '')}
             onClick={() => place(card)}
-            disabled={used.has(card)}
           >
             {card}
           </button>
@@ -120,6 +142,9 @@ export default function QuestionView({
   pageTotal,
   onPrev,
   onNext,
+  onJump,
+  onBackMap,
+  answeredFlags,
   onSubmitStage,
   canSubmitStage,
   submitting,
@@ -218,19 +243,36 @@ export default function QuestionView({
 
   const showRecall = questionShowsRecall(question);
   const diagramVisual = question.diagram && question.diagram.visual;
-  const diagramNote = question.diagram && question.diagram.note;
+  const diagramNote = sanitizeStudentGuide(question.diagram && question.diagram.note);
 
   return (
     <div className={'card question-page page-fill' + (showRecall ? '' : ' question-page--no-recall')}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' }}>
+      <div className="stage-toolbar">
+        <button type="button" className="btn-ghost" onClick={onBackMap}>
+          回到探秘营地图
+        </button>
         <StageProgressChip
           stageName={stageName}
           answeredCount={answeredCount}
           questionCount={questionCount}
         />
-        <span className="chip">
-          第 {pageIndex + 1}/{pageTotal} 题
-        </span>
+        <div className="q-jump" role="navigation" aria-label="本关题目">
+          {Array.from({ length: pageTotal }, (_, i) => (
+            <button
+              key={i}
+              type="button"
+              className={
+                'q-jump-btn' +
+                (i === pageIndex ? ' current' : '') +
+                (answeredFlags && answeredFlags[i] ? ' done' : '')
+              }
+              onClick={() => onJump && onJump(i)}
+              aria-current={i === pageIndex ? 'page' : undefined}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
       </div>
       <div style={{ height: 6 }} />
       <div className={'qa-stack' + (showRecall ? '' : ' qa-stack--no-recall')}>
@@ -255,16 +297,15 @@ export default function QuestionView({
           <button type="button" className="btn-primary" onClick={onNext}>
             下一题
           </button>
-        ) : (
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={onSubmitStage}
-            disabled={!canSubmitStage || submitting}
-          >
-            {submitting ? '提交中…' : '提交本关'}
-          </button>
-        )}
+        ) : null}
+        <button
+          type="button"
+          className="btn-primary"
+          onClick={onSubmitStage}
+          disabled={!canSubmitStage || submitting}
+        >
+          {submitting ? '提交中…' : '提交本关'}
+        </button>
       </div>
     </div>
   );

@@ -387,7 +387,15 @@ function StudentApp() {
 
   function enterStage(node) {
     setActiveStageId(node.stageId);
-    setPageIndex(0);
+    const ids = node.questionIds || [];
+    let start = 0;
+    for (let i = 0; i < ids.length; i++) {
+      if (!answeredEnough(localAnswers[ids[i]], qById[ids[i]])) {
+        start = i;
+        break;
+      }
+    }
+    setPageIndex(start);
     setClearFeedback('');
     setError('');
     setView('stage');
@@ -533,6 +541,12 @@ function StudentApp() {
           pageTotal={stageQuestions.length}
           onPrev={() => setPageIndex((i) => Math.max(0, i - 1))}
           onNext={() => setPageIndex((i) => Math.min(stageQuestions.length - 1, i + 1))}
+          onJump={(i) => setPageIndex(i)}
+          onBackMap={() => {
+            setView('map');
+            setError('');
+          }}
+          answeredFlags={stageQuestions.map((q) => answeredEnough(localAnswers[q.id], q))}
           onSubmitStage={
             activeStage && activeStage.stageId === 'gate_bonus' ? submitChallenge : submitStage
           }
@@ -557,7 +571,7 @@ function StudentApp() {
 
       {view === 'map' ? (
         <p className="muted" style={{ marginTop: 8, fontSize: '0.8rem' }}>
-          到时不强制锁死交卷。关内可改选至本关提交。学生端不显示答案与解析。
+          所有关卡一开始即可进入，可自由选关、跳题作答。关内可改选至本关提交。学生端不显示答案与解析。
         </p>
       ) : null}
     </div>

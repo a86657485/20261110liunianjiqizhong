@@ -6,7 +6,7 @@ export function sanitizeStudentGuide(text) {
   if (text == null) return '';
   const raw = String(text).trim();
   if (!raw) return '';
-  const parts = raw.split(/(?<=[。！？.!?])\s*/);
+  const parts = raw.split(/(?<=[。！？.!?；;])\s*/);
   const kept = [];
   for (const part of parts) {
     const t = part.trim();
@@ -16,5 +16,5 @@ export function sanitizeStudentGuide(text) {
     if (mentionsHighlight && isConstraint) continue;
     kept.push(t);
   }
-  return kept.join('');
+  return kept.join('').replace(/[；;]+$/g, '。');
 }
