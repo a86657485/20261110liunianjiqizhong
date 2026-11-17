@@ -36,3 +36,21 @@
 | 回忆插图真图 | 17 张成品尚未放到 `assets/recall/{id}.webp`；学生端为中性占位＋caption |
 | 读屏／无障碍专项 | 未做 |
 | 默认端口 | 文档与默认启动为 **8830**（建议的 8790 已被系统隧道占用） |
+
+## 2026-11-17 版面回归
+
+`tools/qa-layout.cjs` 检查无图题高度分配，以及初始、已交主卷、先交挑战、全部完成、跳过挑战五种地图状态。脚本覆盖 1024×768、1280×720、1366×768、1920×1080，逐题核查布局和17张回忆图，逐站滚动并正常点击九个入口。
+
+该脚本自行建立临时数据库、合成名单和随机测试端口，结束后清理。地图成绩状态由 API 测试夹具构造；它不替代完整 UI 作答与持久化检测，也不代表 Win7 实机测试。
+
+```bash
+npm --prefix app/client ci
+npm --prefix app run build
+npm install --prefix /tmp/g6-layout-qa-runtime playwright-core@1.29.0
+NODE_PATH=/tmp/g6-layout-qa-runtime/node_modules \
+CHROME_PATH=/path/to/Chromium109 \
+QA_OUTPUT_DIR=/tmp/g6-layout-qa-results \
+node --no-warnings tools/qa-layout.cjs
+```
+
+`CHROME_PATH` 指向实际浏览器可执行文件。结果 JSON 记录真实 CDP 版本，截图和 `results.json` 写入 `QA_OUTPUT_DIR`；结果存在失败时进程以非零状态退出。
