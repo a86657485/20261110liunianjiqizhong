@@ -6,7 +6,6 @@
  */
 const http = require('node:http');
 const fs = require('node:fs');
-const os = require('node:os');
 const path = require('node:path');
 const { isIP } = require('node:net');
 const { DatabaseSync } = require('node:sqlite');
@@ -251,19 +250,6 @@ function createService(options = {}) {
     if (state.mainSubmitted) fail(409, '本卷已交卷，不能再次作答');
   }
 
-  // 删除成绩属破坏性操作，仅允许教师机本机（127.0.0.1 或本机网卡地址）
-  const LOCAL_ADDRS = new Set(['127.0.0.1', '::1']);
-  for (const list of Object.values(os.networkInterfaces())) {
-    for (const a of list || []) {
-      if (a && a.address) LOCAL_ADDRS.add(String(a.address).replace(/^::ffff:/i, '').split('%')[0].toLowerCase());
-    }
-  }
-
-  function localOnlyGuard(req) {
-    const ip = (req.socket.remoteAddress || '').replace(/^::ffff:/i, '').split('%')[0].toLowerCase();
-    if (!LOCAL_ADDRS.has(ip)) fail(403, '删除成绩仅限教师机本机操作');
-  }
-
   function checkOrigin(req) {
     if (req.headers['sec-fetch-site'] === 'cross-site') fail(403, '请从本课堂网址直接操作');
     if (req.headers.origin) {
@@ -446,7 +432,6 @@ function createService(options = {}) {
     }
 
     if (req.method === 'POST' && route === '/api/teacher/reset') {
-      localOnlyGuard(req);
       const body = await readBody(req);
       const ids = Array.isArray(body.studentIds)
         ? [...new Set(body.studentIds.map(String).filter(Boolean))]
@@ -462,6 +447,14 @@ function createService(options = {}) {
         removed += Number(r.changes || 0);
         valid.push(id);
       }
+      // 删除审计：记录操作者 IP、人数与学生 ID，便于追查
+      try {
+        const ip = (req.socket.remoteAddress || '').replace(/^::ffff:/i, '');
+        fs.appendFileSync(
+          path.join(dataDir, 'deletions.log'),
+          JSON.stringify({ at: now(), ip, removed, studentIds: valid }) + '\n'
+        );
+      } catch {}
       return json(res, 200, { ok: true, removed, studentIds: valid });
     }
 

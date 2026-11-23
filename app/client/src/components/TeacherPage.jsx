@@ -163,7 +163,7 @@ export default function TeacherPage() {
     <div className="app-shell teacher-shell">
       <div className="topbar">
         <div className="brand">教师大屏 · 控制探秘营诊断</div>
-        <div className="chip">免密 · 仅局域网 · 删除仅限本机</div>
+        <div className="chip">免密 · 仅局域网 · 删除需二次确认</div>
       </div>
 
       <div className="card" style={{ marginBottom: 12 }}>
@@ -354,7 +354,7 @@ export default function TeacherPage() {
           </table>
         </div>
         <p className="muted" style={{ marginBottom: 0 }}>
-          不设达标线；点击表头可排序，无记录学生始终排在最后。按课／题型／素养正确率仅供教师诊断，不卡学生。学生端不下发答案。更新于{' '}
+          不设达标线；点击表头可排序，无记录学生始终排在最后。删除会清除作答记录并写入审计日志（操作者 IP、人数、学生）。按课／题型／素养正确率仅供教师诊断，不卡学生。学生端不下发答案。更新于{' '}
           {data && data.updatedAt}
         </p>
       </div>
