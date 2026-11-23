@@ -482,6 +482,25 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   white-space: pre-wrap;
   flex: 0 0 auto;
 }
+.flowchart {
+  margin: 0 0 12px;
+  padding: 8px 12px 6px;
+  border: 2px dashed #5eead4;
+  border-radius: 12px;
+  background: #f8fffd;
+  flex: 0 0 auto;
+}
+.flowchart-head { display: flex; justify-content: flex-end; margin: 2px 0 2px; }
+.flowchart-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--brand-dark);
+  background: #ccfbf1;
+  border-radius: 999px;
+  padding: 2px 9px;
+  letter-spacing: 0.04em;
+}
+.flowchart svg { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto; }
 .state-table-wrap {
   margin: 0 0 12px;
   flex: 0 0 auto;
@@ -540,6 +559,18 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .option-btn:not(.picked) { box-shadow: none; }
 
 .slots-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.slots-row--flow { flex-wrap: nowrap; align-items: stretch; overflow-x: auto; justify-content: center; }
+.slots-row--flow .slot-box { flex: 1 1 0; min-width: 96px; max-width: 300px; }
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--brand);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
 .slot-box {
   min-width: 120px;
   min-height: 48px;

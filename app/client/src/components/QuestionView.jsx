@@ -1,7 +1,9 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { Fragment, useMemo, useState, useEffect } from 'react';
 import RecallPanel from './RecallPanel.jsx';
 import StageProgressChip from './StageProgressChip.jsx';
 import StateTable from './StateTable.jsx';
+import FlowchartView from './FlowchartView.jsx';
+import { FLOWCHARTS } from '../lib/flowchartSpecs.js';
 import { sanitizeStudentGuide } from '../lib/sanitizeStudentGuide.js';
 
 /**
@@ -100,19 +102,23 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
     <div>
       <GuideText text={guide || '先点下方空位，再点卡片放入。点空位上的内容可清除。'} />
       <p className="muted slot-hint">点空位再点卡片放入；再点已放入的空位可取出，也可点已放入的卡片改放。</p>
-      <div className="slots-row">
-        {(slots || []).map((slot) => (
-          <button
-            key={slot}
-            type="button"
-            className={'slot-box' + (activeSlot === slot ? ' active' : '')}
-            onClick={() => onSlotClick(slot)}
-          >
-            <div className="muted" style={{ fontSize: '0.75rem' }}>
-              {slot}
-            </div>
-            <div>{mapping[slot] || '（空）'}</div>
-          </button>
+      <div className={'slots-row' + ((slots || []).length > 1 ? ' slots-row--flow' : '')}>
+        {(slots || []).map((slot, i) => (
+          <Fragment key={slot}>
+            <button
+              type="button"
+              className={'slot-box' + (activeSlot === slot ? ' active' : '')}
+              onClick={() => onSlotClick(slot)}
+            >
+              <div className="muted" style={{ fontSize: '0.75rem' }}>
+                {slot}
+              </div>
+              <div>{mapping[slot] || '（空）'}</div>
+            </button>
+            {i < (slots || []).length - 1 ? (
+              <span className="flow-arrow" aria-hidden="true">→</span>
+            ) : null}
+          </Fragment>
         ))}
       </div>
       <div className="cards-row">
@@ -242,7 +248,9 @@ export default function QuestionView({
   if (!question) return null;
 
   const showRecall = questionShowsRecall(question);
+  const flowSpec = FLOWCHARTS[question.id];
   const diagramVisual = question.diagram && question.diagram.visual;
+  const flowSlots = key === 'flowchart_fill_slots' || key === 'flowchart_order_cards' || key === 'flowchart_pick_plan';
   const diagramNote = sanitizeStudentGuide(question.diagram && question.diagram.note);
 
   return (
@@ -279,8 +287,9 @@ export default function QuestionView({
         {showRecall ? <RecallPanel question={question} /> : null}
         <div className="qa-body">
           <div className="scene-prompt">{question.prompt}</div>
-          <StateTable table={question.stateTable} />
-          {diagramVisual ? <div className="state-board">{diagramVisual}</div> : null}
+          {flowSpec ? null : <StateTable table={question.stateTable} />}
+          {flowSpec ? <FlowchartView spec={flowSpec} /> : null}
+          {!flowSpec && diagramVisual && !flowSlots ? <div className="state-board">{diagramVisual}</div> : null}
           {diagramNote ? (
             <p className="muted" style={{ marginTop: 0 }}>
               {diagramNote}
