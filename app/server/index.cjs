@@ -6,6 +6,7 @@
  */
 const http = require('node:http');
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const { isIP } = require('node:net');
 const { DatabaseSync } = require('node:sqlite');
@@ -250,6 +251,19 @@ function createService(options = {}) {
     if (state.mainSubmitted) fail(409, '本卷已交卷，不能再次作答');
   }
 
+  // 删除成绩属破坏性操作，仅允许教师机本机（127.0.0.1 或本机网卡地址）
+  const LOCAL_ADDRS = new Set(['127.0.0.1', '::1']);
+  for (const list of Object.values(os.networkInterfaces())) {
+    for (const a of list || []) {
+      if (a && a.address) LOCAL_ADDRS.add(String(a.address).replace(/^::ffff:/i, '').split('%')[0].toLowerCase());
+    }
+  }
+
+  function localOnlyGuard(req) {
+    const ip = (req.socket.remoteAddress || '').replace(/^::ffff:/i, '').split('%')[0].toLowerCase();
+    if (!LOCAL_ADDRS.has(ip)) fail(403, '删除成绩仅限教师机本机操作');
+  }
+
   function checkOrigin(req) {
     if (req.headers['sec-fetch-site'] === 'cross-site') fail(403, '请从本课堂网址直接操作');
     if (req.headers.origin) {
@@ -429,6 +443,26 @@ function createService(options = {}) {
 
     if (req.method === 'GET' && route === '/api/teacher') {
       return json(res, 200, teacherData(url.searchParams.get('classId')));
+    }
+
+    if (req.method === 'POST' && route === '/api/teacher/reset') {
+      localOnlyGuard(req);
+      const body = await readBody(req);
+      const ids = Array.isArray(body.studentIds)
+        ? [...new Set(body.studentIds.map(String).filter(Boolean))]
+        : [];
+      if (!ids.length) fail(400, '请先选择要删除的学生');
+      if (ids.length > 400) fail(400, '一次最多删除 400 名学生的成绩');
+      const del = db.prepare('DELETE FROM states WHERE studentId=?');
+      let removed = 0;
+      const valid = [];
+      for (const id of ids) {
+        if (!studentById(id)) continue;
+        const r = del.run(id);
+        removed += Number(r.changes || 0);
+        valid.push(id);
+      }
+      return json(res, 200, { ok: true, removed, studentIds: valid });
     }
 
     if (req.method === 'POST' && route === '/api/login') {
@@ -655,7 +689,8 @@ function createService(options = {}) {
 
   const distDir = path.join(BASE, 'client', 'dist');
   const publicDir = path.join(BASE, 'public');
-  const workspaceAssetsDir = path.join(BASE, '..');
+  // 只开放学科素材目录 repo/assets（回忆插图），不得把整个仓库根暴露为静态目录
+  const workspaceAssetsDir = path.join(BASE, '..', 'assets');
 
   const server = http.createServer(async (req, res) => {
     try {
@@ -668,10 +703,17 @@ function createService(options = {}) {
       }
 
       const safeJoin = (root, rel) => {
-        const p = path.normalize(path.join(root, rel));
-        if (!p.startsWith(root)) return null;
+        const p = path.resolve(root, '.' + rel);
+        if (p !== root && !p.startsWith(root + path.sep)) return null;
         return p;
       };
+
+      // 禁止任何形式的上级目录穿越（含 %2e%2e%2f、反斜杠）
+      if (route.includes('..') || route.includes('\\')) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('Not Found');
+        return;
+      }
 
       if (route.startsWith('/assets/')) {
         const p1 = safeJoin(distDir, route);

@@ -3,6 +3,7 @@ import { api } from './lib/api.js';
 import ExplorerCampMap from './components/ExplorerCampMap.jsx';
 import StageClearBanner from './components/StageClearBanner.jsx';
 import QuestionView from './components/QuestionView.jsx';
+import TeacherPage from './components/TeacherPage.jsx';
 
 const CLASS_IDS = ['601', '602', '603', '604', '605', '606'];
 
@@ -199,144 +200,6 @@ function ResultPanel({ progress, onMap, onChallenge, onSkipChallenge, onSubmitMa
             </button>
           </>
         ) : null}
-      </div>
-    </div>
-  );
-}
-
-function fmtDiag(map) {
-  if (!map) return '—';
-  const keys = Object.keys(map).sort();
-  if (!keys.length) return '—';
-  return keys.map((k) => k + ':' + map[k].correct + '/' + map[k].total).join(' ');
-}
-
-function TeacherPage() {
-  const [classId, setClassId] = useState('');
-  const [data, setData] = useState(null);
-  const [error, setError] = useState('');
-
-  const load = useCallback(() => {
-    api
-      .teacher(classId || null)
-      .then(setData)
-      .catch((e) => setError(e.message));
-  }, [classId]);
-
-  useEffect(() => {
-    load();
-    const t = setInterval(load, 8000);
-    return () => clearInterval(t);
-  }, [load]);
-
-  return (
-    <div className="app-shell teacher-shell">
-      <div className="topbar">
-        <div className="brand">教师大屏 · 控制探秘营诊断</div>
-        <div className="chip">免密 · 仅局域网</div>
-      </div>
-      <div className="card" style={{ marginBottom: 12 }}>
-        <div className="class-pills">
-          <button
-            type="button"
-            className={'class-pill' + (!classId ? ' active' : '')}
-            onClick={() => setClassId('')}
-          >
-            全年级
-          </button>
-          {CLASS_IDS.map((id) => (
-            <button
-              key={id}
-              type="button"
-              className={'class-pill' + (classId === id ? ' active' : '')}
-              onClick={() => setClassId(id)}
-            >
-              {id}
-            </button>
-          ))}
-          <button type="button" className="btn-ghost" onClick={load}>
-            刷新
-          </button>
-        </div>
-        {data ? (
-          <div className="stat-row">
-            <div className="stat">
-              <span className="muted">进入</span>
-              <b>
-                {data.entered}/{data.denominator}
-              </b>
-            </div>
-            <div className="stat">
-              <span className="muted">主卷已交</span>
-              <b>{data.mainSubmitted}</b>
-            </div>
-            <div className="stat">
-              <span className="muted">主卷均分</span>
-              <b>{data.avgMainPercent != null ? data.avgMainPercent : '—'}</b>
-            </div>
-            <div className="stat">
-              <span className="muted">主卷题量</span>
-              <b>{data.mainQuestionCount != null ? data.mainQuestionCount : '—'}</b>
-            </div>
-            <div className="stat">
-              <span className="muted">命题</span>
-              <b style={{ fontSize: '0.85rem' }}>{data.paperVersion}</b>
-            </div>
-          </div>
-        ) : null}
-        {data && data.diagnostics ? (
-          <div className="diag-block">
-            <p>
-              <b>按课：</b>
-              {fmtDiag(data.diagnostics.byLesson)}
-            </p>
-            <p>
-              <b>按题型：</b>
-              {fmtDiag(data.diagnostics.byType)}
-            </p>
-            <p>
-              <b>按素养：</b>
-              {fmtDiag(data.diagnostics.byLiteracy)}
-            </p>
-          </div>
-        ) : null}
-        {error ? <div className="error-box">{error}</div> : null}
-      </div>
-      <div className="card" style={{ overflow: 'auto', maxHeight: '62vh' }}>
-        <table className="teacher-table">
-          <thead>
-            <tr>
-              <th>班</th>
-              <th>姓名</th>
-              <th>进入</th>
-              <th>通关站</th>
-              <th>主卷%</th>
-              <th>挑战+</th>
-              <th>分课</th>
-              <th>题型</th>
-              <th>素养</th>
-            </tr>
-          </thead>
-          <tbody>
-            {(data && data.students ? data.students : []).map((s) => (
-              <tr key={s.id}>
-                <td>{s.classId}</td>
-                <td>{s.name}</td>
-                <td>{s.entered ? '是' : '否'}</td>
-                <td>{s.stagesCompleted}</td>
-                <td>{s.mainPercent != null ? s.mainPercent : '—'}</td>
-                <td>{s.challengeBonus != null ? s.challengeBonus : '—'}</td>
-                <td>{fmtDiag(s.byLesson)}</td>
-                <td>{fmtDiag(s.byType)}</td>
-                <td>{fmtDiag(s.byLiteracy)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p className="muted" style={{ marginBottom: 0 }}>
-          不设达标线；按课／题型／素养正确率仅供教师诊断，不卡学生。学生端不下发答案。更新于{' '}
-          {data && data.updatedAt}
-        </p>
       </div>
     </div>
   );
@@ -576,6 +439,7 @@ function StudentApp() {
           canSubmitStage={stageQuestions.length > 0}
           submitting={submitting}
           locked={activeStageClosed}
+          seed={student.id}
         />
       ) : null}
 

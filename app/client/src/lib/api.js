@@ -21,6 +21,8 @@ export const api = {
   state: (studentId) => req('/api/state?studentId=' + encodeURIComponent(studentId)),
   teacher: (classId) =>
     req('/api/teacher' + (classId ? '?classId=' + encodeURIComponent(classId) : '')),
+  teacherReset: (studentIds) =>
+    req('/api/teacher/reset', { method: 'POST', body: JSON.stringify({ studentIds }) }),
   login: (body) => req('/api/login', { method: 'POST', body: JSON.stringify(body) }),
   answer: (body) => req('/api/answer', { method: 'POST', body: JSON.stringify(body) }),
   submitStage: (body) => req('/api/stage/submit', { method: 'POST', body: JSON.stringify(body) }),

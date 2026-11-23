@@ -4,6 +4,7 @@ import StageProgressChip from './StageProgressChip.jsx';
 import StateTable from './StateTable.jsx';
 import FlowchartView from './FlowchartView.jsx';
 import { FLOWCHARTS } from '../lib/flowchartSpecs.js';
+import { seededShuffle } from '../lib/shuffle.js';
 import { sanitizeStudentGuide } from '../lib/sanitizeStudentGuide.js';
 
 /**
@@ -161,8 +162,19 @@ export default function QuestionView({
   canSubmitStage,
   submitting,
   locked,
+  seed,
 }) {
   const key = (question && (question.interactionSpecKey || question.type)) || '';
+
+  // 选项/卡片按「学生+题号」确定性打乱，避免全选同一位置
+  const displayOptions = useMemo(
+    () => (question && question.options ? seededShuffle(question.options, `${seed}:${question.id}:o`) : null),
+    [question, seed]
+  );
+  const displayCards = useMemo(
+    () => (question && question.cards ? seededShuffle(question.cards, `${seed}:${question.id}:c`) : null),
+    [question, seed]
+  );
 
   const body = useMemo(() => {
     if (!question) return null;
@@ -174,7 +186,7 @@ export default function QuestionView({
             <GuideText text={guide} />
             <ChoiceOptions
               key={question.id}
-              options={question.options}
+              options={displayOptions}
               value={value}
               onChange={onChange}
               disabled={locked}
@@ -186,7 +198,7 @@ export default function QuestionView({
           <div>
             <GuideText text={guide} />
             <ChoiceOptions
-              options={question.options || question.cards}
+              options={displayOptions || displayCards}
               value={value}
               onChange={onChange}
               disabled={locked}
@@ -197,7 +209,7 @@ export default function QuestionView({
         return (
           <OrderCardsView
             key={question.id}
-            cards={question.cards || question.options}
+            cards={displayCards || displayOptions}
             slots={question.slots || ['应选择的测试方案']}
             value={typeof value === 'object' && value ? value : {}}
             onChange={onChange}
@@ -209,7 +221,7 @@ export default function QuestionView({
         return (
           <OrderCardsView
             key={question.id}
-            cards={question.cards}
+            cards={displayCards}
             slots={question.slots}
             value={value || {}}
             onChange={onChange}
@@ -221,7 +233,7 @@ export default function QuestionView({
         return (
           <OrderCardsView
             key={question.id}
-            cards={question.cards}
+            cards={displayCards}
             slots={question.slots}
             value={value || {}}
             onChange={onChange}
@@ -235,7 +247,7 @@ export default function QuestionView({
             <div>
               <GuideText text={guide} />
               <ChoiceOptions
-                options={question.options}
+                options={displayOptions}
                 value={value}
                 onChange={onChange}
                 disabled={locked}
@@ -246,7 +258,7 @@ export default function QuestionView({
         if (question.cards && question.slots) {
           return (
             <OrderCardsView
-              cards={question.cards}
+              cards={displayCards}
               slots={question.slots}
               value={value || {}}
               onChange={onChange}
@@ -257,7 +269,7 @@ export default function QuestionView({
         }
         return <p className="error-box">暂不支持的交互：{key}</p>;
     }
-  }, [question, key, value, onChange, locked]);
+  }, [question, key, value, onChange, locked, displayOptions, displayCards]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
