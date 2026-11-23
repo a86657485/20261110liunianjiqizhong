@@ -1,12 +1,16 @@
 import React from 'react';
 
-export default function StageNode({ node, onEnter }) {
-  const locked = !node.unlocked;
+export default function StageNode({ node, onEnter, closed, closedLabel }) {
+  const locked = !!closed || !node.unlocked;
   const done = node.completed;
   let statusClass = 'status-locked';
   let statusText = '未解锁';
   let nodeClass = 'stage-node locked';
-  if (done) {
+  if (closed) {
+    statusClass = 'status-closed';
+    statusText = closedLabel || '已结束';
+    nodeClass = 'stage-node completed closed';
+  } else if (done) {
     statusClass = 'status-done';
     statusText = '已通关';
     nodeClass = 'stage-node completed';

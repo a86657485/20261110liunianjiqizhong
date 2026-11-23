@@ -294,6 +294,8 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .stage-node h3 { margin: 4px 0 6px; font-size: 1rem; }
 .stage-node .status { font-size: 0.8rem; font-weight: 700; }
 .status-locked { color: var(--lock); }
+.status-closed { color: var(--lock); }
+.stage-node.closed { opacity: 0.72; border-color: #cbd5e1; background: #f8fafc; }
 .status-open { color: var(--brand-dark); }
 .status-done { color: var(--ok); }
 

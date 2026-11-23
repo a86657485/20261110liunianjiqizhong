@@ -153,6 +153,11 @@ function ResultPanel({ progress, onMap, onChallenge, onSkipChallenge, onSubmitMa
   return (
     <div className="card">
       <h2 className="panel-title">闯关结果</h2>
+      {progress.mainSubmitted ? (
+        <p className="muted" style={{ marginTop: 0 }}>
+          本卷已交卷，整卷锁定，不能再次作答；成绩以首次交卷为准。
+        </p>
+      ) : null}
       {mainPending ? (
         <p className="muted" style={{ marginTop: 0 }}>
           先做挑战不会自动交主卷。主卷百分要点「提交主卷」后才计入。
@@ -386,6 +391,11 @@ function StudentApp() {
   }
 
   function enterStage(node) {
+    const closed =
+      node.stageId === 'gate_bonus'
+        ? !!(progress && (progress.challengeSubmitted || progress.challengeSkipped))
+        : !!(progress && progress.mainSubmitted);
+    if (closed) return;
     setActiveStageId(node.stageId);
     // 地图节点（progress.stageProgress）不带题目列表，需从试卷定义取，才能定位首个未答题
     const stageDef = paper && paper.stages ? paper.stages.find((s) => s.stageId === node.stageId) : null;
@@ -484,6 +494,13 @@ function StudentApp() {
   const showResultOnMap =
     progress && (progress.mainSubmitted || progress.challengeSubmitted || progress.challengeSkipped);
 
+  const activeStageClosed = !!(
+    activeStage &&
+    (activeStage.stageId === 'gate_bonus'
+      ? progress && (progress.challengeSubmitted || progress.challengeSkipped)
+      : progress && progress.mainSubmitted)
+  );
+
   return (
     <div className="app-shell">
       <div className="topbar">
@@ -502,6 +519,8 @@ function StudentApp() {
           onSubmitMain={submitMain}
           mainReady={progress && progress.mainReady}
           mainSubmitted={progress && progress.mainSubmitted}
+          challengeSubmitted={progress && progress.challengeSubmitted}
+          challengeSkipped={progress && progress.challengeSkipped}
         />
       ) : null}
 
@@ -535,7 +554,9 @@ function StudentApp() {
         <QuestionView
           question={currentQ}
           value={localAnswers[currentQ.id]}
-          onChange={(ans) => saveAnswer(currentQ.id, ans)}
+          onChange={(ans) => {
+            if (!activeStageClosed) saveAnswer(currentQ.id, ans);
+          }}
           stageName={activeStage && activeStage.stageName}
           answeredCount={stageAnsweredCount}
           questionCount={stageQuestions.length}
@@ -554,6 +575,7 @@ function StudentApp() {
           }
           canSubmitStage={stageQuestions.length > 0}
           submitting={submitting}
+          locked={activeStageClosed}
         />
       ) : null}
 

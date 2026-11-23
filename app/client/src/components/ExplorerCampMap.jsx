@@ -7,28 +7,43 @@ export default function ExplorerCampMap({
   onSubmitMain,
   mainReady,
   mainSubmitted,
+  challengeSubmitted,
+  challengeSkipped,
 }) {
   const mainNodes = (stageProgress || []).filter((n) => n.required !== false);
   const bonusNodes = (stageProgress || []).filter((n) => n.required === false);
+  const bonusClosed = !!(challengeSubmitted || challengeSkipped);
   return (
     <div className="map-page page-fill">
       <div className="card map-intro">
         <h2>探秘营站点地图 · 八站通行证</h2>
         <p className="muted" style={{ margin: 0 }}>
           八个主站和加分挑战关一开始都可以进入，可自由选关、选题作答。题目不设必做，未答完也可随时提交本关；
-          未作答按答错计分（不因分数卡关）。主卷 40 题。
+          未作答按答错计分（不因分数卡关）。主卷 40 题。交卷后整卷锁定，不能再次作答。
         </p>
       </div>
       <div className="camp-trail">
         <div className="carnival-map explorer-map">
           {mainNodes.map((n) => (
-            <StageNode key={n.stageId} node={n} onEnter={onEnter} />
+            <StageNode
+              key={n.stageId}
+              node={n}
+              onEnter={onEnter}
+              closed={!!mainSubmitted}
+              closedLabel="已交卷"
+            />
           ))}
         </div>
         {bonusNodes.length ? (
           <div className="bonus-row">
             {bonusNodes.map((n) => (
-              <StageNode key={n.stageId} node={n} onEnter={onEnter} />
+              <StageNode
+                key={n.stageId}
+                node={n}
+                onEnter={onEnter}
+                closed={bonusClosed}
+                closedLabel={challengeSubmitted ? '已提交' : '已跳过'}
+              />
             ))}
           </div>
         ) : null}

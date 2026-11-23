@@ -294,20 +294,35 @@ async function main() {
       JSON.stringify({ percent: typMain.json.percent, correct: typMain.json.correct, total: typMain.json.total })
     );
 
-    // First-submit lock: fix a previously wrong stage and resubmit; first stays 75, recent rises
+    // 2026-11-23 一份试卷只作答一次：主卷交卷后不可改答、不可重交
     const lastStage = stages[stages.length - 1];
     const flipped = {};
     for (const qid of lastStage.questionIds) flipped[qid] = fullById[qid].answer;
-    await req(port, 'POST', '/api/stage/submit', {
+    const stageAfterLock = await req(port, 'POST', '/api/stage/submit', {
       studentId: s2.id,
       stageId: lastStage.stageId,
       answers: flipped,
     });
+    ok(
+      'stage submit blocked after main submit',
+      stageAfterLock.status === 409,
+      JSON.stringify({ status: stageAfterLock.status, error: stageAfterLock.json.error })
+    );
+    const answerAfterLock = await req(port, 'POST', '/api/answer', {
+      studentId: s2.id,
+      questionId: lastStage.questionIds[0],
+      answer: flipped[lastStage.questionIds[0]],
+    });
+    ok(
+      'answer blocked after main submit',
+      answerAfterLock.status === 409,
+      JSON.stringify({ status: answerAfterLock.status, error: answerAfterLock.json.error })
+    );
     const typAgain = await req(port, 'POST', '/api/main/submit', { studentId: s2.id });
     ok(
-      'first-submit percent locked at 75',
-      typAgain.status === 200 && typAgain.json.percent === 75 && typAgain.json.recentPercent === 88,
-      JSON.stringify({ first: typAgain.json.percent, recent: typAgain.json.recentPercent })
+      'main resubmit blocked',
+      typAgain.status === 409,
+      JSON.stringify({ status: typAgain.status, error: typAgain.json.error })
     );
 
     const main = await req(port, 'POST', '/api/main/submit', { studentId: s0.id });
@@ -336,7 +351,7 @@ async function main() {
     });
     ok('challenge 5/6 already +10', ch5.status === 200 && ch5.json.bonus === 10 && ch5.json.correct === 5, String(ch5.json.bonus));
 
-    // resubmit all 6 correct: first bonus stays 10
+    // resubmit all 6 correct: challenge is one attempt, must be blocked
     const allCorrect = {};
     for (const qid of bonus.questionIds) allCorrect[qid] = fullById[qid].answer;
     const ch6 = await req(port, 'POST', '/api/challenge/submit', {
@@ -344,9 +359,9 @@ async function main() {
       answers: allCorrect,
     });
     ok(
-      'challenge first bonus locked at 10 when 6th later correct',
-      ch6.status === 200 && ch6.json.bonus === 10,
-      JSON.stringify({ first: ch6.json.bonus, recent: ch6.json.recentBonus, correctFirst: ch6.json.correct })
+      'challenge resubmit blocked (one attempt)',
+      ch6.status === 409,
+      JSON.stringify({ status: ch6.status, error: ch6.json.error })
     );
 
     // GM15 via API: student who only uses acceptAlternate should be counted correct in a dedicated check

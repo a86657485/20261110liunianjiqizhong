@@ -237,6 +237,19 @@ function createService(options = {}) {
     }
   }
 
+  /**
+   * 一份试卷只作答一次：断线/刷新可继续，交卷后锁定。
+   * 主卷交卷后主站不可再答题；挑战关提交或跳过后不可再答题。
+   */
+  function assertPaperWritable(state, stageId) {
+    if (stageId === 'gate_bonus') {
+      if (state.challengeSubmitted) fail(409, '挑战关已提交，本卷不能再次作答');
+      if (state.challengeSkipped) fail(409, '本卷已跳过挑战，不能再次作答');
+      return;
+    }
+    if (state.mainSubmitted) fail(409, '本卷已交卷，不能再次作答');
+  }
+
   function checkOrigin(req) {
     if (req.headers['sec-fetch-site'] === 'cross-site') fail(403, '请从本课堂网址直接操作');
     if (req.headers.origin) {
@@ -455,6 +468,7 @@ function createService(options = {}) {
       const unlocked = unlockedStageIds(ensureState(row.id));
       if (!unlocked.includes(q.stageId)) fail(403, '该站点尚未解锁');
       const state = ensureState(row.id);
+      assertPaperWritable(state, q.stageId);
       if (!state.draftAnswers) state.draftAnswers = {};
       state.draftAnswers[q.id] = body.answer;
       state.currentStage = q.stage;
@@ -471,6 +485,7 @@ function createService(options = {}) {
       const state = ensureState(row.id);
       const unlocked = unlockedStageIds(state);
       if (!unlocked.includes(stage.stageId)) fail(403, '该站点尚未解锁');
+      assertPaperWritable(state, stage.stageId);
 
       if (!state.stageAnswers[stage.stageId]) state.stageAnswers[stage.stageId] = {};
       const merged = Object.assign({}, state.stageAnswers[stage.stageId]);
@@ -503,6 +518,7 @@ function createService(options = {}) {
       const row = studentById(body.studentId);
       if (!row) fail(404, '学生不存在');
       const state = ensureState(row.id);
+      if (state.mainSubmitted) fail(409, '本卷已交卷，不能重复提交');
       const mains = paper.stages.filter((s) => s.required);
       for (const s of mains) {
         if (!state.stagesCompleted.includes(s.stageId)) fail(400, '请先完成主卷八站');
@@ -544,6 +560,8 @@ function createService(options = {}) {
       const row = studentById(body.studentId);
       if (!row) fail(404, '学生不存在');
       const state = ensureState(row.id);
+      if (state.challengeSubmitted) fail(409, '挑战关已提交，不能重复作答');
+      if (state.challengeSkipped) fail(409, '本卷已跳过挑战，不能再次作答');
       const mains = paper.stages.filter((s) => s.required);
       if (!mains.every((s) => state.stagesCompleted.includes(s.stageId))) {
         fail(400, '请先完成主卷八站');
@@ -597,6 +615,8 @@ function createService(options = {}) {
       const row = studentById(body.studentId);
       if (!row) fail(404, '学生不存在');
       const state = ensureState(row.id);
+      if (state.challengeSubmitted) fail(409, '挑战关已提交，不能跳过');
+      if (state.challengeSkipped) return json(res, 200, { ok: true, progress: publicProgress(state) });
       state.challengeSkipped = true;
       save(row.id, state);
       return json(res, 200, { ok: true, progress: publicProgress(state) });

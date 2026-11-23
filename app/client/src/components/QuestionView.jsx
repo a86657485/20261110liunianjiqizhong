@@ -23,7 +23,7 @@ function GuideText({ text }) {
   return <p className="guide-text">{shown}</p>;
 }
 
-function ChoiceOptions({ options, value, onChange }) {
+function ChoiceOptions({ options, value, onChange, disabled }) {
   return (
     <div
       className={'option-list' + ((options || []).length >= 3 ? ' option-list--tiles' : '')}
@@ -38,6 +38,7 @@ function ChoiceOptions({ options, value, onChange }) {
             role="radio"
             aria-checked={picked}
             className={'option-btn' + (picked ? ' picked' : '')}
+            disabled={disabled}
             onClick={() => onChange(opt)}
           >
             {opt}
@@ -48,13 +49,14 @@ function ChoiceOptions({ options, value, onChange }) {
   );
 }
 
-function OrderCardsView({ cards, slots, value, onChange, guide }) {
+function OrderCardsView({ cards, slots, value, onChange, guide, disabled }) {
   const mapping = value || {};
   // Do not pre-activate a slot — avoids looking like a default selection.
   const [activeSlot, setActiveSlot] = useState(null);
   const used = new Set(Object.values(mapping));
 
   function place(card) {
+    if (disabled) return;
     const next = { ...mapping };
     const currentSlot = Object.keys(next).find((k) => next[k] === card);
     let target = activeSlot || (slots || []).find((s) => !next[s]);
@@ -84,6 +86,7 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
   }
 
   function clearSlot(slot) {
+    if (disabled) return;
     const next = { ...mapping };
     delete next[slot];
     onChange(next);
@@ -91,6 +94,7 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
   }
 
   function onSlotClick(slot) {
+    if (disabled) return;
     if (activeSlot === slot && mapping[slot]) {
       clearSlot(slot);
       return;
@@ -108,6 +112,7 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
             <button
               type="button"
               className={'slot-box' + (activeSlot === slot ? ' active' : '')}
+              disabled={disabled}
               onClick={() => onSlotClick(slot)}
             >
               <div className="muted" style={{ fontSize: '0.75rem' }}>
@@ -127,6 +132,7 @@ function OrderCardsView({ cards, slots, value, onChange, guide }) {
             key={card}
             type="button"
             className={'card-chip' + (used.has(card) ? ' used' : '')}
+            disabled={disabled}
             onClick={() => place(card)}
           >
             {card}
@@ -154,6 +160,7 @@ export default function QuestionView({
   onSubmitStage,
   canSubmitStage,
   submitting,
+  locked,
 }) {
   const key = (question && (question.interactionSpecKey || question.type)) || '';
 
@@ -170,6 +177,7 @@ export default function QuestionView({
               options={question.options}
               value={value}
               onChange={onChange}
+              disabled={locked}
             />
           </div>
         );
@@ -181,6 +189,7 @@ export default function QuestionView({
               options={question.options || question.cards}
               value={value}
               onChange={onChange}
+              disabled={locked}
             />
           </div>
         );
@@ -193,6 +202,7 @@ export default function QuestionView({
             value={typeof value === 'object' && value ? value : {}}
             onChange={onChange}
             guide={guide}
+            disabled={locked}
           />
         );
       case 'flowchart_order_cards':
@@ -204,6 +214,7 @@ export default function QuestionView({
             value={value || {}}
             onChange={onChange}
             guide={guide}
+            disabled={locked}
           />
         );
       case 'flowchart_fill_slots':
@@ -215,6 +226,7 @@ export default function QuestionView({
             value={value || {}}
             onChange={onChange}
             guide={guide}
+            disabled={locked}
           />
         );
       default:
@@ -222,7 +234,12 @@ export default function QuestionView({
           return (
             <div>
               <GuideText text={guide} />
-              <ChoiceOptions options={question.options} value={value} onChange={onChange} />
+              <ChoiceOptions
+                options={question.options}
+                value={value}
+                onChange={onChange}
+                disabled={locked}
+              />
             </div>
           );
         }
@@ -234,12 +251,13 @@ export default function QuestionView({
               value={value || {}}
               onChange={onChange}
               guide={guide}
+              disabled={locked}
             />
           );
         }
         return <p className="error-box">暂不支持的交互：{key}</p>;
     }
-  }, [question, key, value, onChange]);
+  }, [question, key, value, onChange, locked]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -298,7 +316,11 @@ export default function QuestionView({
           <div className="scene-interact">{body}</div>
         </div>
       </div>
-      {answeredCount < questionCount ? (
+      {locked ? (
+        <p className="error-box" style={{ margin: '0 0 6px' }}>
+          本卷已交卷，不能再次作答；可查看题目，但不能修改答案。
+        </p>
+      ) : answeredCount < questionCount ? (
         <p className="muted" style={{ margin: '0 0 6px' }}>
           本关还有 {questionCount - answeredCount} 题未作答，未答按答错计；可直接提交，也可回到探秘营地图。
         </p>
@@ -316,7 +338,7 @@ export default function QuestionView({
           type="button"
           className="btn-primary"
           onClick={onSubmitStage}
-          disabled={!canSubmitStage || submitting}
+          disabled={!canSubmitStage || submitting || locked}
         >
           {submitting ? '提交中…' : '提交本关'}
         </button>
