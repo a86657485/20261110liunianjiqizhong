@@ -1,8 +1,8 @@
 # 六年级《过程与控制》期中 · 控制探秘营·八站通行证
 
-命题版本：**2026-11-10-g6-midterm-v1.0.1**（只读自仓库 `design/01_questions.json`，勿改题库）。
+命题版本：**2026-11-23-g6-midterm-v1.0.2**（选项顺序重排＋长度平衡；源自 `design/01_questions.json`）。
 
-JSON sha256：`512d9975f0afd2191b8e43358c05cc874fbb03c8321fc88e86a65ec507f48095`
+JSON sha256：`a240c02492b4fdce9789ae1d5847d9c801b395db45b531aabd2e23a42ee7504c`
 
 ## 启动
 

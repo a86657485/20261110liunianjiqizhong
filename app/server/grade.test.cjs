@@ -25,7 +25,7 @@ assert.equal(mainQs.length, 40);
 assert.equal(challengeQs.length, 6);
 
 test('paper json sha256 locked', () => {
-  assert.equal(paperSha256(DESIGN_JSON), '512d9975f0afd2191b8e43358c05cc874fbb03c8321fc88e86a65ec507f48095');
+  assert.equal(paperSha256(DESIGN_JSON), 'a240c02492b4fdce9789ae1d5847d9c801b395db45b531aabd2e23a42ee7504c');
 });
 
 test('single_choice full-text equality', () => {

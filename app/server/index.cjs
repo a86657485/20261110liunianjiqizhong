@@ -2,7 +2,7 @@
 /**
  * 六年级《过程与控制》期中 · 控制探秘营·八站通行证
  * 默认 PORT=8830（8790 为本机出站隧道，勿占用；勿占用 8766／8780／8782／8809／8829）。
- * DATA_DIR 默认 ./data。命题版本：2026-11-10-g6-midterm-v1.0.1
+ * DATA_DIR 默认 ./data。命题版本：2026-11-23-g6-midterm-v1.0.2
  */
 const http = require('node:http');
 const fs = require('node:fs');
@@ -703,7 +703,8 @@ function createService(options = {}) {
       if (route.startsWith('/assets/')) {
         const p1 = safeJoin(distDir, route);
         const p2 = safeJoin(publicDir, route);
-        const p3 = safeJoin(workspaceAssetsDir, route);
+        // repo/assets 作为根，去掉 URL 前缀 /assets 再拼接，避免 assets/assets
+        const p3 = safeJoin(workspaceAssetsDir, route.replace(/^\/assets/, ''));
         if (p1 && sendFile(res, p1)) return;
         if (p2 && sendFile(res, p2)) return;
         if (p3 && sendFile(res, p3)) return;
