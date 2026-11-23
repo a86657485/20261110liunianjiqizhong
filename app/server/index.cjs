@@ -177,7 +177,8 @@ function createService(options = {}) {
 
   function unlockedStageIds(_state) {
     // 2026-11-10 老师：所有关卡一开始都打开，学生可自由选关答题。
-    // 不改题库 unlockRule 字段；提交本关仍须本关题全部作答，交主卷仍须八站都提交。
+    // 2026-11-23 老师：题目不设必做，一题没做也可提交本关；未答按答错计分。
+    // 不改题库 unlockRule 字段；交主卷仍须八站都提交。
     return paper.stages.map((s) => s.stageId);
   }
 
@@ -481,11 +482,7 @@ function createService(options = {}) {
           merged[qid] = body.answers[qid];
         }
       }
-      for (const qid of stage.questionIds) {
-        if (!isAnswered(merged[qid], qById[qid])) {
-          fail(400, '本关还有题目未作答');
-        }
-      }
+      // 不设必答：未作答题目保留空缺，判分时按答错处理
       state.stageAnswers[stage.stageId] = merged;
       if (!state.stagesCompleted.includes(stage.stageId)) {
         state.stagesCompleted.push(stage.stageId);
@@ -558,9 +555,7 @@ function createService(options = {}) {
         if (state.draftAnswers && state.draftAnswers[qid] !== undefined) merged[qid] = state.draftAnswers[qid];
         if (body.answers && body.answers[qid] !== undefined) merged[qid] = body.answers[qid];
       }
-      for (const qid of bonusStage.questionIds) {
-        if (!isAnswered(merged[qid], qById[qid])) fail(400, '挑战关还有题目未作答');
-      }
+      // 不设必答：挑战关同样可空卷提交，未答按答错计
       state.stageAnswers[bonusStage.stageId] = merged;
       if (!state.stagesCompleted.includes(bonusStage.stageId)) {
         state.stagesCompleted.push(bonusStage.stageId);

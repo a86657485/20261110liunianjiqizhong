@@ -289,6 +289,11 @@ export default function QuestionView({
           <div className="scene-interact">{body}</div>
         </div>
       </div>
+      {answeredCount < questionCount ? (
+        <p className="muted" style={{ margin: '0 0 6px' }}>
+          本关还有 {questionCount - answeredCount} 题未作答，未答按答错计；可直接提交，也可回到探秘营地图。
+        </p>
+      ) : null}
       <div className="btn-row">
         <button type="button" className="btn-ghost" onClick={onPrev} disabled={pageIndex <= 0}>
           上一题

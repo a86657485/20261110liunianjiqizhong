@@ -365,6 +365,32 @@ async function main() {
     const t2 = (teacher.json.students || []).find((s) => s.id === s2.id);
     ok('teacher typical 75', t2 && t2.mainPercent === 75, t2 && String(t2.mainPercent));
 
+    // 2026-11-23 老师口径：题目不设必做，空卷也可提交本关
+    const s4 = roster.json.classes[0].students[4];
+    await req(port, 'POST', '/api/login', { studentId: s4.id });
+    const emptyStage = await req(port, 'POST', '/api/stage/submit', {
+      studentId: s4.id,
+      stageId: stages[0].stageId,
+      answers: {},
+    });
+    const emptyProg = ((emptyStage.json.progress || {}).stageProgress || []).find(
+      (s) => s.stageId === stages[0].stageId
+    );
+    ok(
+      'empty stage submit accepted (no required answers)',
+      emptyStage.status === 200 && emptyProg && emptyProg.completed && emptyProg.answeredCount === 0,
+      JSON.stringify({ status: emptyStage.status, answered: emptyProg && emptyProg.answeredCount, done: emptyProg && emptyProg.completed })
+    );
+    for (const st of stages.slice(1)) {
+      await req(port, 'POST', '/api/stage/submit', { studentId: s4.id, stageId: st.stageId, answers: {} });
+    }
+    const emptyMain = await req(port, 'POST', '/api/main/submit', { studentId: s4.id });
+    ok(
+      'eight empty stages → main 0/40, percent 0',
+      emptyMain.status === 200 && emptyMain.json.percent === 0 && emptyMain.json.correct === 0,
+      JSON.stringify({ percent: emptyMain.json.percent, correct: emptyMain.json.correct })
+    );
+
     const failed = logs.filter((l) => !l.pass);
     console.log('---');
     console.log('passed', logs.length - failed.length, '/', logs.length);

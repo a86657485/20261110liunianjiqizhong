@@ -552,7 +552,7 @@ function StudentApp() {
           onSubmitStage={
             activeStage && activeStage.stageId === 'gate_bonus' ? submitChallenge : submitStage
           }
-          canSubmitStage={stageAnsweredCount >= stageQuestions.length}
+          canSubmitStage={stageQuestions.length > 0}
           submitting={submitting}
         />
       ) : null}
