@@ -475,15 +475,7 @@ function createService(options = {}) {
           (s) => s.classId === String(body.classId) && s.name === String(body.name).trim()
         );
       }
-      if (!row && body.classId && body.name && body.manual) {
-        const id =
-          'manual-' + String(body.classId) + '-' + Buffer.from(String(body.name).trim()).toString('hex').slice(0, 16);
-        db.prepare(
-          'INSERT INTO students VALUES(?,?,?,1) ON CONFLICT(id) DO UPDATE SET classId=excluded.classId,name=excluded.name,manual=1'
-        ).run(id, String(body.classId), String(body.name).trim());
-        row = studentById(id);
-      }
-      if (!row) fail(404, '找不到该学生');
+      if (!row) fail(404, '名单里没有该学生，请联系老师登记');
       let state = ensureState(row.id);
       state = save(row.id, state);
       return json(res, 200, {

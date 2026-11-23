@@ -39,7 +39,6 @@ function LoginPage({ onLoggedIn }) {
   const [classes, setClasses] = useState([]);
   const [classId, setClassId] = useState('601');
   const [selected, setSelected] = useState(null);
-  const [manual, setManual] = useState('');
   const [q, setQ] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -56,12 +55,11 @@ function LoginPage({ onLoggedIn }) {
     return list.filter((s) => s.name.indexOf(qq) >= 0);
   }, [classes, classId, q]);
 
-  async function doLogin(studentId, name, isManual) {
+  async function doLogin(studentId) {
     setLoading(true);
     setError('');
     try {
-      const body = studentId ? { studentId } : { classId, name, manual: !!isManual };
-      const data = await api.login(body);
+      const data = await api.login({ studentId });
       onLoggedIn(data);
     } catch (e) {
       setError(e.message || '登录失败');
@@ -121,26 +119,9 @@ function LoginPage({ onLoggedIn }) {
             {loading ? '进入中…' : '确认进入探秘营'}
           </button>
         </div>
-        <hr className="soft-hr" />
-        <p className="muted" style={{ marginTop: 0 }}>
-          名单里没有我的名字？可手动输入（归入当前班级）：
+        <p className="muted" style={{ marginTop: 10, marginBottom: 0 }}>
+          名单里没有名字？请联系老师登记，不能自行输入姓名进入。
         </p>
-        <input
-          value={manual}
-          onChange={(e) => setManual(e.target.value)}
-          placeholder="输入姓名"
-          className="text-input"
-        />
-        <div className="btn-row">
-          <button
-            type="button"
-            className="btn-ghost"
-            disabled={!manual.trim() || loading}
-            onClick={() => doLogin(null, manual.trim(), true)}
-          >
-            手动姓名进入
-          </button>
-        </div>
         {error ? <div className="error-box">{error}</div> : null}
       </div>
     </div>
