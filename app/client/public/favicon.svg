@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="控制探秘营">
+  <rect width="32" height="32" rx="8" fill="#0f766e"/>
+  <path d="M16 4.5l3.4 8.1 8.1 3.4-8.1 3.4L16 27.5l-3.4-8.1L4.5 16l8.1-3.4z" fill="#fbbf24"/>
+  <circle cx="16" cy="16" r="2.8" fill="#0f766e"/>
+</svg>

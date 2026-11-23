@@ -387,7 +387,9 @@ function StudentApp() {
 
   function enterStage(node) {
     setActiveStageId(node.stageId);
-    const ids = node.questionIds || [];
+    // 地图节点（progress.stageProgress）不带题目列表，需从试卷定义取，才能定位首个未答题
+    const stageDef = paper && paper.stages ? paper.stages.find((s) => s.stageId === node.stageId) : null;
+    const ids = (stageDef && stageDef.questionIds) || node.questionIds || [];
     let start = 0;
     for (let i = 0; i < ids.length; i++) {
       if (!answeredEnough(localAnswers[ids[i]], qById[ids[i]])) {
