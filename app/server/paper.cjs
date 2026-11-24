@@ -1,12 +1,12 @@
 'use strict';
 /**
- * Load midterm paper (v1.0.1) and strip server-only fields for students.
+ * Load midterm paper (v1.1-draft) and strip server-only fields for students.
  */
 const fs = require('node:fs');
 const path = require('node:path');
 
-const EXPECTED_VERSION = '2026-11-23-g6-midterm-v1.0.2';
-const EXPECTED_SHA256 = 'a240c02492b4fdce9789ae1d5847d9c801b395db45b531aabd2e23a42ee7504c';
+const EXPECTED_VERSION = '2026-11-24-g6-midterm-v1.1-draft';
+const EXPECTED_SHA256 = '3dff5a296cfd82fd2eb1791ea2ba0b207eaaed0809efa5d3a07d7589fdc12662';
 
 const DESIGN_JSON =
   process.env.PAPER_JSON ||
@@ -29,7 +29,6 @@ const CLIENT_ALLOW = new Set([
   'appRef',
   'interactionSpecKey',
   'guides',
-  'estimatedMinutes',
   'stage',
   'stageId',
   'stageName',
@@ -114,7 +113,6 @@ function publicStages(stages) {
     lesson: s.lesson,
     lessonTitle: s.lessonTitle || undefined,
     questionIds: s.questionIds.slice(),
-    suggestedMinutes: s.suggestedMinutes,
     unlockRule: s.unlockRule,
     clearFeedback: s.clearFeedback,
     required: !!s.required,

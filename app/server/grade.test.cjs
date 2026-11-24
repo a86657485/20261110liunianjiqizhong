@@ -14,18 +14,18 @@ const { gradeOne, gradeSet, mainPercent, challengeBonus, isAnswered } = require(
 
 const paper = loadPaper();
 assert.equal(paper.version, EXPECTED_VERSION);
-assert.equal(paper.scoring.main.questionCount, 40);
+assert.equal(paper.scoring.main.questionCount, 50);
 assert.equal(paper.scoring.challenge.questionCount, 6);
 assert.equal(paper.scoring.passLine, null);
 assert.equal(paperSha256(), EXPECTED_SHA256);
 const byId = Object.fromEntries(paper.questions.map((q) => [q.id, q]));
 const mainQs = paper.questions.filter((q) => q.section === 'main');
 const challengeQs = paper.questions.filter((q) => q.section === 'challenge');
-assert.equal(mainQs.length, 40);
+assert.equal(mainQs.length, 50);
 assert.equal(challengeQs.length, 6);
 
 test('paper json sha256 locked', () => {
-  assert.equal(paperSha256(DESIGN_JSON), 'a240c02492b4fdce9789ae1d5847d9c801b395db45b531aabd2e23a42ee7504c');
+  assert.equal(paperSha256(DESIGN_JSON), '3dff5a296cfd82fd2eb1791ea2ba0b207eaaed0809efa5d3a07d7589fdc12662');
 });
 
 test('single_choice full-text equality', () => {
@@ -89,13 +89,14 @@ test('flowchart_pick_plan uses the slot object', () => {
   assert.equal(isAnswered({}, q), false);
 });
 
-test('main percent rounding uses 40', () => {
-  assert.equal(mainPercent(40, 40), 100);
-  assert.equal(mainPercent(30, 40), 75);
-  assert.equal(mainPercent(20, 40), 50);
-  assert.equal(mainPercent(31, 40), 78);
-  assert.equal(mainPercent(13, 40), 33);
-  assert.equal(mainPercent(0, 40), 0);
+test('main percent rounding uses 50', () => {
+  assert.equal(mainPercent(50, 50), 100);
+  assert.equal(mainPercent(40, 50), 80);
+  assert.equal(mainPercent(30, 50), 60);
+  assert.equal(mainPercent(25, 50), 50);
+  assert.equal(mainPercent(38, 50), 76);
+  assert.equal(mainPercent(13, 50), 26);
+  assert.equal(mainPercent(0, 50), 0);
 });
 
 test('challenge bonus +2, cap +10, sixth does not exceed', () => {
@@ -105,16 +106,16 @@ test('challenge bonus +2, cap +10, sixth does not exceed', () => {
   assert.equal(challengeBonus(6, 2, 10), 10);
 });
 
-test('perfect main set grades 40/40 → 100', () => {
+test('perfect main set grades 50/50 → 100', () => {
   const answers = {};
   for (const q of mainQs) answers[q.id] = q.answer;
   const g = gradeSet(mainQs, answers);
-  assert.equal(g.correct, 40);
-  assert.equal(g.total, 40);
+  assert.equal(g.correct, 50);
+  assert.equal(g.total, 50);
   assert.equal(mainPercent(g.correct, paper.scoring.main.questionCount), 100);
 });
 
-test('typical first-answer set grades 30/40 → 75', () => {
+test('typical first-answer set grades 30/50 → 60', () => {
   const answers = {};
   mainQs.forEach((q, i) => {
     if (i < 30) answers[q.id] = q.answer;
@@ -129,15 +130,29 @@ test('typical first-answer set grades 30/40 → 75', () => {
   });
   const g = gradeSet(mainQs, answers);
   assert.equal(g.correct, 30);
-  assert.equal(mainPercent(g.correct, paper.scoring.main.questionCount), 75);
+  assert.equal(mainPercent(g.correct, paper.scoring.main.questionCount), 60);
 });
 
-test('parking barrier only appears in challenge GC06', () => {
+test('parking barrier only appears in challenge GC06 student-facing text', () => {
+  const studentKeys = [
+    'prompt',
+    'options',
+    'guides',
+    'cards',
+    'slots',
+    'left',
+    'right',
+    'diagram',
+    'stateTable',
+    'recallCaption',
+    'recallSceneAnchor',
+    'stageName',
+  ];
   for (const q of mainQs) {
-    const blob = JSON.stringify(q);
+    const blob = JSON.stringify(Object.fromEntries(studentKeys.filter((k) => q[k] != null).map((k) => [k, q[k]])));
     assert.equal(blob.indexOf('升降杆') === -1 && blob.indexOf('停车场') === -1, true, q.id);
   }
-  const gc06 = JSON.stringify(byId.GC06);
+  const gc06 = JSON.stringify(Object.fromEntries(studentKeys.filter((k) => byId.GC06[k] != null).map((k) => [k, byId.GC06[k]])));
   assert.ok(gc06.indexOf('升降杆') >= 0);
 });
 
@@ -145,7 +160,7 @@ test('client paper strips server-only fields and keeps student fields', () => {
   const client = buildClientPaper(paper);
   assert.equal(client.version, EXPECTED_VERSION);
   assert.equal(client.shell, '控制探秘营·八站通行证');
-  assert.equal(client.scoringPublic.mainQuestionCount, 40);
+  assert.equal(client.scoringPublic.mainQuestionCount, 50);
   assert.equal(client.scoringPublic.passLine, null);
   const forbidden = /(?:^|[^A-Za-z0-9_])(G1|G2|G3|K1|K2|D1|S1|E1|I0|M1|remixFrom)(?:[^A-Za-z0-9_]|$)/;
   for (const q of client.questions) {
@@ -172,15 +187,21 @@ test('client paper strips server-only fields and keeps student fields', () => {
   assert.ok(gm17.diagram);
   const counts = Object.fromEntries(client.stages.map((s) => [s.stageId, s.questionIds.length]));
   assert.deepEqual(counts, {
-    gate_l1: 5,
-    gate_l2: 5,
-    gate_l3: 5,
-    gate_l4: 5,
-    gate_l5: 5,
-    gate_l6: 5,
-    gate_l7: 5,
-    gate_l8: 5,
+    gate_l1: 6,
+    gate_l2: 6,
+    gate_l3: 6,
+    gate_l4: 6,
+    gate_l5: 7,
+    gate_l6: 7,
+    gate_l7: 6,
+    gate_l8: 6,
     gate_bonus: 6,
   });
+  for (const q of client.questions) {
+    assert.equal(q.estimatedMinutes, undefined, q.id + ' estimatedMinutes');
+  }
+  for (const s of client.stages) {
+    assert.equal(s.suggestedMinutes, undefined, s.stageId + ' suggestedMinutes');
+  }
   assert.ok(!/正确选项|正确答案/.test(client.stages.map((s) => s.clearFeedback).join('')));
 });

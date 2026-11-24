@@ -2,7 +2,7 @@
 /**
  * 六年级《过程与控制》期中 · 控制探秘营·八站通行证
  * 默认 PORT=8830（8790 为本机出站隧道，勿占用；勿占用 8766／8780／8782／8809／8829）。
- * DATA_DIR 默认 ./data。命题版本：2026-11-23-g6-midterm-v1.0.2
+ * DATA_DIR 默认 ./data。命题版本：2026-11-24-g6-midterm-v1.1-draft
  */
 const http = require('node:http');
 const fs = require('node:fs');
@@ -401,9 +401,6 @@ function createService(options = {}) {
         version: paper.version,
         passLine: null,
         mainQuestionCount: scoring.main.questionCount,
-        suggestedMinutes: paper.stages
-          .filter((s) => s.required)
-          .reduce((sum, s) => sum + (Number(s.suggestedMinutes) || 0), 0),
         classes: CLASSES,
       });
     }

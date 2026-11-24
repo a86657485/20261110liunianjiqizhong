@@ -19,7 +19,7 @@ export default function ExplorerCampMap({
         <h2>探秘营站点地图 · 八站通行证</h2>
         <p className="muted" style={{ margin: 0 }}>
           八个主站和加分挑战关一开始都可以进入，可自由选关、选题作答。题目不设必做，未答完也可随时提交本关；
-          未作答按答错计分（不因分数卡关）。主卷 40 题。交卷后整卷锁定，不能再次作答。
+          未作答按答错计分（不因分数卡关）。主卷 50 题。交卷后整卷锁定，不能再次作答。
         </p>
       </div>
       <div className="camp-trail">

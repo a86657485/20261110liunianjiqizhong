@@ -89,7 +89,8 @@ async function main() {
   try {
     const cfg = await req(port, 'GET', '/api/config');
     ok('config version', cfg.json.version === EXPECTED_VERSION, cfg.json.version);
-    ok('config mainQuestionCount 40', cfg.json.mainQuestionCount === 40, String(cfg.json.mainQuestionCount));
+    ok('config mainQuestionCount 50', cfg.json.mainQuestionCount === 50, String(cfg.json.mainQuestionCount));
+    ok('config has no suggestedMinutes', cfg.json.suggestedMinutes === undefined, String(cfg.json.suggestedMinutes));
     ok('config classes 601-606', JSON.stringify(cfg.json.classes) === JSON.stringify(['601', '602', '603', '604', '605', '606']));
     ok('config passLine null', cfg.json.passLine == null);
     ok('config shell', cfg.json.shell === '控制探秘营·八站通行证');
@@ -108,13 +109,16 @@ async function main() {
     ok('paper strips server-only fields', !leaked);
     ok('paper version', paper.json.version === EXPECTED_VERSION, paper.json.version);
     ok(
-      'paper mainQuestionCount 40',
-      paper.json.scoringPublic && paper.json.scoringPublic.mainQuestionCount === 40,
+      'paper mainQuestionCount 50',
+      paper.json.scoringPublic && paper.json.scoringPublic.mainQuestionCount === 50,
       String(paper.json.scoringPublic && paper.json.scoringPublic.mainQuestionCount)
     );
     const clientMain = (paper.json.questions || []).filter((q) => q.section === 'main');
     const clientCh = (paper.json.questions || []).filter((q) => q.section === 'challenge');
-    ok('client paper 40 main + 6 challenge', clientMain.length === 40 && clientCh.length === 6, clientMain.length + '+' + clientCh.length);
+    ok('client paper 50 main + 6 challenge', clientMain.length === 50 && clientCh.length === 6, clientMain.length + '+' + clientCh.length);
+    const noMinutes = (paper.json.questions || []).every((q) => q.estimatedMinutes === undefined)
+      && (paper.json.stages || []).every((s) => s.suggestedMinutes === undefined);
+    ok('student paper has no estimated/suggested minutes', noMinutes);
     const noRecallOk = clientMain
       .filter((q) => q.hasRecallImage === false)
       .every((q) => !q.recallImage && !q.recallCaption && !q.recallSceneAnchor);
@@ -123,8 +127,8 @@ async function main() {
       .map((s) => s.stageId + ':' + s.questionIds.length)
       .join(',');
     ok(
-      'stage sizes 8x5 + bonus 6',
-      stageCounts === 'gate_l1:5,gate_l2:5,gate_l3:5,gate_l4:5,gate_l5:5,gate_l6:5,gate_l7:5,gate_l8:5,gate_bonus:6',
+      'stage sizes 6/6/6/6/7/7/6/6 + bonus 6',
+      stageCounts === 'gate_l1:6,gate_l2:6,gate_l3:6,gate_l4:6,gate_l5:7,gate_l6:7,gate_l7:6,gate_l8:6,gate_bonus:6',
       stageCounts
     );
 
@@ -275,7 +279,7 @@ async function main() {
     const mainLater = await req(port, 'POST', '/api/main/submit', { studentId: s1.id });
     ok('challenge-first main submit later 100', mainLater.status === 200 && mainLater.json.percent === 100);
 
-    // Typical first-answer percent: 30/40 → 75
+    // Typical first-answer percent: 30/50 → 60
     await req(port, 'POST', '/api/login', { studentId: s2.id });
     let typicalLeft = 30;
     for (const stage of stages) {
@@ -289,8 +293,8 @@ async function main() {
     }
     const typMain = await req(port, 'POST', '/api/main/submit', { studentId: s2.id });
     ok(
-      'typical first-answer 30/40 → 75',
-      typMain.status === 200 && typMain.json.percent === 75 && typMain.json.correct === 30 && typMain.json.total === 40,
+      'typical first-answer 30/50 → 60',
+      typMain.status === 200 && typMain.json.percent === 60 && typMain.json.correct === 30 && typMain.json.total === 50,
       JSON.stringify({ percent: typMain.json.percent, correct: typMain.json.correct, total: typMain.json.total })
     );
 
@@ -327,8 +331,8 @@ async function main() {
 
     const main = await req(port, 'POST', '/api/main/submit', { studentId: s0.id });
     ok(
-      'main submit 40/40 → 100',
-      main.status === 200 && main.json.percent === 100 && main.json.total === 40,
+      'main submit 50/50 → 100',
+      main.status === 200 && main.json.percent === 100 && main.json.total === 50,
       String(main.json.percent) + '/' + String(main.json.total)
     );
 
@@ -373,12 +377,12 @@ async function main() {
 
     const teacher = await req(port, 'GET', '/api/teacher?classId=' + (s0.classId || '601'));
     ok('teacher entered', teacher.status === 200 && teacher.json.entered >= 1);
-    ok('teacher mainQuestionCount 40', teacher.json.mainQuestionCount === 40, String(teacher.json.mainQuestionCount));
+    ok('teacher mainQuestionCount 50', teacher.json.mainQuestionCount === 50, String(teacher.json.mainQuestionCount));
     ok('teacher has literacy diagnostics', !!(teacher.json.diagnostics && teacher.json.diagnostics.byLiteracy));
     const t0 = (teacher.json.students || []).find((s) => s.id === s0.id);
     ok('teacher s0 100 + challenge', t0 && t0.mainPercent === 100 && t0.challengeBonus === 10, t0 && String(t0.mainPercent));
     const t2 = (teacher.json.students || []).find((s) => s.id === s2.id);
-    ok('teacher typical 75', t2 && t2.mainPercent === 75, t2 && String(t2.mainPercent));
+    ok('teacher typical 60', t2 && t2.mainPercent === 60, t2 && String(t2.mainPercent));
 
     // 2026-11-23 老师口径：题目不设必做，空卷也可提交本关
     const s4 = roster.json.classes[0].students[4];
@@ -401,7 +405,7 @@ async function main() {
     }
     const emptyMain = await req(port, 'POST', '/api/main/submit', { studentId: s4.id });
     ok(
-      'eight empty stages → main 0/40, percent 0',
+      'eight empty stages → main 0/50, percent 0',
       emptyMain.status === 200 && emptyMain.json.percent === 0 && emptyMain.json.correct === 0,
       JSON.stringify({ percent: emptyMain.json.percent, correct: emptyMain.json.correct })
     );

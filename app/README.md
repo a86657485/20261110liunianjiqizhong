@@ -1,8 +1,8 @@
 # 六年级《过程与控制》期中 · 控制探秘营·八站通行证
 
-命题版本：**2026-11-23-g6-midterm-v1.0.2**（选项顺序重排＋长度平衡；源自 `design/01_questions.json`）。
+命题版本：**2026-11-24-g6-midterm-v1.1-draft**（主卷 50 题＋挑战 6 题；源自 `design/01_questions.json`）。
 
-JSON sha256：`a240c02492b4fdce9789ae1d5847d9c801b395db45b531aabd2e23a42ee7504c`
+JSON sha256：`3dff5a296cfd82fd2eb1791ea2ba0b207eaaed0809efa5d3a07d7589fdc12662`
 
 ## 启动
 
@@ -32,7 +32,7 @@ npm run selftest     # API 一条龙（临时 DATA_DIR）
 ```
 app/
   server/index.cjs    # HTTP API + 静态托管
-  server/paper.cjs    # 加载 v1.0.1 并剥离 serverOnly 字段
+  server/paper.cjs    # 加载 v1.1-draft 并剥离 serverOnly 字段
   server/grade.cjs    # 服务端判分（含 GM15 acceptAlternate）
   client/             # Vite + React 18（es2019，cssTarget chrome87）
   roster/roster.json  # 601–606 名单（来自六年级课堂名册副本）
@@ -43,13 +43,14 @@ app/
 
 ## 产品口径（已实现）
 
-- 外壳：控制探秘营·八站通行证（8 站主卷 40 题＋可选挑战 GC01–GC06）
+- 外壳：控制探秘营·八站通行证（8 站主卷 50 题＋可选挑战 GC01–GC06）
 - 八站一开始全部解锁；题目不设必做，未答完也可提交本关（未答按答错计分），不因分数卡关；`passLine=null`
 - 一份试卷只作答一次：断线/刷新可续答；主卷交卷后整卷锁定，不能改答、不能重交；挑战提交或跳过后同样锁定
 - 教师大屏：综合分排行榜、点击表头排序、勾选删除成绩；局域网教师端可删除，二次确认并写审计日志，删除后该生可重新作答
-- 主卷百分 = `round(首答正确/40×100)`；挑战每对 +2、满分封顶 +10（第 6 题已满 10 不再加），不计入主卷百分
+- 主卷百分 = `round(首答正确/50×100)`；挑战每对 +2、满分封顶 +10（第 6 题已满 10 不再加），不计入主卷百分
 - GM15 两种到达顺序都对
 - 一题一页：带图题上图下题（余量给插图）；不带图题不留空图位
 - 未作答选项零高亮；过关反馈仅用 `stages[].clearFeedback`
+- 学生端不下发作答时限、倒计时或建议分钟（`estimatedMinutes`／`suggestedMinutes` 不进入学生端接口）
 - 学生端不下发 answer／acceptAlternate／goalIds／analysis／remix／recallImagePrompt 等
 - 无填空（禁止 `sentence_fill`）
