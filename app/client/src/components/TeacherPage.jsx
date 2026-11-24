@@ -14,6 +14,13 @@ function compositeOf(s) {
   return s.mainPercent == null ? null : s.mainPercent + (s.challengeBonus || 0);
 }
 
+function fmtDuration(sec) {
+  if (sec == null) return '—';
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return m + ':' + String(s).padStart(2, '0');
+}
+
 function compareRows(a, b, key, dir) {
   const va = a[key];
   const vb = b[key];
@@ -229,14 +236,6 @@ export default function TeacherPage() {
               <b>按课：</b>
               {fmtDiag(data.diagnostics.byLesson)}
             </p>
-            <p>
-              <b>按题型：</b>
-              {fmtDiag(data.diagnostics.byType)}
-            </p>
-            <p>
-              <b>按素养：</b>
-              {fmtDiag(data.diagnostics.byLiteracy)}
-            </p>
           </div>
         ) : null}
         {error ? <div className="error-box">{error}</div> : null}
@@ -322,9 +321,8 @@ export default function TeacherPage() {
                 <SortTh label="主卷%" k="mainPercent" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
                 <SortTh label="挑战+" k="challengeBonus" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
                 <SortTh label="综合分" k="composite" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+                <SortTh label="答题时长" k="durationSeconds" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
                 <th>分课</th>
-                <th>题型</th>
-                <th>素养</th>
               </tr>
             </thead>
             <tbody>
@@ -345,16 +343,15 @@ export default function TeacherPage() {
                   <td>{s.mainPercent != null ? s.mainPercent : '—'}</td>
                   <td>{s.challengeBonus != null ? s.challengeBonus : '—'}</td>
                   <td>{s.composite != null ? s.composite : '—'}</td>
+                  <td>{fmtDuration(s.durationSeconds)}</td>
                   <td>{fmtDiag(s.byLesson)}</td>
-                  <td>{fmtDiag(s.byType)}</td>
-                  <td>{fmtDiag(s.byLiteracy)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <p className="muted" style={{ marginBottom: 0 }}>
-          不设达标线；点击表头可排序，无记录学生始终排在最后。删除会清除作答记录并写入审计日志（操作者 IP、人数、学生）。按课／题型／素养正确率仅供教师诊断，不卡学生。学生端不下发答案。更新于{' '}
+          不设达标线；点击表头可排序，无记录学生始终排在最后。删除会清除作答记录并写入审计日志（操作者 IP、人数、学生）。按课正确率仅供教师诊断，不卡学生。学生端不下发答案。更新于{' '}
           {data && data.updatedAt}
         </p>
       </div>

@@ -603,7 +603,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .teacher-shell { overflow: auto; }
 .teacher-table {
   width: 100%;
-  min-width: 1180px;
+  min-width: 1040px;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
@@ -621,10 +621,9 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .teacher-table th:nth-child(6) { width: 68px; }
 .teacher-table th:nth-child(7) { width: 68px; }
 .teacher-table th:nth-child(8) { width: 76px; }
-.teacher-table td:nth-child(n + 2):nth-child(-n + 8) { white-space: nowrap; }
-.teacher-table td:nth-child(9),
-.teacher-table td:nth-child(10),
-.teacher-table td:nth-child(11) { min-width: 180px; }
+.teacher-table th:nth-child(9) { width: 82px; }
+.teacher-table td:nth-child(n + 2):nth-child(-n + 9) { white-space: nowrap; }
+.teacher-table td:nth-child(10) { min-width: 240px; }
 .table-toolbar {
   display: flex;
   align-items: center;

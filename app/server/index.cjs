@@ -339,6 +339,12 @@ function createService(options = {}) {
           for (const tag of tags) bumpCount(classDiag.byLiteracy, tag, d.correct);
         }
       }
+      const startMs = st && st.startedAt ? Date.parse(st.startedAt) : NaN;
+      const submitMs = first && first.at ? Date.parse(first.at) : NaN;
+      const durationSeconds =
+        Number.isFinite(startMs) && Number.isFinite(submitMs) && submitMs >= startMs
+          ? Math.round((submitMs - startMs) / 1000)
+          : null;
       return {
         id: s.id,
         classId: s.classId,
@@ -349,6 +355,7 @@ function createService(options = {}) {
         unlockedStageIds: prog ? prog.unlockedStageIds.slice() : [],
         mainPercent: first ? first.percent : null,
         challengeBonus: ch ? ch.bonus : null,
+        durationSeconds,
         mainSubmitted: !!(st && st.mainSubmitted),
         challengeSubmitted: !!(st && st.challengeSubmitted),
         byLesson: diag.byLesson,
