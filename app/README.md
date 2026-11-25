@@ -6,6 +6,15 @@ JSON sha256：`a5a7f5d64e929b1eddefe0f7277a4db7d404f5e779f9b9ffa83d8d230c3ac642`
 
 ## 启动
 
+### 常驻方式（考试用）
+
+1. 双击 `service\启动服务.cmd`，或直接重启电脑——计划任务 `控制探秘营-期中考试服务` 会在开机／登录时自动拉起；
+2. 服务跑在后台会话，**关掉窗口、注销桌面都不影响**；
+3. 停止：双击 `service\停止服务.cmd`；
+4. 日志：`data\service.log`；完整说明见 `service\部署说明.md`。
+
+### 开发方式（前台调试）
+
 ```bash
 cd app
 npm install          # 会顺带安装 client 依赖
