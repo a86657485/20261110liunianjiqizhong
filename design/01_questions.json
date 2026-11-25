@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-24-g6-midterm-v1.1-draft",
+  "version": "2026-11-25-g6-midterm-v1.1-draft",
   "status": "draft",
   "shell": "控制探秘营·八站通行证",
   "paperType": "midterm",
@@ -1037,7 +1037,7 @@
         "L1-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM03",
       "interactionSpecKey": "single_choice",
       "lesson": 1,
@@ -1102,7 +1102,11 @@
       "teacherNote": "「路灯还没亮」是排他约束，专门拦截「不亮就不是系统」。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第1课G2与重难点「实际场景中用到的各种设备」。题中不出现电梯、自动驾驶等超纲对象。"
+      "whyInSyllabus": "对齐第1课G2与重难点「实际场景中用到的各种设备」。题中不出现电梯、自动驾驶等超纲对象。",
+      "recallImage": "assets/recall/GM03.webp",
+      "recallCaption": "放学路上的三类公共服务设备",
+      "recallSceneAnchor": "机关密室·寻设备",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：实现制冷须控制具有该功能的空调，并用遥控器对其启动。干扰项错因：把台灯点亮当成制冷控制已经完成，或以为待机就不再具备制冷功能，或忽略控制必须作用在对应设备上。回学：第1课教室场景2（遥控启动空调制冷）及「控制方法要对应设备功能」。",
@@ -1120,7 +1124,7 @@
         "L1-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM04",
       "interactionSpecKey": "single_choice",
       "lesson": 1,
@@ -1186,7 +1190,11 @@
       "teacherNote": "删掉「对准台灯」与「空调待机」后，本题会失去排他性，故保留现场表。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "服务第1课G1/K1，属课内控制方法，不是第9课自动控制。"
+      "whyInSyllabus": "服务第1课G1/K1，属课内控制方法，不是第9课自动控制。",
+      "recallImage": "assets/recall/GM04.webp",
+      "recallCaption": "遥控器按“制冷”但台灯无反应",
+      "recallSceneAnchor": "机关密室·寻设备",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：教材拓展要求从发展演变感受科技进步；教参明确早期形式仍可能在使用，多种形态并存也体现演变。干扰项错因：把「升级」理解成「旧的立刻灭迹」或「旧的不是系统」，或以为需求随形态消失。回学：第1课拓展与提升及教参门锁例。",
@@ -1202,7 +1210,7 @@
         "L1-G3"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM05",
       "interactionSpecKey": "single_choice",
       "lesson": 1,
@@ -1268,7 +1276,11 @@
       "teacherNote": "数字化学习与创新体现在「能根据资料比较演变并得出合适判断」，不空贴标签。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第1课G3。上网搜资料是教参建议的学习方式，题面用已给资料卡考查认识，不另超纲。"
+      "whyInSyllabus": "对齐第1课G3。上网搜资料是教参建议的学习方式，题面用已给资料卡考查认识，不另超纲。",
+      "recallImage": "assets/recall/GM05.webp",
+      "recallCaption": "门锁从木闩到智能锁的演变",
+      "recallSceneAnchor": "机关密室·寻设备",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：开与关是操作，亮／不亮是状态；操作会影响状态，但二者不能画等号，实际状态要观察。本题灯可能故障，更能把二者分开。干扰项错因：用操作直接代替状态，或因结果未变就否认操作发生，或把操作与状态混为一谈。回学：第2课学习活动1分析表及教参「开关」与「开与关」的区分。",
@@ -1473,7 +1485,7 @@
         "L2-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM08",
       "interactionSpecKey": "single_choice",
       "lesson": 2,
@@ -1530,7 +1542,11 @@
       "teacherNote": "微表给出「绿→黄」这一具体切换，避免空谈定义。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第2课G2/K1。不考信号灯时长（那不是本课目标）。"
+      "whyInSyllabus": "对齐第2课G2/K1。不考信号灯时长（那不是本课目标）。",
+      "recallImage": "assets/recall/GM08.webp",
+      "recallCaption": "信号灯从绿灯切到黄灯",
+      "recallSceneAnchor": "开与关的秘密",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：教材流程图为「指令是开？是→灯亮，否→灯不亮」。残局把真假出口接反了，最小修改是对调出口。干扰项错因：否定判断框、否认可用流程图描述开与关算法，或让两个出口同样输出。回学：第2课学习活动1控制算法流程图。交互为点选改法，不是填空。",
@@ -1559,7 +1575,7 @@
         "L2-K1"
       ],
       "guides": "先看残局里「是／否」两侧写了什么，再点选改法。未作答前不要给某一侧出口加黄框或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM09",
       "interactionSpecKey": "flowchart_pick_fix",
       "lesson": 2,
@@ -1603,7 +1619,11 @@
       "teacherNote": "残局本身就是反例；学生须对照规则改出口，不是默背空图。",
       "tier": "main",
       "type": "flowchart_op",
-      "whyInSyllabus": "对齐第2课「能用流程图描述开与关操作的算法」（单元评价）及G3/D1。无填空。"
+      "whyInSyllabus": "对齐第2课「能用流程图描述开与关操作的算法」（单元评价）及G3/D1。无填空。",
+      "recallImage": "assets/recall/GM09.webp",
+      "recallCaption": "台灯流程图残局（出口接反）",
+      "recallSceneAnchor": "开与关的秘密",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：按题给循环，从「不亮」按1次到白光，再按1次到暖光，最少2次。干扰项错因：跳步、把不同状态当成同一状态、把3次后的中性光误当成暖光。回学：第2课状态切换。必须依据本题循环表，不能靠记忆别的产品顺序。",
@@ -1621,7 +1641,7 @@
         "L2-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM10",
       "interactionSpecKey": "single_choice",
       "lesson": 2,
@@ -1676,7 +1696,11 @@
       "teacherNote": "不同产品顺序可能不同，故循环表不可删。第4个选项故意把「3次到中性光」说成到了暖光。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第2课G2/D1。循环顺序以题内数据为准。"
+      "whyInSyllabus": "对齐第2课G2/D1。循环顺序以题内数据为准。",
+      "recallImage": "assets/recall/GM10.webp",
+      "recallCaption": "变光灯循环按动",
+      "recallSceneAnchor": "开与关的秘密",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：学习活动1要求体验控制过程——直行、变速，遇到障碍或转角要调整方向。记录表明直行到转角却不转向，所以缺的是方向控制。干扰项错因：以为一次推动即可、用加速代替转向，或把控制完全交给车子自行决定。回学：第3课学习活动1及「先由你来控制」。",
@@ -1875,7 +1899,7 @@
         "L3-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM13",
       "interactionSpecKey": "single_choice",
       "lesson": 3,
@@ -1937,7 +1961,11 @@
       "teacherNote": "两种做法对照是情境数据，避免空定义。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第3课G1/K1。不扩展到第9课人工/自动控制定义对比的超纲表述。"
+      "whyInSyllabus": "对齐第3课G1/K1。不扩展到第9课人工/自动控制定义对比的超纲表述。",
+      "recallImage": "assets/recall/GM13.webp",
+      "recallCaption": "推车送书 vs 机器人送书",
+      "recallSceneAnchor": "校园配送实验室",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：教材设计表要求思考「它能自动实现的功能」和「使用方法」；教参启发是否要发出送到提示。缺到站提醒会导致「到了但没人知道」。干扰项错因：用外形代替功能、取消目标、把提醒放在错误时机。回学：第3课活动2设计表及教参酒店送货机器人提示语音例。",
@@ -1954,7 +1982,7 @@
         "L3-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM14",
       "interactionSpecKey": "single_choice",
       "lesson": 3,
@@ -2020,7 +2048,11 @@
       "teacherNote": "试运行结果是排他证据。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第3课D1。不要求真实编程，点选设计方案即可。"
+      "whyInSyllabus": "对齐第3课D1。不要求真实编程，点选设计方案即可。",
+      "recallImage": "assets/recall/GM14.webp",
+      "recallCaption": "机器人到门口但读者不知道",
+      "recallSceneAnchor": "校园配送实验室",
+      "recallImageMaxWidthPx": 800
     },
     {
       "acceptAlternate": {
@@ -2056,7 +2088,7 @@
         "L3-D1"
       ],
       "guides": "把四张步骤卡点选放入①②③④。未放入前不要给某一张卡加黄框或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM15",
       "interactionSpecKey": "flowchart_order_cards",
       "lesson": 3,
@@ -2113,7 +2145,11 @@
       "teacherNote": "错误顺序及其结果必须保留，否则变成无约束排序。到达后两种顺序都算对：主答案为转向后先到站提醒再停止；acceptAlternate 为转向后先停止再到站提醒。不要把题干改成只写明一种先后。",
       "tier": "main",
       "type": "flowchart_op",
-      "whyInSyllabus": "对齐第3课G2/G3/D1。不是第7课值日关卡流程。"
+      "whyInSyllabus": "对齐第3课G2/G3/D1。不是第7课值日关卡流程。",
+      "recallImage": "assets/recall/GM15.webp",
+      "recallCaption": "配送机器人在走廊就播放提示",
+      "recallSceneAnchor": "校园配送实验室",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：教材以过马路遇红灯为例：获得红灯信息、判断不能通行、脚停止运动；人作为系统时，输入是外界信号，计算是分析判断，输出是身体表现。干扰项错因：把输出当成输入、否认计算、把灯和人混成同一系统（课堂特别提醒要分开）。回学：第4课学习活动1及「校门口红灯反应」。",
@@ -2300,7 +2336,7 @@
         "L4-G2"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM18",
       "interactionSpecKey": "single_choice",
       "lesson": 4,
@@ -2358,7 +2394,11 @@
       "teacherNote": "数字化学习体现在用熟悉的数字设备分析三个环节，而非空贴标签。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第4课G1/G2及教参可更换案例。手机也是控制系统，属课内。"
+      "whyInSyllabus": "对齐第4课G1/G2及教参可更换案例。手机也是控制系统，属课内。",
+      "recallImage": "assets/recall/GM18.webp",
+      "recallCaption": "手机播放→扬声器出声",
+      "recallSceneAnchor": "校园系统探索站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：教材把工作过程中的处理称为计算，教参说明它与算法中的「处理」本质相同，并为强调数据及其运算而采用「计算」一词；人的计算可以是分析判断。干扰项错因：把计算等同于算术或输出动作，或以为只有电子计算机才有计算。回学：第4课正文与教参蓝栏。",
@@ -2375,7 +2415,7 @@
         "L4-G3"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM19",
       "interactionSpecKey": "single_choice",
       "lesson": 4,
@@ -2436,7 +2476,11 @@
       "teacherNote": "例子微表防止空谈；教参「不必深究，让学生知道即可」，选项保持六年级表述。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第4课G3。不提前展开连续量四则或开关量逻辑的专题运算（那些在第5–8课再考）。"
+      "whyInSyllabus": "对齐第4课G3。不提前展开连续量四则或开关量逻辑的专题运算（那些在第5–8课再考）。",
+      "recallImage": "assets/recall/GM19.webp",
+      "recallCaption": "“计算不只是加减乘除”",
+      "recallSceneAnchor": "校园系统探索站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：自动门应先采集「有人靠近」，再经计算，输出「门打开」。残局把结果与输入接反。干扰项错因：因发现错误就否认计算或输入，或否认「有人靠近」可以作为输入数据。回学：第4课拓展自动门。",
@@ -2454,7 +2498,7 @@
         "L4-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM20",
       "interactionSpecKey": "single_choice",
       "lesson": 4,
@@ -2511,7 +2555,11 @@
       "teacherNote": "残局本身是最小反例。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第4课K1/D1。属课内改错，不是第9课反馈回路。"
+      "whyInSyllabus": "对齐第4课K1/D1。属课内改错，不是第9课反馈回路。",
+      "recallImage": "assets/recall/GM20.webp",
+      "recallCaption": "自动门示意图画反了",
+      "recallSceneAnchor": "校园系统探索站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：教材明确，输入、计算和输出三个环节都离不开数据，数据是「流动」在控制系统中的要素。干扰项错因：只看到电能或装置外壳，或以为有了一次提示就不再需要数据。回学：第5课导入及监测站门口透视三格。",
@@ -2708,7 +2756,7 @@
         "L5-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM23",
       "interactionSpecKey": "single_choice",
       "lesson": 5,
@@ -2777,7 +2825,11 @@
       "teacherNote": "四项并列是排他数据，遮住①④的「慢慢上升／从20到80」就难以判断。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第5课G2/K1及教材水位、温度例。不用种植园土壤湿度作为题面。"
+      "whyInSyllabus": "对齐第5课G2/K1及教材水位、温度例。不用种植园土壤湿度作为题面。",
+      "recallImage": "assets/recall/GM23.webp",
+      "recallCaption": "校园里的连续量",
+      "recallSceneAnchor": "噪声监测数据站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：拓展活动建议把多数同学能接受的音量作为阈值；过低导致误报，过高导致漏报，都会削弱对教室秩序与他人的关照。干扰项错因：单向认为越大／越小越好，或否认可按实际情况设定。回学：第5课拓展与提升及第5站迁移设计。",
@@ -2794,7 +2846,7 @@
         "L5-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM24",
       "interactionSpecKey": "single_choice",
       "lesson": 5,
@@ -2857,7 +2909,11 @@
       "teacherNote": "两组相反结果必须同时给出，否则无法排除「越大越好／越小越好」。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第5课G3/D1及拓展。不使用屋顶种植园开水泵画面作题面。"
+      "whyInSyllabus": "对齐第5课G3/D1及拓展。不使用屋顶种植园开水泵画面作题面。",
+      "recallImage": "assets/recall/GM24.webp",
+      "recallCaption": "噪声阈值过高/过低都出问题",
+      "recallSceneAnchor": "噪声监测数据站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：活动2通过慢慢拉窗帘感受光照强度逐渐变化；连续量可以升高也可以降低，关键是连续变化。干扰项错因：把光照当成只有两值、认为下降就是故障、否定曲线中的数据。回学：第5课学习活动2。",
@@ -2874,7 +2930,7 @@
         "L5-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM25",
       "interactionSpecKey": "single_choice",
       "lesson": 5,
@@ -2931,7 +2987,11 @@
       "teacherNote": "从800到120的平滑下降是必要数据。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第5课G2/K1。可用水表、温度计、车速表作同类迁移，本题聚焦窗帘光照。"
+      "whyInSyllabus": "对齐第5课G2/K1。可用水表、温度计、车速表作同类迁移，本题聚焦窗帘光照。",
+      "recallImage": "assets/recall/GM25.webp",
+      "recallCaption": "拉窗帘光照平滑下降",
+      "recallSceneAnchor": "噪声监测数据站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：开关量用于控制设备开与关，只有两种状态；控制报警器是否发提示的指令属于开关量，多种音量读数是连续量。干扰项错因：把连续量当成开关量，或认为全部是／全部不是。回学：第6课学习活动1及「指令哪来」对照表。",
@@ -3125,7 +3185,7 @@
         "L6-G2"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM28",
       "interactionSpecKey": "single_choice",
       "lesson": 6,
@@ -3189,7 +3249,11 @@
       "teacherNote": "约定表必须保留。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第6课G2及举牌投票。换「小夏举0」的具体数据，不是课堂原统计结果。"
+      "whyInSyllabus": "对齐第6课G2及举牌投票。换「小夏举0」的具体数据，不是课堂原统计结果。",
+      "recallImage": "assets/recall/GM28.webp",
+      "recallCaption": "举牌表示不同意（0）",
+      "recallSceneAnchor": "校园开关站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：开关量只有两种状态；多个温度读数属于连续量。仅因「和开水有关」不能改变数据形态。干扰项错因：凡数字即开关量、拒绝辨析、或否认1和0的表示。回学：第6课与第5课衔接。",
@@ -3207,7 +3271,7 @@
         "L6-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM29",
       "interactionSpecKey": "single_choice",
       "lesson": 6,
@@ -3262,7 +3326,11 @@
       "teacherNote": "「37、38、39还可以有其他值」是排他证据。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第6课G1/K1，并巩固与第5课连续量的区分。"
+      "whyInSyllabus": "对齐第6课G1/K1，并巩固与第5课连续量的区分。",
+      "recallImage": "assets/recall/GM29.webp",
+      "recallCaption": "三杯不同水温被误当开关量",
+      "recallSceneAnchor": "校园开关站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：非运算对两种状态都要成立；只测「开→关」会以偏概全，最小补测是相反方向「关→开」。干扰项错因：重复同一例、用「开→开」去支持错误规则、拒绝补测。回学：第6课非运算规则。",
@@ -3279,7 +3347,7 @@
         "L6-G3"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM30",
       "interactionSpecKey": "single_choice",
       "lesson": 6,
@@ -3336,7 +3404,11 @@
       "teacherNote": "「只测了一半」是本题的关键缺口。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第6课D1/G3。属验证方法，不超纲。"
+      "whyInSyllabus": "对齐第6课D1/G3。属验证方法，不超纲。",
+      "recallImage": "assets/recall/GM30.webp",
+      "recallCaption": "非运算只测了“开→关”",
+      "recallSceneAnchor": "校园开关站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：生活中的与运算是「同时满足两个条件才能得到预期结果」。只有小安两项都有。干扰项错因：把与当成「任一条件即可」，或反过来排除同时满足的人。回学：第7课学习活动1的规则（既…又…才能…），题面改为科技节器材室，不使用失物认领原句，也不套值日关卡。",
@@ -3540,7 +3612,7 @@
         "L7-K1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM33",
       "interactionSpecKey": "single_choice",
       "lesson": 7,
@@ -3599,7 +3671,11 @@
       "teacherNote": "评选规则本身就是知识的具象化。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第7课G1/K1。可与第8课或运算对照，但本题正确项只考「与」。"
+      "whyInSyllabus": "对齐第7课G1/K1。可与第8课或运算对照，但本题正确项只考「与」。",
+      "recallImage": "assets/recall/GM33.webp",
+      "recallCaption": "两个条件都满足才入选",
+      "recallSceneAnchor": "双条件才通行",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：第7课拓展指出，连续量可通过与阈值比较生成开关量（指令），再参与与运算；系统输入既可以是连续量也可以是开关量。干扰项错因：方向说反、取消采集、用相加代替判断。回学：第7课拓展与提升。",
@@ -3616,7 +3692,7 @@
         "L7-G3"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM34",
       "interactionSpecKey": "single_choice",
       "lesson": 7,
@@ -3681,7 +3757,11 @@
       "teacherNote": "步骤表不可删，否则易变成贴标签。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第7课G3，属本课拓展，不是第9课反馈。阈值本身已在第5课学习。"
+      "whyInSyllabus": "对齐第7课G3，属本课拓展，不是第9课反馈。阈值本身已在第5课学习。",
+      "recallImage": "assets/recall/GM34.webp",
+      "recallCaption": "阈值把连续光变两种状态",
+      "recallSceneAnchor": "双条件才通行",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：仅测「两真→亮」无法区分与运算和「只要有一个条件就亮」甚至「永远亮」。最小有力反例是「一个为真一个为假却仍亮」。只测「两假→不亮」时，与运算和或运算结果相同，不能证明是与。干扰项错因：重复同一组、只用双假组作证据、验证时不观察输出。回学：第7课四组状态均应验证的思想，但不使用值日关卡流程。",
@@ -3698,7 +3778,7 @@
         "L7-G2"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM35",
       "interactionSpecKey": "single_choice",
       "lesson": 7,
@@ -3757,7 +3837,11 @@
       "teacherNote": "已测组必须写出，学生才能判断「还缺什么」。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第7课D1/G2。方法在课内，不引入第9课优化/反馈。"
+      "whyInSyllabus": "对齐第7课D1/G2。方法在课内，不引入第9课优化/反馈。",
+      "recallImage": "assets/recall/GM35.webp",
+      "recallCaption": "与运算只测了“有人且暗”",
+      "recallSceneAnchor": "双条件才通行",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：这是生活中的或运算，满足其中一个条件即可提交。干扰项错因：把或当成与、指定必须是某一条件、把「已满足一个」当成失败。回学：第8课学习活动1场景3，回忆画面可用港口「备好一样就能展」。",
@@ -3943,7 +4027,7 @@
         "L8-G2"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM38",
       "interactionSpecKey": "single_choice",
       "lesson": 8,
@@ -4000,7 +4084,11 @@
       "teacherNote": "组合表必须保留。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第8课D1/G2。点选，无填空。"
+      "whyInSyllabus": "对齐第8课D1/G2。点选，无填空。",
+      "recallImage": "assets/recall/GM38.webp",
+      "recallCaption": "密码真、指纹假的或门",
+      "recallSceneAnchor": "郑和远航·或运算",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：第8课教参建议把与、或对照——两把钥匙都要用是与，任意一把能开是或。本题换成实验室双卡与大厅门禁，考查综合辨认。干扰项错因：认为相同、名称对调、都看成只要一个条件。回学：第8课与／或对照。",
@@ -4019,7 +4107,7 @@
         "L8-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM39",
       "interactionSpecKey": "single_choice",
       "lesson": 8,
@@ -4080,7 +4168,11 @@
       "teacherNote": "两套规则表是排他数据。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第8课G3及教参对照建议。不引入第9课内容。"
+      "whyInSyllabus": "对齐第8课G3及教参对照建议。不引入第9课内容。",
+      "recallImage": "assets/recall/GM39.webp",
+      "recallCaption": "双卡与门 vs 刷卡或人脸",
+      "recallSceneAnchor": "郑和远航·或运算",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：与、或在「两真」时结果相同，要区分必须测「一真一假」。若单件不能展，实际是与而不是或。「两假仍能展」不是或运算（那是恒真）。只重复双真无法区分。回学：第8课四组状态与港口／补给舱「先找出不符合要求的组合」。",
@@ -4098,7 +4190,7 @@
         "L8-G3"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GM40",
       "interactionSpecKey": "single_choice",
       "lesson": 8,
@@ -4157,11 +4249,15 @@
       "teacherNote": "已测「两真」必须写明。",
       "tier": "main",
       "type": "single_choice",
-      "whyInSyllabus": "对齐第8课D1/G2/G3。测试思想来自课内四组分析，不是第9课。"
+      "whyInSyllabus": "对齐第8课D1/G2/G3。测试思想来自课内四组分析，不是第9课。",
+      "recallImage": "assets/recall/GM40.webp",
+      "recallCaption": "货物 A/B 只测了“都有”",
+      "recallSceneAnchor": "郑和远航·或运算",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4255,11 +4351,15 @@
           ]
         ]
       },
-      "analysis": "正确推导：降低室温应启动具有制冷功能的空调，播放通知应操作播放器，印出纸张应操作打印机；反复开关照明灯不能使室温下降。干扰项错因：把照明当成制冷，或把播放与打印的控制方法放错需求。回学：第1课学习活动1–2（设备功能与控制方法）。点选入槽，不打字。"
+      "analysis": "正确推导：降低室温应启动具有制冷功能的空调，播放通知应操作播放器，印出纸张应操作打印机；反复开关照明灯不能使室温下降。干扰项错因：把照明当成制冷，或把播放与打印的控制方法放错需求。回学：第1课学习活动1–2（设备功能与控制方法）。点选入槽，不打字。",
+      "recallImage": "assets/recall/GM41.webp",
+      "recallCaption": "三件关闭设备与三种控制方法",
+      "recallSceneAnchor": "机关密室·寻设备",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4350,11 +4450,15 @@
           ]
         ]
       },
-      "analysis": "正确推导：按给定循环，从「关」起连续三次按下，状态依次变为1挡、2挡，再回到关。「3挡」不在规则之中，不能填入。干扰项错因：编造循环中没有的状态，或没有按顺序切换。回学：第2课开与关操作与状态切换（含电风扇挡位例）。点选入槽，不打字。"
+      "analysis": "正确推导：按给定循环，从「关」起连续三次按下，状态依次变为1挡、2挡，再回到关。「3挡」不在规则之中，不能填入。干扰项错因：编造循环中没有的状态，或没有按顺序切换。回学：第2课开与关操作与状态切换（含电风扇挡位例）。点选入槽，不打字。",
+      "recallImage": "assets/recall/GM42.webp",
+      "recallCaption": "小电风扇三挡循环",
+      "recallSceneAnchor": "开与关的秘密",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4413,11 +4517,15 @@
           "explain": "把控制窄化为启动瞬间"
         }
       },
-      "analysis": "正确推导：人不必一直按着阀门，说明启动之后系统仍按「靠近出水、离开停止」的规则继续控制工作过程。干扰项错因：把控制窄化为靠近的一瞬，以为必须人工持续按住，或把控制理解成只改变外形。回学：第3课「控制系统中控制的作用」。"
+      "analysis": "正确推导：人不必一直按着阀门，说明启动之后系统仍按「靠近出水、离开停止」的规则继续控制工作过程。干扰项错因：把控制窄化为靠近的一瞬，以为必须人工持续按住，或把控制理解成只改变外形。回学：第3课「控制系统中控制的作用」。",
+      "recallImage": "assets/recall/GM43.webp",
+      "recallCaption": "感应洗手器自动出水",
+      "recallSceneAnchor": "校园配送实验室",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": true,
       "section": "main",
@@ -4476,11 +4584,15 @@
           "explain": "认为三个环节的内容可以任意摆放"
         }
       },
-      "analysis": "正确推导：烧水过程应先有加水、按下开关等输入，再在内部进行加热控制方面的计算，输出才是水烧开等结果。题中把「已烧开」当成输入、把「倒冷水」当成输出，三个环节的内容位置不对。干扰项错因：否认输入或否认它是控制系统，或认为环节顺序可以任意摆放。回学：第4课工作过程的三个环节。"
+      "analysis": "正确推导：烧水过程应先有加水、按下开关等输入，再在内部进行加热控制方面的计算，输出才是水烧开等结果。题中把「已烧开」当成输入、把「倒冷水」当成输出，三个环节的内容位置不对。干扰项错因：否认输入或否认它是控制系统，或认为环节顺序可以任意摆放。回学：第4课工作过程的三个环节。",
+      "recallImage": "assets/recall/GM44.webp",
+      "recallCaption": "电热水壶环节被说反",
+      "recallSceneAnchor": "校园系统探索站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4562,11 +4674,15 @@
           ]
         ]
       },
-      "analysis": "正确推导：采集到的温度读数、计算得到的平均值，以及显示过程中传递的信息，都属于系统工作时产生或处理的数据，不能只把最后显示的数字当成数据。干扰项错因：只承认最终结果、以为可以无数据地工作，或以为数据必须先写在纸上。回学：第5课「控制系统工作时产生的数据」。"
+      "analysis": "正确推导：采集到的温度读数、计算得到的平均值，以及显示过程中传递的信息，都属于系统工作时产生或处理的数据，不能只把最后显示的数字当成数据。干扰项错因：只承认最终结果、以为可以无数据地工作，或以为数据必须先写在纸上。回学：第5课「控制系统工作时产生的数据」。",
+      "recallImage": "assets/recall/GM45.webp",
+      "recallCaption": "气象站采集温度并算小时平均",
+      "recallSceneAnchor": "噪声监测数据站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4624,11 +4740,15 @@
           "explain": "把判断标准误当成使水温变化的原因"
         }
       },
-      "analysis": "正确推导：设定值是阈值，用来把连续变化的水温与规定值比较，从而判断是否停止加热。干扰项错因：把设定值看成装饰，误当成衡量读数准不准的标准，或以为设定值本身让水温升起来。回学：第5课阈值的含义与作用。"
+      "analysis": "正确推导：设定值是阈值，用来把连续变化的水温与规定值比较，从而判断是否停止加热。干扰项错因：把设定值看成装饰，误当成衡量读数准不准的标准，或以为设定值本身让水温升起来。回学：第5课阈值的含义与作用。",
+      "recallImage": "assets/recall/GM46.webp",
+      "recallCaption": "饮水机达到设定温度停止加热",
+      "recallSceneAnchor": "噪声监测数据站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4686,11 +4806,15 @@
           "explain": "把逻辑非运算误当成算术运算"
         }
       },
-      "analysis": "正确推导：非运算得到与原来相反的状态，输入为「开」（真），结果应为「关」（假）。干扰项错因：以为非运算保持原状、会同时输出两种状态，或把非运算当成加减法。回学：第6课非运算规则。"
+      "analysis": "正确推导：非运算得到与原来相反的状态，输入为「开」（真），结果应为「关」（假）。干扰项错因：以为非运算保持原状、会同时输出两种状态，或把非运算当成加减法。回学：第6课非运算规则。",
+      "recallImage": "assets/recall/GM47.webp",
+      "recallCaption": "仓库门当前为“开”",
+      "recallSceneAnchor": "校园开关站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4773,11 +4897,15 @@
           ]
         ]
       },
-      "analysis": "正确推导：开关量只有两种状态，闸机的开与关、是否已检票都属于开关量；人数和体温是在一定范围内连续变化的量，不是开关量。干扰项错因：把连续量当成开关量，或以为「会变化」就等于开关量。回学：第6课找出开关量及其表现形式。"
+      "analysis": "正确推导：开关量只有两种状态，闸机的开与关、是否已检票都属于开关量；人数和体温是在一定范围内连续变化的量，不是开关量。干扰项错因：把连续量当成开关量，或以为「会变化」就等于开关量。回学：第6课找出开关量及其表现形式。",
+      "recallImage": "assets/recall/GM48.webp",
+      "recallCaption": "体育馆入口的多种量",
+      "recallSceneAnchor": "校园开关站",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4848,11 +4976,15 @@
         "visual": "空槽示意：原来的量 → 转换依据 → 转换后的量",
         "note": "一对一放入；多出的卡片不使用。"
       },
-      "analysis": "正确推导：转换前是连续变化的土壤湿度读数，转换依据是设定值（阈值），转换后得到「过干／不过干」这两种状态（开关量）。累计浇花次数与这次转换无关。干扰项错因：把无关次数放入环节，或把转换前后的量、依据与结果放反。回学：第7课连续量经由阈值判断转换为开关量。点选入槽，不打字。本题不是种植园自动控制，也不涉及反馈。"
+      "analysis": "正确推导：转换前是连续变化的土壤湿度读数，转换依据是设定值（阈值），转换后得到「过干／不过干」这两种状态（开关量）。累计浇花次数与这次转换无关。干扰项错因：把无关次数放入环节，或把转换前后的量、依据与结果放反。回学：第7课连续量经由阈值判断转换为开关量。点选入槽，不打字。本题不是种植园自动控制，也不涉及反馈。",
+      "recallImage": "assets/recall/GM49.webp",
+      "recallCaption": "土壤湿度→过干/不过干→浇水",
+      "recallSceneAnchor": "双条件才通行",
+      "recallImageMaxWidthPx": 800
     },
     {
       "appRef": null,
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "remixNote": "v1.1 主卷增补，不带图，不留空图位。",
       "reverseDebug": false,
       "section": "main",
@@ -4927,7 +5059,11 @@
           ]
         ]
       },
-      "analysis": "正确推导：规定使用或运算，两个条件中满足一项即可。跳绳已达标，因此可以获得体育章。干扰项错因：把或当成与、不承认跳绳是有效条件，或把规则说反。回学：第8课或运算在日常生活中的应用。"
+      "analysis": "正确推导：规定使用或运算，两个条件中满足一项即可。跳绳已达标，因此可以获得体育章。干扰项错因：把或当成与、不承认跳绳是有效条件，或把规则说反。回学：第8课或运算在日常生活中的应用。",
+      "recallImage": "assets/recall/GM50.webp",
+      "recallCaption": "800 米与跳绳达标",
+      "recallSceneAnchor": "郑和远航·或运算",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：迁移第4课三个环节：已有采集迹象（话筒指示在跳）和启动操作，输出端却无声，应向计算或输出排查，而不是断言「没有输入」或「系统没有三个环节」。回学：第4课输入输出与计算，第3课控制持续作用于过程。",
@@ -4947,7 +5083,7 @@
         "L3-G1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GC01",
       "interactionSpecKey": "single_choice",
       "lesson": null,
@@ -5012,7 +5148,11 @@
       "teacherNote": "挑战另计加分。话筒指示是排他线索。",
       "tier": "challenge",
       "type": "single_choice",
-      "whyInSyllabus": "跨第3–4课迁移，不涉及反馈、开闭环或后续单元设备。"
+      "whyInSyllabus": "跨第3–4课迁移，不涉及反馈、开闭环或后续单元设备。",
+      "recallImage": "assets/recall/GC01.webp",
+      "recallCaption": "广播链路中喇叭没声",
+      "recallSceneAnchor": "加分挑战关（可选）",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：原测试说明70是有效分界；改成7后，多数现场音量都会「超标」，指令虽仍是开关量，但阈值过低导致误报，影响场馆秩序提醒的有效性。干扰项错因：认为越小越好、方向判断反了、把指令类型改错。回学：第5课阈值作用与第6课开关量指令。",
@@ -5031,7 +5171,7 @@
         "L6-G1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GC02",
       "interactionSpecKey": "single_choice",
       "lesson": null,
@@ -5098,7 +5238,11 @@
       "teacherNote": "三组边界数据必须保留。",
       "tier": "challenge",
       "type": "single_choice",
-      "whyInSyllabus": "第5–6课综合，不用种植园自动控制。"
+      "whyInSyllabus": "第5–6课综合，不用种植园自动控制。",
+      "recallImage": "assets/recall/GC02.webp",
+      "recallCaption": "音量阈值设得过低",
+      "recallSceneAnchor": "加分挑战关（可选）",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：白天该命题为真，非运算得假，不允许灯亮——符合夜灯只在非白天时亮的设计。干扰项错因：非运算保持原值、出现半亮、以为有非运算就恒亮。回学：第6课非运算规则的新情境迁移。不是第9课光控反馈。",
@@ -5116,7 +5260,7 @@
         "L6-D1"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GC03",
       "interactionSpecKey": "single_choice",
       "lesson": null,
@@ -5181,7 +5325,11 @@
       "teacherNote": "步骤表是规则本身，遮住则无法逐步推导。",
       "tier": "challenge",
       "type": "single_choice",
-      "whyInSyllabus": "第6课非运算迁移，不涉及闭环。"
+      "whyInSyllabus": "第6课非运算迁移，不涉及闭环。",
+      "recallImage": "assets/recall/GC03.webp",
+      "recallCaption": "走廊夜灯与非运算",
+      "recallSceneAnchor": "加分挑战关（可选）",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：一真一假时门仍开，符合或运算而不是与运算；宣传语「都要满足」与记录冲突。仅看「两假不开」不能区分与和或（两者在两假时都为假）。回学：第7–8课与／或规则及四组分析。",
@@ -5200,7 +5348,7 @@
         "L8-G3"
       ],
       "guides": "点选一个选项后提交。未作答前，各个选项都不要加黄框、发光或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GC04",
       "interactionSpecKey": "single_choice",
       "lesson": null,
@@ -5274,7 +5422,11 @@
       "teacherNote": "四组全给是最小完备证据。",
       "tier": "challenge",
       "type": "single_choice",
-      "whyInSyllabus": "第7–8课综合对照，不超第8课。"
+      "whyInSyllabus": "第7–8课综合对照，不超第8课。",
+      "recallImage": "assets/recall/GC04.webp",
+      "recallCaption": "门禁四组记录",
+      "recallSceneAnchor": "加分挑战关（可选）",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：与运算须在四种组合下都符合「仅双真时启动」。只测双真无法发现「单真仍启动」的故障；只测双假无法区分与和或；抽测任一组也不能构成完备验证。回学：第7课四组状态、第5课阈值（湿度低于40是连续量经阈值形成开关量）。展柜不是种植园系统。点选方案卡，无填空。",
@@ -5301,7 +5453,7 @@
         "L5-G3"
       ],
       "guides": "点选一张测试方案卡放入槽中。未作答前不要给某一张卡加黄框或小手。",
-      "hasRecallImage": false,
+      "hasRecallImage": true,
       "id": "GC05",
       "interactionSpecKey": "flowchart_pick_plan",
       "lesson": null,
@@ -5358,7 +5510,11 @@
       "teacherNote": "挑战流程图／方案点选。",
       "tier": "challenge",
       "type": "flowchart_op",
-      "whyInSyllabus": "第5课阈值＋第7课与运算，新情境展柜加湿，不写种植园自动控制、不写反馈。"
+      "whyInSyllabus": "第5课阈值＋第7课与运算，新情境展柜加湿，不写种植园自动控制、不写反馈。",
+      "recallImage": "assets/recall/GC05.webp",
+      "recallCaption": "展柜加湿的与规则",
+      "recallSceneAnchor": "加分挑战关（可选）",
+      "recallImageMaxWidthPx": 800
     },
     {
       "analysis": "正确推导：第8课拓展将按钮与自动识别做成或的关系，任一为真杆应抬起。识别已通过而杆不抬，说明或运算未被执行（或被做成了与）。干扰项错因：用与解释、只承认一个输入、把故障说成正常或运算。回学：第8课拓展与提升。此为课内停车场升降杆，不是后续汽车巡线或电梯单元。",

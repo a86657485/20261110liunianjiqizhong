@@ -25,7 +25,7 @@ assert.equal(mainQs.length, 50);
 assert.equal(challengeQs.length, 6);
 
 test('paper json sha256 locked', () => {
-  assert.equal(paperSha256(DESIGN_JSON), '3dff5a296cfd82fd2eb1791ea2ba0b207eaaed0809efa5d3a07d7589fdc12662');
+  assert.equal(paperSha256(DESIGN_JSON), 'a5a7f5d64e929b1eddefe0f7277a4db7d404f5e779f9b9ffa83d8d230c3ac642');
 });
 
 test('single_choice full-text equality', () => {
@@ -171,10 +171,11 @@ test('client paper strips server-only fields and keeps student fields', () => {
     assert.ok(!forbidden.test(blob), q.id + ' leaked forbidden term');
   }
   const gm03 = client.questions.find((q) => q.id === 'GM03');
-  assert.equal(gm03.hasRecallImage, false);
-  assert.equal(gm03.recallImage, undefined);
-  assert.equal(gm03.recallCaption, undefined);
+  assert.equal(gm03.hasRecallImage, true);
+  assert.ok(gm03.recallImage);
+  assert.ok(gm03.recallCaption);
   assert.ok(gm03.stateTable && gm03.stateTable.rows);
+  assert.ok(client.questions.every((q) => q.recallImage), 'all questions carry recall image');
   const gm01 = client.questions.find((q) => q.id === 'GM01');
   assert.ok(gm01.recallImage);
   assert.ok(gm01.stateTable);

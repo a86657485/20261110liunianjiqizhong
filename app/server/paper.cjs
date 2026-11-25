@@ -5,8 +5,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const EXPECTED_VERSION = '2026-11-24-g6-midterm-v1.1-draft';
-const EXPECTED_SHA256 = '3dff5a296cfd82fd2eb1791ea2ba0b207eaaed0809efa5d3a07d7589fdc12662';
+const EXPECTED_VERSION = '2026-11-25-g6-midterm-v1.1-draft';
+const EXPECTED_SHA256 = 'a5a7f5d64e929b1eddefe0f7277a4db7d404f5e779f9b9ffa83d8d230c3ac642';
 
 const DESIGN_JSON =
   process.env.PAPER_JSON ||
