@@ -13,3 +13,4 @@ assets/recall/_gen/
 drafts/_qa_*.json
 assets/recall/_previews/
 assets/recall/_held/*.webp
+app/service/STOP.flag
